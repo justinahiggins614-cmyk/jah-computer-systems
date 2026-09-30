@@ -1,0 +1,2059 @@
+[
+ {
+  "id": "sys-abacus",
+  "name": "Abacus",
+  "cat": "historic",
+  "era": "c. 2700\u20132300 BCE",
+  "tag": "Manual bead reckoner",
+  "desc": "Rows of beads on rods are slid by hand to add, subtract, multiply, and divide. Each column stands for a place value, so the beads remember the running total.",
+  "history": "One of the oldest known calculating tools. Early forms appeared in ancient Mesopotamia; bead frames were later used in Rome, in China as the suanpan, and in Japan as the soroban.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "abacus",
+  "sig": {
+   "name": "Signature Bead Engine",
+   "blurb": "The Signature Bead Engine keeps the ancient sliding-bead idea but adds a second readout row that automatically shows the running check-sum, so a miscounted slide is caught at once. It is built as a pocket desk piece with brass rods and laser-etched place markers.",
+   "demo": "abacus"
+  }
+ },
+ {
+  "id": "sys-antikythera",
+  "name": "Antikythera Mechanism",
+  "cat": "historic",
+  "era": "c. 2nd\u20131st century BCE",
+  "tag": "Geared astronomical calculator",
+  "desc": "A box of bronze gears that predicted the positions of the sun and moon, the dates of eclipses, and the cycles of the ancient games. Turning one crank moved pointers across dials on both faces.",
+  "history": "Recovered from a shipwreck off the Greek island of Antikythera in the early 1900s. It is the most complex geared mechanism known from the ancient world, and its purpose was decoded only with modern X-ray imaging.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "abacus",
+  "sig": {
+   "name": "Signature Sky Dial",
+   "blurb": "The Signature Sky Dial re-builds the ancient gear idea as a hand-cranked brass computer of 61 meshing gears that also tracks modern satellite passes. Every gear is engraved with its ratio, so the whole machine teaches itself while it turns.",
+   "demo": "abacus"
+  }
+ },
+ {
+  "id": "sys-pascaline",
+  "name": "Pascaline",
+  "cat": "historic",
+  "era": "1642",
+  "tag": "Mechanical adding machine",
+  "desc": "A brass box where numbered wheels are turned with a stylus to add and subtract. Carry from one wheel to the next happens automatically inside the gearing.",
+  "history": "Invented by French mathematician Blaise Pascal in 1642 to help his father with tax arithmetic. Fewer than sixty were built, and surviving machines sit in museums in Paris and elsewhere.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Carry Wheel",
+   "blurb": "The Signature Carry Wheel keeps Pascal's stylus wheels but routes the carry through a single visible chain drive, so the machine never jams on nines. Its dials click with an audible tone per digit for touch typing without looking.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-stepped-reckoner",
+  "name": "Leibniz Stepped Reckoner",
+  "cat": "historic",
+  "era": "1673",
+  "tag": "Multiplication by stepped drum",
+  "desc": "Cylindrical drums with teeth of increasing length turn number wheels to multiply and divide, not just add. The operator sets the number on sliders and cranks through the calculation.",
+  "history": "Invented by German polymath Gottfried Wilhelm Leibniz in 1673. The stepped drum became the standard multiplying mechanism for nearly two centuries of later machines.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Stepped Drum",
+   "blurb": "The Signature Stepped Drum shrinks the classic drum to pocket size using a single spiral-cut cylinder that multiplies in one crank instead of many. Its sliders lock with magnets, so a set number survives being carried across the room.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-difference-engine",
+  "name": "Difference Engine",
+  "cat": "historic",
+  "era": "Designed 1820s",
+  "tag": "Polynomial table computer",
+  "desc": "A gear machine designed to compute mathematical tables by the method of finite differences, stamping results ready for printing. It used only addition and carriage, never multiplication.",
+  "history": "Designed by English mathematician Charles Babbage in the 1820s. The full engine was never built in his lifetime; working replicas were completed from his drawings in London in the 1990s.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Difference Engine",
+   "blurb": "The Signature Difference Engine finishes what Babbage drew: a table computer that prints its results as punched paper tape, ready to file. Its difference columns are color-banded brass so each stage of the math is visible at a glance.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-analytical-engine",
+  "name": "Analytical Engine",
+  "cat": "historic",
+  "era": "Designed 1830s\u20131840s",
+  "tag": "Programmable mechanical computer",
+  "desc": "A design with a mill for arithmetic, a store for memory, and punched cards to direct the sequence of operations \u2014 the same three parts a modern computer has. Programs could branch and loop.",
+  "history": "Designed by Charles Babbage in the 1830s and 1840s with notes published by Ada Lovelace, who wrote a program for it. It was never built, but its architecture described the stored-program concept a century early.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Mill & Store",
+   "blurb": "The Signature Mill & Store builds the mill-and-store idea as a tabletop brass computer that runs punched-card programs and shows its memory on flip-digit panels. Each program card is a plain-language recipe, readable without a manual.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-jacquard",
+  "name": "Jacquard Loom",
+  "cat": "historic",
+  "era": "1804",
+  "tag": "Punched-card pattern control",
+  "desc": "A weaving loom whose pattern is set by a chain of punched cards, one card per row of the fabric. Each card's holes decide which threads lift, weaving complex images automatically.",
+  "history": "Invented by French weaver Joseph-Marie Jacquard in 1804. Its punched cards were the direct ancestor of the cards that programmed early computers.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Pattern Loom",
+   "blurb": "The Signature Pattern Loom lets a child draw a picture on a grid, punch it into a card, and watch the loom weave it in thread. The same card plugs into the Signature Bead Engine to compute with the drawn pattern.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-hollerith",
+  "name": "Hollerith Tabulating Machine",
+  "cat": "historic",
+  "era": "1890",
+  "tag": "Punched-card census counter",
+  "desc": "Cards punched with people's data are read electrically by pins dipping through the holes into mercury cups. Dials count each category as cards feed through by hand and later by machine.",
+  "history": "Invented by American engineer Herman Hollerith and used in the 1890 United States Census. His company grew into part of what became IBM.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Card Counter",
+   "blurb": "The Signature Card Counter reads hand-punched cards with a light sensor instead of mercury, and prints its totals on a paper roll. A school can run a whole classroom census on it in one afternoon.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-z3",
+  "name": "Zuse Z3",
+  "cat": "historic",
+  "era": "1941",
+  "tag": "Electromechanical program computer",
+  "desc": "A machine of telephone relays that read programs from punched film. It worked in binary floating point and could run stored instruction sequences automatically.",
+  "history": "Built by German engineer Konrad Zuse and completed in 1941. The original was destroyed in wartime bombing; a reconstruction stands in a Munich museum.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "stored",
+  "sig": {
+   "name": "Signature Relay Brain",
+   "blurb": "The Signature Relay Brain is a glass-cased wall of clicking relays that runs its programs from paper tape and lights up every binary digit as it works. It teaches binary by being loud, visible, and slow enough to watch.",
+   "demo": "stored"
+  }
+ },
+ {
+  "id": "sys-harvard-mark1",
+  "name": "Harvard Mark I",
+  "cat": "historic",
+  "era": "1944",
+  "tag": "Electromechanical giant",
+  "desc": "A 51-foot machine of switches, relays, and shafts that computed ballistics and physics tables automatically. It could multiply in about six seconds and printed its answers on punch cards or type.",
+  "history": "Built by IBM for Harvard University under Howard Aiken and completed in 1944. It ran for the United States Navy during the war.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "stored",
+  "sig": {
+   "name": "Signature Shaft Computer",
+   "blurb": "The Signature Shaft Computer keeps the long-shaft idea but fits it in a single cabinet where every calculation can be traced by following one turning rod. Its answers print as plain-English sentences, not just numbers.",
+   "demo": "stored"
+  }
+ },
+ {
+  "id": "sys-colossus",
+  "name": "Colossus",
+  "cat": "historic",
+  "era": "1944",
+  "tag": "Electronic code-breaking machine",
+  "desc": "Two thousand vacuum tubes processed punched tape at high speed to find the settings of an enemy cipher machine. It compared patterns statistically and printed its scores for analysts.",
+  "history": "Built at Bletchley Park in England by engineer Tommy Flowers and first working in 1944. It attacked the Lorenz cipher; the work stayed secret for decades.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Pattern Breaker",
+   "blurb": "The Signature Pattern Breaker is a teaching machine that breaks simple classroom ciphers by pure statistical scoring, exactly the Colossus idea at human speed. Its tube-rack display flashes as each score lands, so the method is visible.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-eniac",
+  "name": "ENIAC",
+  "cat": "historic",
+  "era": "1945",
+  "tag": "First general-purpose electronic computer",
+  "desc": "Seventeen thousand vacuum tubes performed additions at electronic speed, programmed by plugging cables into panels like a telephone switchboard. A calculation that took days by hand finished in seconds.",
+  "history": "Built at the University of Pennsylvania by J. Presper Eckert and John Mauchly and dedicated in 1946 after wartime development beginning in 1943. It filled a large room and drew enormous power.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Tube Array",
+   "blurb": "The Signature Tube Array compresses the ENIAC idea into a single rack: a working plug-board computer with glowing tubes that visitors program with patch cords. Its demo mode replays historic calculations at full speed, then replays them slow enough to follow.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-manchester-baby",
+  "name": "Manchester Baby",
+  "cat": "historic",
+  "era": "1948",
+  "tag": "First stored-program run",
+  "desc": "A small machine that held both its instructions and its data in the same electronic memory \u2014 the stored-program idea. Its first program, in June 1948, found the highest factor of a number.",
+  "history": "Built at the University of Manchester by Frederic Williams and Tom Kilburn. That first run proved the stored-program concept that every modern computer uses.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "stored",
+  "sig": {
+   "name": "Signature First Program",
+   "blurb": "The Signature First Program replays the Baby's 1948 run on a replica tube memory, showing each instruction fetch on a glowing panel. A visitor can type the same tiny program and watch the machine think it through.",
+   "demo": "stored"
+  }
+ },
+ {
+  "id": "sys-edsac",
+  "name": "EDSAC",
+  "cat": "historic",
+  "era": "1949",
+  "tag": "First practical stored-program service",
+  "desc": "A mercury-delay-line memory machine that ran real scientific jobs for university researchers, including programs for biology and radio astronomy. Users prepared programs on punched tape.",
+  "history": "Built at the University of Cambridge by Maurice Wilkes and running in 1949. It was the first computer to offer a regular computing service to outside users.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "stored",
+  "sig": {
+   "name": "Signature Delay Line",
+   "blurb": "The Signature Delay Line uses sound pulses in a coiled tube as its memory, exactly the old mercury-line idea without the mercury. Its console shows the pulses circling, and you can hear your program literally running.",
+   "demo": "stored"
+  }
+ },
+ {
+  "id": "sys-univac1",
+  "name": "UNIVAC I",
+  "cat": "historic",
+  "era": "1951",
+  "tag": "First commercial US computer",
+  "desc": "The first computer sold as a commercial product in the United States, famous for predicting a presidential election result on television. It read metal magnetic tape and printed its output.",
+  "history": "Built by Eckert and Mauchly and delivered in 1951, with the first machine going to the United States Census Bureau. It made the computer a public idea overnight.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "stored",
+  "sig": {
+   "name": "Signature Census Box",
+   "blurb": "The Signature Census Box is a friendly cabinet computer that reads punched tape and answers plain questions with printed sentences. Its election-night mode replays the famous broadcast prediction on a ticker display.",
+   "demo": "stored"
+  }
+ },
+ {
+  "id": "sys-ibm701",
+  "name": "IBM 701",
+  "cat": "historic",
+  "era": "1952",
+  "tag": "IBM's first scientific computer",
+  "desc": "IBM's first commercial scientific computer, renting to aircraft companies and government labs. It used electrostatic storage tubes for memory and magnetic tape for data.",
+  "history": "Announced by IBM in 1952 and first installed in 1953. It pulled IBM \u2014 then a punch-card company \u2014 into the electronic computer age.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "stored",
+  "sig": {
+   "name": "Signature Scientific 52",
+   "blurb": "The Signature Scientific 52 is a desk-sized cabinet that runs classic 1950s scientific programs \u2014 orbits, wing shapes, weather sums \u2014 on a replica drum memory. Its panel shows every number in glowing nixie-style digits.",
+   "demo": "stored"
+  }
+ },
+ {
+  "id": "sys-ibm650",
+  "name": "IBM 650",
+  "cat": "historic",
+  "era": "1954",
+  "tag": "The workhorse of the 1950s",
+  "desc": "A drum-memory machine that became the most popular computer of its decade, used for payroll, grades, and science alike. Programs were loaded from punched cards.",
+  "history": "Announced by IBM in 1953 and shipping from 1954. More than two thousand were installed \u2014 enormous numbers for the time.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "stored",
+  "sig": {
+   "name": "Signature Drum 650",
+   "blurb": "The Signature Drum 650 keeps the spinning-drum memory but adds a transparent cover, so students can watch the read head dance across the drum while a program runs. It ships with payroll, grades, and rocket programs on cards.",
+   "demo": "stored"
+  }
+ },
+ {
+  "id": "sys-tx0",
+  "name": "TX-0",
+  "cat": "historic",
+  "era": "1956",
+  "tag": "Transistorized research machine",
+  "desc": "One of the first computers built with transistors instead of vacuum tubes, which made it far smaller and cooler. It gave hackers a machine they could use directly, one at a time.",
+  "history": "Built at MIT Lincoln Laboratory in 1956. Its interactive style shaped the hacker culture at MIT that later produced early video games.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Cool Box",
+   "blurb": "The Signature Cool Box is a transistor computer the size of a suitcase that a classroom shares one at a time, the old interactive way. It draws so little power it runs from a wall plug with no fan.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-pdp1",
+  "name": "PDP-1",
+  "cat": "historic",
+  "era": "1960",
+  "tag": "Interactive hacker machine",
+  "desc": "A compact machine with a round cathode-ray display and a light pen, sold to labs that wanted hands-on computing. Programmers wrote the first video game, Spacewar!, on it.",
+  "history": "Built by Digital Equipment Corporation and shipped in 1960. Its low price for the time put real computing in university labs.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Round Screen",
+   "blurb": "The Signature Round Screen keeps the round display and light pen, and ships with a modern remake of the classic space game plus tools to write your own. Every program is listed on a card so owners trade games like baseball cards.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-system360",
+  "name": "IBM System/360",
+  "cat": "historic",
+  "era": "1964",
+  "tag": "One family, many sizes",
+  "desc": "A line of compatible computers from small business machines to giant mainframes, all running the same programs. It introduced the 8-bit byte as the industry standard.",
+  "history": "Announced by IBM in 1964. It was one of the largest private engineering projects of its era and made IBM dominant for decades.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "stored",
+  "sig": {
+   "name": "Signature Family 36",
+   "blurb": "The Signature Family 36 is a stack of three matching cabinets \u2014 desk, office, and hall size \u2014 that run the same programs, proving compatibility. A program written on the small one runs unchanged on the big one.",
+   "demo": "stored"
+  }
+ },
+ {
+  "id": "sys-pdp8",
+  "name": "PDP-8",
+  "cat": "historic",
+  "era": "1965",
+  "tag": "First true minicomputer",
+  "desc": "A machine the size of a small refrigerator that a single department could afford and keep. It sold by the tens of thousands and carried computing into labs and factories.",
+  "history": "Built by Digital Equipment Corporation in 1965. Its simple 12-bit design became one of the best-selling computers of its generation.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Mini 8",
+   "blurb": "The Signature Mini 8 is a lunchbox-sized 12-bit computer with toggle switches and blinking lights that runs the classic programs. Its front panel is also a game: flipping the switches by hand still runs the machine.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-intel4004",
+  "name": "Intel 4004",
+  "cat": "historic",
+  "era": "1971",
+  "tag": "First commercial microprocessor",
+  "desc": "The whole central processor of a computer on one chip \u2014 four bits wide, running at under a megahertz. It was made for a calculator and ended up starting the microprocessor age.",
+  "history": "Released by Intel in 1971, designed by Federico Faggin, Ted Hoff, and Stanley Mazor. Its success led directly to the 8008, 8080, and the PC era.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Four-Bit",
+   "blurb": "The Signature Four-Bit is a single-chip computer you can hold between two fingers, with its 2,300 transistors drawn as a poster beside it. It adds, and it proudly shows its work one nibble at a time.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-intel8008",
+  "name": "Intel 8008",
+  "cat": "historic",
+  "era": "1972",
+  "tag": "Eight-bit step up",
+  "desc": "An 8-bit processor on one chip that could address far more memory than the 4004. It powered early hobby machines and terminals.",
+  "history": "Released by Intel in 1972. Hobbyists built some of the first personal computers around it before the 8080 arrived.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Eight-Bit",
+   "blurb": "The Signature Eight-Bit pairs the classic 8-bit chip with a one-line display and a hex keypad, a complete computer on a clipboard. It boots instantly \u2014 there is nothing to load.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-altair8800",
+  "name": "Altair 8800",
+  "cat": "historic",
+  "era": "1975",
+  "tag": "The machine that started home computing",
+  "desc": "A kit computer with toggle switches on the front and no keyboard or screen at first. Hobbyists flipped in programs bit by bit and watched the lights answer.",
+  "history": "Built by MITS and announced in 1975. Its fame drew a young Paul Allen and Bill Gates, who wrote a BASIC interpreter for it.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Toggle Box",
+   "blurb": "The Signature Toggle Box ships as a kit you assemble in an evening, then program by flipping switches exactly like 1975. A companion card explains every light, so the first program teaches the whole machine.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-apple1",
+  "name": "Apple I",
+  "cat": "historic",
+  "era": "1976",
+  "tag": "Hand-built garage board",
+  "desc": "A bare circuit board sold without case, keyboard, or power supply \u2014 the buyer finished the computer. It displayed text on an ordinary television.",
+  "history": "Designed by Steve Wozniak and sold by Apple Computer in 1976. Only about two hundred were made, and surviving boards are museum treasures.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Garage Board",
+   "blurb": "The Signature Garage Board is a build-it-yourself kit with the classic single-board layout and a modern safe power supply. It boots to a friendly prompt on any TV and teaches the builder every chip by name.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-trs80",
+  "name": "TRS-80 Model I",
+  "cat": "historic",
+  "era": "1977",
+  "tag": "The people's computer",
+  "desc": "A complete home computer sold through Radio Shack stores with keyboard, screen, and cassette storage. Ordinary families could buy one off the shelf.",
+  "history": "Launched by Tandy Corporation in 1977. It was one of the 1977 trio of machines that opened the home-computer market.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Shack Box",
+   "blurb": "The Signature Shack Box is an all-in-one home computer that plugs into the family TV and loads programs from audio cassettes, exactly like 1977. Its manual is a comic book that teaches BASIC in an afternoon.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-apple2",
+  "name": "Apple II",
+  "cat": "historic",
+  "era": "1977",
+  "tag": "Color computer for everyone",
+  "desc": "A home computer with color graphics, sound, and slots for expansion cards. It ran the first spreadsheet program, which gave businesses a reason to buy it.",
+  "history": "Launched by Apple Computer in 1977 and designed by Steve Wozniak. It sold for years and funded Apple's growth.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Rainbow Slots",
+   "blurb": "The Signature Rainbow Slots keeps the color graphics and the beloved expansion slots, adding a card that turns the machine into a music synthesizer. Every slot is labeled in plain words so a kid can expand the computer safely.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-osborne1",
+  "name": "Osborne 1",
+  "cat": "historic",
+  "era": "1981",
+  "tag": "First portable computer",
+  "desc": "A sewing-machine-sized computer with a tiny 5-inch screen and a handle, sold with a bundle of business software. It was luggable before laptops existed.",
+  "history": "Released by Osborne Computer Corporation in 1981. It proved there was a market for computers you could carry.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Luggable",
+   "blurb": "The Signature Luggable is a 24-pound style portable with a modern bright screen in the classic flip-down housing. It ships with a full office suite on a memory card, just like the original software bundle.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-bbcmicro",
+  "name": "BBC Micro",
+  "cat": "historic",
+  "era": "1981",
+  "tag": "Britain's classroom computer",
+  "desc": "A sturdy school computer made for the BBC's computer literacy project, with excellent BASIC and ports for experiments. A generation learned to program on it.",
+  "history": "Built by Acorn Computers for the BBC and released in 1981. It dominated British schools through the 1980s.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature School Box",
+   "blurb": "The Signature School Box is a tough classroom computer that boots to BASIC in one second and survives being dropped off a desk. Its side port accepts sensor kits so science class plugs straight in.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-ibmpc5150",
+  "name": "IBM PC 5150",
+  "cat": "historic",
+  "era": "1981",
+  "tag": "The template for all PCs",
+  "desc": "A business machine with an open design that other companies could copy, which created the clone industry. Its slot architecture and DOS software became the world standard.",
+  "history": "Released by IBM in 1981. Because IBM used off-the-shelf parts and published the design, compatible machines flooded the market.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Open 5150",
+   "blurb": "The Signature Open 5150 honors the open design with a fully documented slot bus and publishes every schematic. Any workshop can build cards for it, and the machine welcomes them all.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-zxspectrum",
+  "name": "ZX Spectrum",
+  "cat": "historic",
+  "era": "1982",
+  "tag": "The bedroom coder's machine",
+  "desc": "A tiny rubber-keyed computer that plugged into the TV and loaded games from cassette tape in minutes. Millions of kids learned to code on it.",
+  "history": "Released by Sinclair Research in the United Kingdom in 1982. Its low price made it one of Europe's best-selling home computers.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Rubber Keys",
+   "blurb": "The Signature Rubber Keys keeps the famous soft keyboard and rainbow stripe, but loads games instantly from a memory card. It ships with a typing tutor and a game-maker so owners become authors, not just players.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-c64",
+  "name": "Commodore 64",
+  "cat": "historic",
+  "era": "1982",
+  "tag": "Best-selling computer ever",
+  "desc": "Sixty-four kilobytes of memory, famous sound and sprite graphics, and a huge game library. It became the best-selling single computer model of all time.",
+  "history": "Released by Commodore in 1982. It stayed in production for over a decade and anchored the 1980s home-computer boom.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature SID Box",
+   "blurb": "The Signature SID Box pairs the classic 64K layout with a rebuilt sound chip that plays the famous game music note-perfect. Its game library loads from cartridge, and a music mode turns the computer into an instrument.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-mac128k",
+  "name": "Macintosh 128K",
+  "cat": "historic",
+  "era": "1984",
+  "tag": "The mouse goes mainstream",
+  "desc": "The first affordable computer with a graphical screen, windows, and a mouse for ordinary buyers. What you saw on screen was what printed.",
+  "history": "Released by Apple Computer in 1984 with a famous television advertisement. It set the pattern for every computer desktop that followed.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Friendly Face",
+   "blurb": "The Signature Friendly Face keeps the smiling boot-up and the all-in-one shape, with a crisp modern display behind the classic look. Its desktop greets the owner by name and teaches the mouse in a two-minute game.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-atarist",
+  "name": "Atari ST",
+  "cat": "historic",
+  "era": "1985",
+  "tag": "Musician's sixteen-bit",
+  "desc": "A sixteen-bit machine with a crisp monochrome display option and built-in MIDI ports that made it the studio standard for musicians. It brought real power to a home price.",
+  "history": "Released by Atari in 1985. Its MIDI ports made it the backbone of countless recording studios.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Studio ST",
+   "blurb": "The Signature Studio ST keeps the built-in music ports and adds a modern audio interface beside them. It boots into a music sequencer and can still run the classic studio software.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-amiga1000",
+  "name": "Amiga 1000",
+  "cat": "historic",
+  "era": "1985",
+  "tag": "Multimedia before multimedia",
+  "desc": "A machine with custom chips for graphics and sound that could do animation and stereo music years ahead of rivals. Video producers used it for titling and effects.",
+  "history": "Released by Commodore in 1985. Its custom chipset made it a legend for games, art, and desktop video.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Custom Chips",
+   "blurb": "The Signature Custom Chips rebuilds the three famous helper chips as one modern chip with the same powers. It ships with a paint program and an animation studio, ready to make cartoons out of the box.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-motorola68000",
+  "name": "Motorola 68000",
+  "cat": "historic",
+  "era": "1979",
+  "tag": "The 32-bit bridge chip",
+  "desc": "A processor with a clean 32-bit design inside that powered the Macintosh, the Amiga, the Atari ST, and early workstations. Programmers loved its tidy instruction set.",
+  "history": "Released by Motorola in 1979. It carried the personal-computer world from 8 and 16 bits toward 32-bit computing.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Clean Thirty-Two",
+   "blurb": "The Signature Clean Thirty-Two is a single-board computer around a 68000-class core with the classic flat memory map. Its assembler is printed on a single poster, and students learn the whole chip in a week.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-x86pc",
+  "name": "x86-64 Desktop PC",
+  "cat": "modern",
+  "era": "2003\u2013present",
+  "tag": "Everyday powerhouse",
+  "desc": "The standard home and office computer: a 64-bit processor, gigabytes of memory, and slots for graphics and storage. It runs everything from games to engineering software.",
+  "history": "The 64-bit x86 design became the common desktop standard in the early 2000s. It remains the platform most personal software is written for.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Open Tower",
+   "blurb": "The Signature Open Tower is a tool-less desktop with a glass side and every cable labeled, so upgrading takes minutes. Its health screen shows temperature, speed, and power in plain words, not cryptic numbers.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-armsoc",
+  "name": "ARM Smartphone SoC",
+  "cat": "modern",
+  "era": "2010s\u2013present",
+  "tag": "A computer in your pocket",
+  "desc": "A single chip holding the processor, graphics, radio, and memory controller for a phone. It sips power so the battery lasts all day while running demanding apps.",
+  "history": "ARM-based chips took over smartphones in the 2010s with designs from many makers. The whole phone computer fits on one fingernail-sized piece of silicon.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Pocket Chip",
+   "blurb": "The Signature Pocket Chip is a phone-class computer on a stamp-sized board with the radios as snap-on modules. A privacy switch physically cuts the radios, something no regular phone offers.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-applesilicon",
+  "name": "Apple Silicon Mac",
+  "cat": "modern",
+  "era": "2020\u2013present",
+  "tag": "One chip, whole Mac",
+  "desc": "A Mac where the processor, graphics, and memory live on one efficient chip. It runs cool and quiet while beating older multi-chip designs.",
+  "history": "Apple moved the Mac to its own ARM-based chips beginning in 2020. The unified memory design lets the processor and graphics share data without copying.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "stored",
+  "sig": {
+   "name": "Signature Unified One",
+   "blurb": "The Signature Unified One puts processor, graphics, and memory on one cool-running module that slots into any Signature machine. Its performance meter shows exactly which app is using what, in real time.",
+   "demo": "stored"
+  }
+ },
+ {
+  "id": "sys-riscv",
+  "name": "RISC-V Developer Board",
+  "cat": "modern",
+  "era": "2010s\u2013present",
+  "tag": "Open instruction computer",
+  "desc": "A computer built on the free and open RISC-V instruction set, so anyone can study and build on its design. It runs Linux and standard software.",
+  "history": "The RISC-V instruction set was created at UC Berkeley and published openly starting in 2010. Open hardware lets small teams build custom processors.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Open Core",
+   "blurb": "The Signature Open Core is a RISC-V board with its full design published, down to the last wire. Schools get the chip, the blueprints, and a curriculum that ends with students designing their own extensions.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-gpunode",
+  "name": "GPU Compute Node",
+  "cat": "modern",
+  "era": "2010s\u2013present",
+  "tag": "Thousands of cores, one job",
+  "desc": "A server packed with graphics processors that do thousands of simple calculations at once. It trains AI models and renders films in hours instead of months.",
+  "history": "General-purpose GPU computing took off in the late 2000s and 2010s. Modern AI training runs almost entirely on such machines.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Thousand Core",
+   "blurb": "The Signature Thousand Core is a quiet desk-side box with a wall of parallel cores and a live map showing which core is doing what. It trains small AI models overnight and shows the learning as a growing picture.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-sbc",
+  "name": "Single-Board Computer",
+  "cat": "modern",
+  "era": "2012\u2013present",
+  "tag": "Credit-card computer",
+  "desc": "A complete computer on one small board with ports for screen, USB, and electronics projects. It runs a full operating system from a memory card.",
+  "history": "Popularized by the Raspberry Pi, first released in 2012. Such boards put real computers in classrooms, hobby benches, and products worldwide.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Card Computer",
+   "blurb": "The Signature Card Computer is a credit-card board with color-coded ports and a printed legend on the board itself, so no manual is needed. It boots to a project menu: games, robots, weather station, or desktop.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-microcontroller",
+  "name": "Microcontroller Board",
+  "cat": "modern",
+  "era": "2000s\u2013present",
+  "tag": "One chip, one job",
+  "desc": "A tiny chip with processor, memory, and input-output pins that runs a single program forever \u2014 inside toys, thermostats, and robots. It costs little and sips power.",
+  "history": "Microcontroller boards made embedded programming a hobby in the 2000s. Billions of such chips ship every year inside everyday objects.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Pin Brain",
+   "blurb": "The Signature Pin Brain is a microcontroller board where every pin has a printed label and a test LED beside it. Beginners blink their first light in five minutes and build a robot by the weekend.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-gaming-soc",
+  "name": "Game Console SoC",
+  "cat": "modern",
+  "era": "2013\u2013present",
+  "tag": "Living-room supercomputer",
+  "desc": "A custom chip combining a strong processor and graphics to run detailed games on the television. It is tuned for one job: fast, beautiful play.",
+  "history": "Modern consoles since 2013 use custom single-chip designs. They deliver supercomputer-class graphics at a home price.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Play Chip",
+   "blurb": "The Signature Play Chip is a console-class board with a game-maker built in, so players become developers. Every game shows its frame-rate and load on a tiny front display, teaching how games really work.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-serverblade",
+  "name": "Datacenter Server Blade",
+  "cat": "modern",
+  "era": "2000s\u2013present",
+  "tag": "Rack-scale workhorse",
+  "desc": "A slim computer that slides into a rack with dozens of siblings, serving websites and files around the clock. It is built for reliability, not looks.",
+  "history": "Blade servers became standard in datacenters in the 2000s. The internet's services run on racks of such machines.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "stored",
+  "sig": {
+   "name": "Signature Blade Rack",
+   "blurb": "The Signature Blade Rack is a home-size rack of whisper-quiet blades that hosts a family's photos, files, and website privately. Each blade's screen shows its job in plain words: photos, backups, or web.",
+   "demo": "stored"
+  }
+ },
+ {
+  "id": "sys-tpu",
+  "name": "AI Accelerator Pod",
+  "cat": "modern",
+  "era": "2016\u2013present",
+  "tag": "Number-crunching specialist",
+  "desc": "A chip designed for one thing: the matrix math that AI runs on. It does in seconds what would take a regular processor hours.",
+  "history": "Specialized AI chips appeared in the mid-2010s as deep learning grew. They now power most large-scale AI training and search.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Matrix Engine",
+   "blurb": "The Signature Matrix Engine is a desk-side AI accelerator with a live display that draws the neural network as it trains. It explains each layer in plain words while it works.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-fpga",
+  "name": "FPGA Development Board",
+  "cat": "modern",
+  "era": "1980s\u2013present",
+  "tag": "Rewirable hardware",
+  "desc": "A chip whose logic can be rewired after manufacturing, so it becomes any digital circuit the designer describes. It sits between software and custom chips.",
+  "history": "Field-programmable gate arrays have been sold since the 1980s. They prototype new processors and accelerate special jobs.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Rewire Board",
+   "blurb": "The Signature Rewire Board lets you draw a circuit on screen and watch the chip become it in seconds. It ships with fifty classic circuits preloaded, from adders to tiny processors.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-cluster",
+  "name": "Supercomputer Cluster Node",
+  "cat": "modern",
+  "era": "1990s\u2013present",
+  "tag": "Teamwork at scale",
+  "desc": "Thousands of computers linked by fast networks act as one machine for weather, physics, and AI. Each node is ordinary; the teamwork is extraordinary.",
+  "history": "Cluster supercomputers grew through the 1990s and 2000s. The fastest machines on Earth are built this way.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "stored",
+  "sig": {
+   "name": "Signature Team Rack",
+   "blurb": "The Signature Team Rack links sixteen small computers with glowing network cables into one mini-supercomputer. Its dashboard shows the team splitting a job and finishing it together.",
+   "demo": "stored"
+  }
+ },
+ {
+  "id": "sys-edgeai",
+  "name": "Edge AI Device",
+  "cat": "modern",
+  "era": "2018\u2013present",
+  "tag": "Smart without the cloud",
+  "desc": "A small device that runs AI right where it sits \u2014 a camera that counts cars, a speaker that hears commands \u2014 with no internet needed. Private and instant.",
+  "history": "Edge AI hardware spread in the late 2010s. Running models locally keeps data private and answers instant.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Local Mind",
+   "blurb": "The Signature Local Mind is a camera-sized AI box that never sends data anywhere; a light is on only when it is thinking locally. It learns new objects from five photos you show it.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-autoecu",
+  "name": "Automotive Control Unit",
+  "cat": "modern",
+  "era": "1980s\u2013present",
+  "tag": "The car's hidden computers",
+  "desc": "Dozens of small rugged computers inside a car manage the engine, brakes, and airbags. They must never crash, so they are built to extreme reliability standards.",
+  "history": "Electronic control units spread through cars from the 1980s onward. A modern car carries dozens of them.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Road Brain",
+   "blurb": "The Signature Road Brain is a triple-redundant controller where three computers vote on every decision, like real car safety systems. Its simulator lets students drive a virtual car and watch the votes happen.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-satellite",
+  "name": "Satellite Flight Computer",
+  "cat": "modern",
+  "era": "1960s\u2013present",
+  "tag": "Computer in orbit",
+  "desc": "A radiation-hardened computer that flies the spacecraft, aims the antennas, and runs the science instruments. It must work for years with no repair shop.",
+  "history": "Hardened computers have flown since the early space age. They trade speed for the ability to survive cosmic rays.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Orbit Box",
+   "blurb": "The Signature Orbit Box is a space-tough computer with a star-tracker simulator on its lid. It runs a full mission \u2014 launch, orbit, landing \u2014 as an interactive demo with real flight software logic.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-router",
+  "name": "Network Appliance",
+  "cat": "modern",
+  "era": "1990s\u2013present",
+  "tag": "Traffic cop of the internet",
+  "desc": "A specialized computer that forwards data packets between networks at wire speed. It is the reason your messages find their way.",
+  "history": "Routers became standalone products in the 1990s as the internet grew. Every network depends on them.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Packet Post",
+   "blurb": "The Signature Packet Post is a see-through router with a light for every packet it forwards. Its screen draws your data's journey across a map in real time.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-nas",
+  "name": "Home Storage Server",
+  "cat": "modern",
+  "era": "2000s\u2013present",
+  "tag": "Your own private cloud",
+  "desc": "A box of hard drives on the home network that keeps every photo and file safe with automatic copies. It replaces renting cloud storage.",
+  "history": "Network storage boxes became consumer products in the 2000s. They guard family data at home instead of on distant servers.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "stored",
+  "sig": {
+   "name": "Signature Family Vault",
+   "blurb": "The Signature Family Vault keeps every family file on mirrored drives with a big friendly photo timeline on top. If a drive fails, it mails you a plain-words note and keeps working.",
+   "demo": "stored"
+  }
+ },
+ {
+  "id": "sys-laptop",
+  "name": "Laptop SoC System",
+  "cat": "modern",
+  "era": "1990s\u2013present",
+  "tag": "Desk power, to go",
+  "desc": "A full computer folded into a portable shape: efficient processor, battery, screen, and keyboard in one. It is the most common personal computer form today.",
+  "history": "Laptops overtook desktops in sales in the 2000s. Modern designs run all day on efficient chips.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Carry All",
+   "blurb": "The Signature Carry All is a laptop with a battery you can swap in ten seconds and every part user-replaceable. Its lid display shows battery health as a simple fuel gauge.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-wearable",
+  "name": "Smartwatch Computer",
+  "cat": "modern",
+  "era": "2015\u2013present",
+  "tag": "Wrist-sized assistant",
+  "desc": "A complete computer on the wrist that tracks health, shows messages, and runs apps on a tiny efficient chip. It charges rarely and works all day.",
+  "history": "Modern smartwatches matured in the mid-2010s. Their tiny chips do serious work on a watch battery.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Wrist Mind",
+   "blurb": "The Signature Wrist Mind is a watch computer with an e-ink face that lasts a month and a crown that scrolls with clicks. Its health sensors explain each reading in plain words.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-ereader",
+  "name": "E-Reader Board",
+  "cat": "modern",
+  "era": "2007\u2013present",
+  "tag": "A library in your hand",
+  "desc": "A low-power computer built around a paper-like display that holds thousands of books. It reads for weeks on one charge.",
+  "history": "E-ink readers became mainstream in the late 2000s. The display sips power because it only uses energy when the page changes.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "stored",
+  "sig": {
+   "name": "Signature Paper Library",
+   "blurb": "The Signature Paper Library holds ten thousand books on a sunlight-readable page with a warm front light. Its dictionary looks up any word with one tap, no internet needed.",
+   "demo": "stored"
+  }
+ },
+ {
+  "id": "sys-q-superconducting",
+  "name": "Superconducting Qubit Processor",
+  "cat": "quantum",
+  "era": "2010s\u2013present",
+  "tag": "Frozen lightning logic",
+  "desc": "Qubits made of superconducting circuits chilled near absolute zero, controlled by microwave pulses. They run quantum algorithms that no regular computer can simulate at scale.",
+  "history": "Superconducting qubits were developed in university and company labs through the 2000s and 2010s. They are the most widely built gate-based quantum processors today.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Frost Qubit",
+   "blurb": "The Signature Frost Qubit is a teaching dilution fridge the size of a water cooler with one real superconducting qubit inside. Its screen shows the qubit's state as a glowing globe you can rotate with dials.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-q-trappedion",
+  "name": "Trapped-Ion Processor",
+  "cat": "quantum",
+  "era": "1990s\u2013present",
+  "tag": "Atoms held by lightning",
+  "desc": "Individual charged atoms float in electromagnetic traps, and lasers flip their quantum states. Ions of the same kind are perfectly identical, which makes them excellent qubits.",
+  "history": "Trapped-ion quantum computing grew from 1990s atomic-physics experiments. Commercial trapped-ion machines are sold as cloud services today.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Ion Cage",
+   "blurb": "The Signature Ion Cage is a glass vacuum cell where you can watch real glowing ions hover in a trap. Its laser console runs classic quantum demos \u2014 superposition, entanglement \u2014 with the results plotted live.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-q-photonic",
+  "name": "Photonic Quantum Processor",
+  "cat": "quantum",
+  "era": "2010s\u2013present",
+  "tag": "Computing with light",
+  "desc": "Qubits carried by single particles of light race through chips of waveguides and detectors. Photons barely interact with noise, and the chips can work closer to room temperature.",
+  "history": "Photonic quantum computing advanced rapidly in the 2010s and 2020s. Light-based machines have demonstrated landmark quantum experiments.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Light Loom",
+   "blurb": "The Signature Light Loom weaves single photons through a visible maze of glass channels on a chip. Its detectors click audibly with each photon, so you hear the quantum computation happening.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-q-annealer",
+  "name": "Quantum Annealer",
+  "cat": "quantum",
+  "era": "2011\u2013present",
+  "tag": "Settling into answers",
+  "desc": "A machine that solves optimization puzzles by letting quantum bits naturally settle into their lowest-energy arrangement. It is built for one kind of math, done extremely well.",
+  "history": "Commercial quantum annealers have been sold since 2011. They tackle scheduling, routing, and sampling problems.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Settle Solver",
+   "blurb": "The Signature Settle Solver is a desktop annealer that solves delivery routes and schedules by letting its qubits relax into answers. You watch the energy fall on a live hill-and-valley display.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-q-neutralatom",
+  "name": "Neutral-Atom Array",
+  "cat": "quantum",
+  "era": "2010s\u2013present",
+  "tag": "Tweezers of light",
+  "desc": "Hundreds of neutral atoms are held in place by focused laser beams like tweezers, then excited to giant Rydberg states to interact. The array can rearrange itself for each problem.",
+  "history": "Neutral-atom quantum machines emerged in the late 2010s from atomic-physics labs. They now offer hundreds of qubits as cloud services.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Atom Tweezer",
+   "blurb": "The Signature Atom Tweezer shows a live camera view of atoms snapping into laser traps like marbles into dimples. Its problem board lets you place atoms and watch the quantum answer form.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-q-spinqubit",
+  "name": "Silicon Spin Qubit",
+  "cat": "quantum",
+  "era": "2010s\u2013present",
+  "tag": "Quantum dots in silicon",
+  "desc": "Single electrons trapped in tiny silicon dots use their spin as a qubit. Because they are made with chip-factory methods, they could one day sit beside regular transistors.",
+  "history": "Silicon spin qubits were demonstrated in research labs in the 2010s. Their compatibility with chip manufacturing is their great promise.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Dot Spin",
+   "blurb": "The Signature Dot Spin is a chip-scale quantum module that plugs into a regular computer like a graphics card. Its control panel shows each electron's spin as a tiny compass needle.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-q-nmr",
+  "name": "NMR Quantum Computer",
+  "cat": "quantum",
+  "era": "1997\u20132000s",
+  "tag": "Molecules as processors",
+  "desc": "The first machines to run real quantum algorithms used the atomic nuclei inside liquid molecules, read by the same physics as hospital MRI scanners. A famous factoring demo ran on seven qubits.",
+  "history": "Liquid-state NMR quantum computing was demonstrated in 1997 and factored the number 15 in 2001. It was a landmark proof that quantum algorithms work.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Molecule Lab",
+   "blurb": "The Signature Molecule Lab is a benchtop NMR unit that runs the historic factoring demo on real molecules. Its screen shows the nuclear spins dancing through the algorithm step by step.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-q-diamond",
+  "name": "Diamond NV Quantum Register",
+  "cat": "quantum",
+  "era": "2000s\u2013present",
+  "tag": "Qubits in a gemstone",
+  "desc": "Atomic-scale defects in diamond hold quantum states that survive at room temperature. They sense magnetic fields with exquisite precision as well as compute.",
+  "history": "Nitrogen-vacancy centers in diamond have been studied since the 2000s. They are prized for working without deep freezing.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Gem Qubit",
+   "blurb": "The Signature Gem Qubit is a diamond chip that runs quantum demos on a desk with no fridge at all. It doubles as a magnetometer that draws the magnetic field of your room.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-q-coldatom-sim",
+  "name": "Cold-Atom Quantum Simulator",
+  "cat": "quantum",
+  "era": "2010s\u2013present",
+  "tag": "A universe in a vacuum",
+  "desc": "Clouds of atoms chilled to near absolute zero mimic the quantum behavior of materials and molecules. Instead of calculating nature, the machine becomes a small piece of it.",
+  "history": "Cold-atom simulators grew from Bose-Einstein condensation research in the 2000s. They now model quantum materials in the lab.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Chill Chamber",
+   "blurb": "The Signature Chill Chamber is a glass vacuum cell where laser-cooled atoms form glowing crystals you can watch. Its dials tune the simulated material from magnet to superconductor.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-q-rydberg",
+  "name": "Rydberg Atom Processor",
+  "cat": "quantum",
+  "era": "2018\u2013present",
+  "tag": "Giant atoms, strong talk",
+  "desc": "Atoms puffed up to huge Rydberg states interact powerfully over long distances, making fast quantum gates. Laser tweezers place each atom exactly where the problem needs it.",
+  "history": "Rydberg-atom processors became commercial in the late 2010s and early 2020s. Their reconfigurable layouts suit optimization and simulation.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Giant Atom",
+   "blurb": "The Signature Giant Atom is a visual quantum machine where each atom glows bigger as it is excited. Its puzzle mode turns optimization problems into games of placing glowing atoms.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-q-hybrid",
+  "name": "Hybrid QPU-CPU Appliance",
+  "cat": "quantum",
+  "era": "2020s\u2013present",
+  "tag": "Quantum with a classical co-pilot",
+  "desc": "A box that pairs a small quantum processor with a regular computer, splitting each job: the classical side prepares and the quantum side solves the hard kernel. They iterate together.",
+  "history": "Hybrid quantum-classical systems became the standard way to use quantum hardware in the 2020s. The classical computer handles everything the quantum chip cannot.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Duet Box",
+   "blurb": "The Signature Duet Box shows the partnership on one screen: the classical side planning in blue, the quantum side solving in gold. Students learn exactly which part of a problem is quantum-hard.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-q-topological",
+  "name": "Topological Qubit Research",
+  "cat": "quantum",
+  "era": "2010s\u2013present (research)",
+  "tag": "Knots that remember",
+  "desc": "An experimental approach where quantum information is stored in the braided paths of exotic particles, protected from noise by topology itself. It is still laboratory research.",
+  "history": "Topological quantum computing has been pursued in labs since the 2000s, with major claims and retractions along the way. It remains an active research frontier.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Braid Lab",
+   "blurb": "The Signature Braid Lab is a research simulator that lets you braid particle paths on screen and watch the protected quantum state emerge. It is honest about the frontier: the simulator teaches the idea while labs chase the reality.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-m-silicon",
+  "name": "Silicon CMOS Substrate",
+  "cat": "materials",
+  "era": "1950s\u2013present",
+  "tag": "The sand that thinks",
+  "desc": "Purified sand becomes the crystal wafer on which billions of transistors are printed. Complementary pairs of transistors switch with almost no wasted power.",
+  "history": "Silicon transistors date to the 1950s, and the CMOS process made them dominant by the 1980s. Nearly every chip in the world is still silicon.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Sand Crystal",
+   "blurb": "The Signature Sand Crystal is a polished silicon wafer you can hold, etched with a visible processor you can trace with a magnifier. Its demo shows sand becoming a chip in twelve illustrated steps.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-germanium",
+  "name": "Germanium Transistor",
+  "cat": "materials",
+  "era": "1947\u20131960s",
+  "tag": "The first transistor's home",
+  "desc": "The very first transistors were built on germanium, which switches at lower voltage than silicon. It ruled the early years before silicon took over.",
+  "history": "The point-contact transistor of 1947 at Bell Labs used germanium. Silicon replaced it for most uses by the 1960s, but germanium lives on in fast and infrared devices.",
+  "kind": "historical",
+  "patent": "https://justinahiggins614-cmyk.github.io/cyber-patent-catalog/?patent=2524035",
+  "demo": "material",
+  "sig": {
+   "name": "Signature First Crystal",
+   "blurb": "The Signature First Crystal is a replica 1947-style germanium transistor you can wire into a working radio. Its kit tells the Bell Labs story as you build the circuit that started it all.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-gaas",
+  "name": "Gallium Arsenide Chip",
+  "cat": "materials",
+  "era": "1970s\u2013present",
+  "tag": "Speed from exotic crystal",
+  "desc": "A compound semiconductor that moves electrons far faster than silicon, used in phone radios, lasers, and satellites. It costs more but wins where speed matters.",
+  "history": "Gallium arsenide devices became practical in the 1970s. They power the radio front-ends of mobile phones and high-efficiency solar cells.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Swift Crystal",
+   "blurb": "The Signature Swift Crystal is a gallium arsenide radio module that pulls in signals a silicon radio misses. Its spectrum display shows the extra speed as a visible widening of the signal.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-graphene",
+  "name": "Graphene Transistor",
+  "cat": "materials",
+  "era": "2004\u2013present (research)",
+  "tag": "One atom thin",
+  "desc": "A sheet of carbon one atom thick that conducts electricity better than copper and is stronger than steel. Transistors built on it could switch at extreme speeds.",
+  "history": "Graphene was isolated in 2004 at the University of Manchester, work that won the 2010 Nobel Prize in Physics. Transistor research continues in labs worldwide.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Atom Sheet",
+   "blurb": "The Signature Atom Sheet is a framed flake of real graphene under a magnifier with a working demo transistor beside it. Its exhibit explains the one-atom sheet with a hands-on peel-apart model.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-diamond-nv",
+  "name": "Diamond NV-Center Substrate",
+  "cat": "materials",
+  "era": "2000s\u2013present (research)",
+  "tag": "Quantum gemstone chip",
+  "desc": "Diamond crystals with single-atom defects hold quantum states at room temperature. They sense magnetic fields atom by atom and can serve as qubits.",
+  "history": "Nitrogen-vacancy research grew through the 2000s. Room-temperature quantum behavior makes diamond unique among qubit materials.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Gem Wafer",
+   "blurb": "The Signature Gem Wafer is a diamond chip whose glowing defects you can see through a microscope as they blink. It runs a magnet-sensing demo that maps the field of a coin.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-memristor",
+  "name": "Memristor Crossbar Array",
+  "cat": "materials",
+  "era": "2008\u2013present (research)",
+  "tag": "Memory that computes",
+  "desc": "A grid of resistors that remember their resistance, so the memory itself can do the math. Multiplying matrices happens in the wires, not in a processor.",
+  "history": "The memristor was proposed in theory in 1971 and built at HP Labs in 2008. Crossbar arrays are a leading candidate for in-memory AI computing.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Memory Grid",
+   "blurb": "The Signature Memory Grid is a visible crossbar where you watch resistances change as it learns. Its demo multiplies matrices at the speed of the wires, with the answer appearing as a brightness pattern.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-photonic",
+  "name": "Silicon Photonic Chip",
+  "cat": "materials",
+  "era": "2000s\u2013present",
+  "tag": "Computing with light on silicon",
+  "desc": "Light guides etched into silicon carry data as photons instead of electrons, moving information faster with less heat. It already links datacenters; logic is next.",
+  "history": "Silicon photonics matured in the 2000s and 2010s for fiber-optic links. Researchers now build photonic processors for AI math.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Light Roads",
+   "blurb": "The Signature Light Roads is a chip with glowing waveguides you can follow with your eyes as data flows. Its demo sends a message as light pulses and decodes it at the far end.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-dna",
+  "name": "DNA Storage-Compute",
+  "cat": "materials",
+  "era": "2012\u2013present (research)",
+  "tag": "Data in life's code",
+  "desc": "Digital files encoded into synthetic DNA strands store staggering amounts of data in a speck of material. Chemical reactions can also run simple computations on the strands.",
+  "history": "DNA data storage was demonstrated by researchers in 2012 and has stored books, images, and video since. DNA computing experiments date to the 1990s.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Life Disk",
+   "blurb": "The Signature Life Disk is a vial of DNA holding an encoded picture, with a reader that decodes it on screen. Its exhibit explains base-pair encoding with giant snap-together models.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-spintronic",
+  "name": "Spintronic MRAM Device",
+  "cat": "materials",
+  "era": "2000s\u2013present",
+  "tag": "Memory from electron spin",
+  "desc": "Memory cells that store bits in the magnetic direction of electron spins, keeping data with no power. It is fast like RAM and permanent like a disk.",
+  "history": "Spin-transfer-torque MRAM entered products in the 2010s. It promises computers that never need to boot because memory never forgets.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Spin Memory",
+   "blurb": "The Signature Spin Memory is a memory board that keeps its data with the power pulled \u2014 flip the switch and everything is still there. Its demo writes bits by nudging electron spins you can watch on screen.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-cnt",
+  "name": "Carbon Nanotube Transistor",
+  "cat": "materials",
+  "era": "1998\u2013present (research)",
+  "tag": "Rolled-up wire switches",
+  "desc": "Transistors made from rolled sheets of carbon atoms, thinner and potentially faster than silicon channels. Whole tiny computers have been built from them in labs.",
+  "history": "Carbon nanotube transistors were demonstrated in 1998, and a complete nanotube computer ran in 2013 at Stanford. Manufacturing at scale remains research.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Tube Switch",
+   "blurb": "The Signature Tube Switch is a display chip with real nanotube transistors under a microscope feed. Its demo runs a working nanotube counter, one atom-thick switch at a time.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-sic",
+  "name": "Silicon Carbide Power Device",
+  "cat": "materials",
+  "era": "1990s\u2013present",
+  "tag": "Tough crystal for power",
+  "desc": "A hard crystal that switches high voltages and shrugs off heat that would kill silicon. It drives electric cars and solar inverters efficiently.",
+  "history": "Silicon carbide power devices became commercial in the 1990s and 2000s. They are now standard in electric-vehicle drivetrains.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Tough Switch",
+   "blurb": "The Signature Tough Switch is a power module that runs hot enough to glow beside a silicon one that would have failed. Its demo drives a real motor while the heat camera shows the difference.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-gan",
+  "name": "Gallium Nitride Device",
+  "cat": "materials",
+  "era": "2000s\u2013present",
+  "tag": "Tiny chargers, big power",
+  "desc": "A crystal that switches power at extreme speed, shrinking phone chargers to pocket size. It also makes the blue and white LEDs that light the world.",
+  "history": "Gallium nitride power devices became consumer products in the 2010s, and GaN LEDs won the 2014 Nobel Prize in Physics. Fast charging is its famous trick.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Pocket Power",
+   "blurb": "The Signature Pocket Power is a charger-sized power computer that runs cool while delivering laptop power. Its demo compares it side by side with an old brick charger, shrinking before your eyes.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-mos2",
+  "name": "2D TMD Transistor (MoS2)",
+  "cat": "materials",
+  "era": "2011\u2013present (research)",
+  "tag": "Single-layer switches",
+  "desc": "Transistors built from a single layer of molybdenum disulfide, a crystal that is a natural semiconductor unlike graphene. Stacked layers could build 3D chips.",
+  "history": "Single-layer MoS2 transistors were demonstrated in 2011. Two-dimensional semiconductors are a leading research path beyond silicon.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Layer Cake",
+   "blurb": "The Signature Layer Cake is a stack of transparent films, each a working transistor layer, that you can peel apart and restack. Its demo runs a circuit that spans three layers, previewing 3D chips.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-pcm",
+  "name": "Phase-Change Memory Compute",
+  "cat": "materials",
+  "era": "2000s\u2013present",
+  "tag": "Glass that remembers",
+  "desc": "A material that flips between glassy and crystalline states to store bits, and can do arithmetic in the flip itself. It bridges memory and processor.",
+  "history": "Phase-change memory shipped in products in the 2010s. Researchers use its gradual switching for brain-like computing.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Glass Brain",
+   "blurb": "The Signature Glass Brain is a memory array where you watch cells flicker between states as it computes. Its demo learns a pattern the way a synapse strengthens, in visible steps.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-fefet",
+  "name": "Ferroelectric FET",
+  "cat": "materials",
+  "era": "2010s\u2013present (research)",
+  "tag": "Polarized transistor",
+  "desc": "A transistor whose gate remembers its electric polarization, storing a bit without power and switching at low voltage. It could make memory as fast as logic.",
+  "history": "Ferroelectric transistors based on hafnium oxide advanced rapidly in the 2010s. They are candidates for ultra-low-power memory.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Polar Switch",
+   "blurb": "The Signature Polar Switch is a transistor array that holds its bits with the power off and sips energy when switching. Its demo runs a full program, pulls the plug, and resumes exactly where it stopped.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-rsfq",
+  "name": "Superconducting Logic (RSFQ)",
+  "cat": "materials",
+  "era": "1980s\u2013present (research)",
+  "tag": "Pulses at light speed",
+  "desc": "Logic built from superconducting loops that pass single quantum pulses of magnetic flux, switching hundreds of times faster than silicon while barely warming.",
+  "history": "Rapid single-flux-quantum logic was developed from the 1980s onward. It remains the fastest known digital logic family, needing deep cold.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Flux Pulse",
+   "blurb": "The Signature Flux Pulse is a cryogenic logic board that blinks its pulses as tiny flashes on a monitor. Its demo adds numbers at speeds no silicon can follow, shown slowed down a billion times.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-plasmonic",
+  "name": "Plasmonic Waveguide Chip",
+  "cat": "materials",
+  "era": "2000s\u2013present (research)",
+  "tag": "Light squeezed into metal",
+  "desc": "Light waves squeezed along metal surfaces carry signals in spaces far smaller than a wavelength. It promises optics at electronic sizes.",
+  "history": "Plasmonics grew as a research field in the 2000s. Squeezing light below the diffraction limit could merge photonics with nanoscale chips.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Squeeze Light",
+   "blurb": "The Signature Squeeze Light is a chip where light hugs metal rails you can see glowing under a microscope. Its demo routes a signal around a bend smaller than the light's own wavelength.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-m-superlattice",
+  "name": "Semiconductor Superlattice",
+  "cat": "materials",
+  "era": "1970s\u2013present (research)",
+  "tag": "Crystal lasagna",
+  "desc": "Alternating atomic layers of different semiconductors create artificial crystals with engineered electronic properties. They make precise lasers and detectors.",
+  "history": "Superlattices were proposed in 1970 and grown by molecular-beam epitaxy from the 1970s onward. Quantum-cascade lasers are their famous product.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Layer Lasagna",
+   "blurb": "The Signature Layer Lasagna is a sliced crystal showing its atomic layers as colored bands under magnification. Its demo tunes a laser's color by dialing the layer recipe.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-x-classicalquantum",
+  "name": "Hybrid Classical-Quantum System",
+  "cat": "mixes",
+  "era": "2020s\u2013present",
+  "tag": "Best of both worlds",
+  "desc": "A regular computer and a quantum processor work as one team on each problem. The classical side handles data and control; the quantum side attacks the hard core.",
+  "history": "Hybrid workflows became the standard pattern for using quantum hardware in the 2020s. Every major quantum cloud runs this way.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Duet Engine",
+   "blurb": "The Signature Duet Engine shows both halves on one console: blue classical planning, gold quantum solving, trading the problem back and forth. It teaches exactly where the quantum advantage begins.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-x-neuromorphic",
+  "name": "Neuromorphic-Digital Hybrid",
+  "cat": "mixes",
+  "era": "2010s\u2013present",
+  "tag": "Brain-like plus exact",
+  "desc": "A chip of artificial neurons that sips power sits beside a regular processor that handles exact math. Senses go to the neurons; spreadsheets go to the CPU.",
+  "history": "Brain-inspired chips like TrueNorth and Loihi appeared in the 2010s. Hybrids pair them with conventional processors.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Brain Plus",
+   "blurb": "The Signature Brain Plus watches through a spiking-neuron camera and counts with a precise digital core. Its demo recognizes your hand gestures, then does the exact arithmetic on what it saw.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-x-analogdigital",
+  "name": "Analog-Digital Hybrid Computer",
+  "cat": "mixes",
+  "era": "1950s\u20131970s",
+  "tag": "Wires that solve equations",
+  "desc": "Analog circuits integrate and differentiate continuously while a digital side sets up the problem and reads the answer. Old hybrids simulated aircraft and rockets this way.",
+  "history": "Analog-digital hybrids were workhorses of aerospace simulation in the 1960s. Digital computers eventually absorbed their role.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Smooth Plus Exact",
+   "blurb": "The Signature Smooth Plus Exact pairs a patchable analog panel with a digital supervisor that stores every setup. You wire an equation in cables and the digital side prints the solution.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-x-fpgacpu",
+  "name": "FPGA-CPU Hybrid",
+  "cat": "mixes",
+  "era": "2010s\u2013present",
+  "tag": "Processor with a rewirable twin",
+  "desc": "A regular processor shares its board with a rewirable logic chip that becomes custom hardware for the hot loop. Software speed where it counts, hardware speed where it matters.",
+  "history": "CPU-FPGA hybrids became common in datacenters and embedded systems in the 2010s. The FPGA accelerates exactly the bottleneck.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Twin Board",
+   "blurb": "The Signature Twin Board shows your program's slow function being forged into hardware with one click. Its profiler lights up the bottleneck, then the FPGA swallows it.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-x-photonic-electronic",
+  "name": "Co-Packaged Photonic-Electronic",
+  "cat": "mixes",
+  "era": "2020s\u2013present",
+  "tag": "Light and logic, one package",
+  "desc": "Photonic chips that move data as light sit in the same package as the electronic chips that think. Data flies between them at light speed with little heat.",
+  "history": "Co-packaged optics moved from research toward products in the 2020s. Datacenters need it as copper links run out of steam.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Light Package",
+   "blurb": "The Signature Light Package is a single module where you can see light lanes feeding a thinking chip. Its demo streams a movie through light while the chip edits it live.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-x-cpugpu",
+  "name": "CPU-GPU Heterogeneous Node",
+  "cat": "mixes",
+  "era": "2000s\u2013present",
+  "tag": "Manager and muscle",
+  "desc": "A few clever CPU cores direct thousands of simple GPU cores, splitting every job by talent. This pairing powers gaming, AI, and science computing.",
+  "history": "Heterogeneous computing became mainstream in the 2000s with programmable GPUs. Nearly every fast computer today is a hybrid this way.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Manager Muscle",
+   "blurb": "The Signature Manager Muscle shows the split live: the manager cores planning in one window, the muscle cores crunching in another. Its demo renders a scene twice \u2014 once on each \u2014 so you see the teamwork.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-x-chiplet",
+  "name": "Chiplet Multi-Die Package",
+  "cat": "mixes",
+  "era": "2019\u2013present",
+  "tag": "LEGO-block processors",
+  "desc": "Instead of one giant chip, several small specialized chips are bonded together in one package and act as one processor. Each chiplet does what it does best.",
+  "history": "Chiplet designs went mainstream around 2019. They let makers mix process technologies and scale up affordably.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Block Chip",
+   "blurb": "The Signature Block Chip is a processor you can see: a glass lid reveals the chiplets like city blocks. Its configurator lets you swap a graphics block for an AI block and reboot into a new machine.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-x-reram",
+  "name": "ReRAM In-Memory Accelerator",
+  "cat": "mixes",
+  "era": "2010s\u2013present (research)",
+  "tag": "Math inside the memory",
+  "desc": "A resistive-memory array performs neural-network math where the weights live, beside a small digital controller. Data barely moves, so power plummets.",
+  "history": "In-memory computing with resistive RAM advanced through the 2010s. It targets AI inference at the edge.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Weight Grid",
+   "blurb": "The Signature Weight Grid shows a neural network living in its memory cells as a glowing weight map. Its demo recognizes images while a power meter barely twitches.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-x-optical-copro",
+  "name": "Optical Coprocessor + Digital Host",
+  "cat": "mixes",
+  "era": "2020s\u2013present (research)",
+  "tag": "Light does the heavy math",
+  "desc": "An optical chip performs matrix math at the speed of light while a regular computer feeds it data and collects answers. Fourier transforms happen literally at light speed.",
+  "history": "Optical AI accelerators moved from labs toward startups in the 2020s. Light-speed linear algebra is their promise.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Prism Math",
+   "blurb": "The Signature Prism Math shines your data through a lens system and reads the answer off a sensor. Its demo blurs and sharpens images with actual optics, then the digital host files the result.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-x-wafer",
+  "name": "Wafer-Scale Engine + Host",
+  "cat": "mixes",
+  "era": "2019\u2013present",
+  "tag": "A whole wafer, one computer",
+  "desc": "An entire silicon wafer is used as a single giant chip, surrounded by memory and a host computer. AI models too big for normal chips fit whole.",
+  "history": "Wafer-scale engines were commercialized around 2019. They hold the records for the largest single chips ever built.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Whole Wafer",
+   "blurb": "The Signature Whole Wafer is a dinner-plate chip under glass with a million-core map you can zoom into. Its host console runs a big AI model entirely on the wafer while you watch the cores light up.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-p-photonic-exascale",
+  "name": "Photonic Exascale Computer",
+  "cat": "predicted",
+  "era": "Speculative \u2014 no date",
+  "tag": "A billion billion light-ops",
+  "desc": "A future machine that does exascale arithmetic with photons instead of electrons, in chips of waveguides and modulators. SPECULATION: no such complete machine exists.",
+  "history": "This is a forward-looking concept. Photonic AI accelerators exist in labs, but a full photonic exascale computer has not been built.",
+  "kind": "predicted",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Sun Computer",
+   "blurb": "The Signature Sun Computer is the Signature System's own design study for a light-speed exascale machine, drawn as a full blueprint with honest speculation labels. Its simulator shows how the light-math would flow, clearly marked as a model, not a machine.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-p-rtsc",
+  "name": "Room-Temperature Superconductor Logic",
+  "cat": "predicted",
+  "era": "Speculative \u2014 no date",
+  "tag": "Cold-free super logic",
+  "desc": "Logic gates from a superconductor that works at room temperature would switch at enormous speed with no cooling at all. SPECULATION: no verified room-temperature superconductor exists.",
+  "history": "Room-temperature superconductivity is claimed periodically but no claim has survived verification. This record describes what computers would gain if one were found.",
+  "kind": "predicted",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Warm Flux",
+   "blurb": "The Signature Warm Flux is a design study for flux logic without the fridge, with every assumption labeled as speculation. Its simulator lets you feel the speed a warm superconductor would unlock \u2014 a dream with the math shown.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-p-dnascale",
+  "name": "Large-Scale DNA Computer",
+  "cat": "predicted",
+  "era": "Speculative \u2014 no date",
+  "tag": "Vats that compute",
+  "desc": "A future computer where vats of DNA strands run massively parallel computations by chemistry, storing exabytes in a thimble. SPECULATION: only tiny demos exist today.",
+  "history": "DNA computing has solved only toy problems since the 1990s, and DNA storage holds modest files. A large-scale DNA computer remains speculative.",
+  "kind": "predicted",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Life Vat",
+   "blurb": "The Signature Life Vat is a concept design for a benchtop DNA computer with honest scale labels on every claim. Its simulator runs a tiny real DNA-logic demo so visitors see what is real and what is still dream.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-p-molecular",
+  "name": "Molecular Electronics Computer",
+  "cat": "predicted",
+  "era": "Speculative \u2014 no date",
+  "tag": "Single-molecule switches",
+  "desc": "A computer whose switches are individual molecules wired between electrodes, packing logic at the ultimate density. SPECULATION: reliable molecular circuits do not exist yet.",
+  "history": "Single-molecule devices have been demonstrated in labs since the 2000s, but reliable large circuits remain out of reach. This is a research dream.",
+  "kind": "predicted",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Molecule Mesh",
+   "blurb": "The Signature Molecule Mesh is a blueprint for a molecular processor with every unsolved problem listed honestly beside the design. Its exhibit lets you place virtual molecules and watch the simulated circuit try to work.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-p-qinternet",
+  "name": "Quantum Internet Node",
+  "cat": "predicted",
+  "era": "Speculative \u2014 no date",
+  "tag": "Entanglement on tap",
+  "desc": "A future network box that shares entanglement between distant cities, enabling unhackable keys and linked quantum computers. SPECULATION: only research links exist.",
+  "history": "Quantum key distribution works over limited links today, but a true multi-node quantum internet is still research. This record describes the goal.",
+  "kind": "predicted",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Entangle Post",
+   "blurb": "The Signature Entangle Post is a concept for a neighborhood quantum-internet node, drawn as a friendly street cabinet with honest research labels. Its simulator shows entanglement swapping as a visible relay race.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-p-brainscale",
+  "name": "Brain-Scale Neuromorphic System",
+  "cat": "predicted",
+  "era": "Speculative \u2014 no date",
+  "tag": "A cortex in a cabinet",
+  "desc": "A future machine with as many artificial neurons as a human brain, running on brain-like power budgets. SPECULATION: today's biggest systems are far smaller.",
+  "history": "Neuromorphic chips exist but hold millions of neurons versus the brain's tens of billions. Brain scale remains a distant goal.",
+  "kind": "predicted",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Cortex Cabinet",
+   "blurb": "The Signature Cortex Cabinet is a design study for a brain-scale machine, with the neuron count honestly labeled as a target. Its simulator runs a million-neuron slice you can watch think.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-p-reversible",
+  "name": "Reversible Adiabatic Computer",
+  "cat": "predicted",
+  "era": "Speculative \u2014 no date",
+  "tag": "Computing without heat",
+  "desc": "A future computer that never erases information, dodging the fundamental heat limit of logic. It would run cool forever, in principle. SPECULATION: only lab demos exist.",
+  "history": "Reversible computing was proposed in the 1960s-70s and demonstrated in small lab circuits. A full reversible processor has not been built.",
+  "kind": "predicted",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Unerase Engine",
+   "blurb": "The Signature Unerase Engine is a concept for a computer that keeps every bit, with the physics explained in plain words. Its simulator runs a reversible adder you can run backwards to recover the inputs.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-p-allspin",
+  "name": "All-Spin Logic Processor",
+  "cat": "predicted",
+  "era": "Speculative \u2014 no date",
+  "tag": "Magnets doing math",
+  "desc": "A future processor where magnetic spins do the logic with no charge current at all, promising instant-on computers that sip power. SPECULATION: spin logic is still laboratory research.",
+  "history": "Spintronic memory is real and shipping, but all-spin logic circuits remain research. This record describes the hoped-for endpoint.",
+  "kind": "predicted",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Spin Abacus",
+   "blurb": "The Signature Spin Abacus is a design study for spin-only logic with honest lab-status labels. Its demo is a giant mechanical model where flipping magnets performs real logic gates.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-p-singlemol-switch",
+  "name": "Single-Molecule Switch Array",
+  "cat": "predicted",
+  "era": "Speculative \u2014 no date",
+  "tag": "One molecule, one bit",
+  "desc": "A memory where each bit is a single switchable molecule, reaching densities no lithography can touch. SPECULATION: stable arrays do not exist yet.",
+  "history": "Single-molecule switches have been shown in labs but not in stable, addressable arrays. This is a materials dream.",
+  "kind": "predicted",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Molecule Page",
+   "blurb": "The Signature Molecule Page is a concept for a book whose pages are molecular memory, with the chemistry challenges listed honestly. Its exhibit writes your name in simulated molecules you can read back.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-p-thz",
+  "name": "Terahertz Transistor Computer",
+  "cat": "predicted",
+  "era": "Speculative \u2014 no date",
+  "tag": "A trillion switches a second",
+  "desc": "A future machine whose transistors switch at terahertz rates \u2014 a thousand times today's gigahertz. SPECULATION: no complete terahertz computer exists.",
+  "history": "Terahertz transistors have been demonstrated singly in labs, but full terahertz processors remain speculative. This is a speed dream.",
+  "kind": "predicted",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Blink Engine",
+   "blurb": "The Signature Blink Engine is a design study for terahertz logic with the heat and wiring problems shown honestly. Its simulator slows a terahertz second down so you can watch a trillion switches happen.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-p-skyrmion",
+  "name": "Skyrmion Racetrack Memory-Compute",
+  "cat": "predicted",
+  "era": "Speculative \u2014 no date",
+  "tag": "Magnetic whirlpools that work",
+  "desc": "A future device where tiny magnetic whirlpools race along tracks, storing and processing data as they move. SPECULATION: controlled skyrmion circuits are still research.",
+  "history": "Skyrmions were observed in the 2000s-2010s and moved in labs, but practical circuits remain research. This record marks the concept clearly.",
+  "kind": "predicted",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Whirlpool Track",
+   "blurb": "The Signature Whirlpool Track is a concept for skyrmion memory-compute with honest research labels. Its demo is a tabletop model where magnetic pucks race and add as they go.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-p-cryocmos",
+  "name": "Cryogenic CMOS Control Chip",
+  "cat": "predicted",
+  "era": "Near-term \u2014 in development",
+  "tag": "The quantum machine's butler",
+  "desc": "A future chip that lives in the fridge beside qubits, translating room-temperature commands into the delicate pulses qubits need. Near-term: prototypes exist in labs.",
+  "history": "Cryogenic control electronics are under active development to replace racks of room-temperature gear. This is the most near-term prediction here.",
+  "kind": "predicted",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Frost Butler",
+   "blurb": "The Signature Frost Butler is a near-term design for a fridge-dwelling controller with prototype honesty labels. Its demo shows one chip replacing a whole rack of cables and boxes.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-sig-lattice",
+  "name": "Signature Lattice Computer",
+  "cat": "signature",
+  "era": "2026",
+  "tag": "The crystal that computes",
+  "desc": "His original machine: a three-dimensional lattice of tiny switches where data flows along crystal paths instead of wires. Every layer of the lattice is both memory and processor, so nothing ever travels far.",
+  "history": "Developed by the Signature System on 2026-09-30.",
+  "kind": "signature",
+  "patent": null,
+  "demo": "abacus",
+  "sig": {
+   "name": "Signature Lattice Computer",
+   "blurb": "The Lattice Computer is the flagship: a crystal cube you can see into, with data flowing as light along its lattice paths. Its demo lets you drop a calculation into the top and watch the answer crystallize at the bottom.",
+   "demo": "abacus"
+  }
+ },
+ {
+  "id": "sys-sig-qubitloom",
+  "name": "Signature Qubit Loom",
+  "cat": "signature",
+  "era": "2026",
+  "tag": "Weaving quantum answers",
+  "desc": "His original quantum design: qubits are threads on a loom, and quantum gates are the shuttle weaving them into entangled fabric. The pattern of the weave IS the program, readable at a glance.",
+  "history": "Developed by the Signature System on 2026-09-30.",
+  "kind": "signature",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Qubit Loom",
+   "blurb": "The Qubit Loom turns quantum programming into weaving: each gate is a pass of the shuttle, and the finished fabric is the answer. Its demo weaves a real two-qubit entanglement you can hold in your hands as a pattern card.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-sig-paradox",
+  "name": "Signature Paradox Immune Core",
+  "cat": "signature",
+  "era": "2026",
+  "tag": "Logic that cannot contradict itself",
+  "desc": "His original processor core: every instruction is checked by a twin circuit before it runs, so paradoxes and contradictions are caught and resolved, never executed. It is the hardware heart of his paradox-immune system.",
+  "history": "Developed by the Signature System on 2026-09-30.",
+  "kind": "signature",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Paradox Immune Core",
+   "blurb": "The Paradox Immune Core runs every instruction twice \u2014 once forward, once mirrored \u2014 and only commits when both agree. Its demo feeds it classic paradoxes and shows each one being calmly untangled.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-sig-cascade",
+  "name": "Signature Deterministic Cascade",
+  "cat": "signature",
+  "era": "2026",
+  "tag": "No randomness, ever",
+  "desc": "His original engine: a cascade of deterministic stages where the same input always gives the same output, down to the last bit. It proves its answers by replaying them, step for step, on demand.",
+  "history": "Developed by the Signature System on 2026-09-30.",
+  "kind": "signature",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Deterministic Cascade",
+   "blurb": "The Deterministic Cascade is his answer to black-box AI: every answer comes with a replayable proof trail. Its demo replays any computation backwards to its inputs, like rewinding time.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-sig-hexfold",
+  "name": "Signature Hexfold Memory",
+  "cat": "signature",
+  "era": "2026",
+  "tag": "Memory folded like honeycomb",
+  "desc": "His original memory: storage cells folded into hexagonal prisms, packing more bits per area than square grids. Each hex cell knows its six neighbors, so data can flow in any direction.",
+  "history": "Developed by the Signature System on 2026-09-30.",
+  "kind": "signature",
+  "patent": null,
+  "demo": "material",
+  "sig": {
+   "name": "Signature Hexfold Memory",
+   "blurb": "Hexfold Memory stores your files in a glowing honeycomb you can zoom through like a beehive. Its demo shows data flowing around a damaged cell the way bees route around a broken comb.",
+   "demo": "material"
+  }
+ },
+ {
+  "id": "sys-sig-fabric",
+  "name": "Signature Deterministic Fabric",
+  "cat": "signature",
+  "era": "2026",
+  "tag": "A whole computer of proof",
+  "desc": "His original system architecture: processor, memory, and interconnect woven into one deterministic fabric where every signal's path is known in advance. Nothing is left to chance, ever.",
+  "history": "Developed by the Signature System on 2026-09-30.",
+  "kind": "signature",
+  "patent": null,
+  "demo": "stored",
+  "sig": {
+   "name": "Signature Deterministic Fabric",
+   "blurb": "The Deterministic Fabric is the full Signature computer: lattice core, hexfold memory, and paradox-immune checking in one cabinet. Its demo runs the whole machine with every signal's journey drawn on screen.",
+   "demo": "stored"
+  }
+ },
+ {
+  "id": "sys-sig-swarm",
+  "name": "Signature Swarm Gate Array",
+  "cat": "signature",
+  "era": "2026",
+  "tag": "A million tiny deciders",
+  "desc": "His original array: thousands of tiny simple gates that vote on every decision like a swarm, so no single failure can corrupt an answer. The swarm re-routes around dead gates automatically.",
+  "history": "Developed by the Signature System on 2026-09-30.",
+  "kind": "signature",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Swarm Gate Array",
+   "blurb": "The Swarm Gate Array shows its thousand gates as a living swarm of lights that visibly re-routes around any gate you switch off. Its demo lets you kill gates with a tap and watch the answer stay correct.",
+   "demo": "gates"
+  }
+ },
+ {
+  "id": "sys-sig-cellular",
+  "name": "Signature Cellular Automata Plane",
+  "cat": "signature",
+  "era": "2026",
+  "tag": "The universe as a grid",
+  "desc": "His original plane: a vast grid of cells following his own rule-set, growing patterns that compute. Programs are starting patterns; answers are the shapes the grid settles into.",
+  "history": "Developed by the Signature System on 2026-09-30.",
+  "kind": "signature",
+  "patent": null,
+  "demo": "abacus",
+  "sig": {
+   "name": "Signature Cellular Automata Plane",
+   "blurb": "The Cellular Automata Plane is a table-sized grid where you paint a starting pattern and watch it compute into an answer. Its rule book is his own original set, printed as a beautiful poster.",
+   "demo": "abacus"
+  }
+ },
+ {
+  "id": "sys-sig-neuralloom",
+  "name": "Signature Neural Loom",
+  "cat": "signature",
+  "era": "2026",
+  "tag": "AI woven, not programmed",
+  "desc": "His original AI machine: neural networks are woven on a loom-like frame where each thread is a connection with an adjustable weight. Training is literally re-weaving, visible to the eye.",
+  "history": "Developed by the Signature System on 2026-09-30.",
+  "kind": "signature",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Neural Loom",
+   "blurb": "The Neural Loom lets you weave a working neural network by hand: threads for connections, beads for weights. Its demo learns to recognize your drawing as you tighten and loosen the threads.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-sig-fusion",
+  "name": "Signature Hybrid Fusion Core",
+  "cat": "signature",
+  "era": "2026",
+  "tag": "All eleven lenses, one chip",
+  "desc": "His original fusion processor: eleven computing lenses \u2014 deterministic, probabilistic, geometric, hash, neural, evolutionary, fuzzy, swarm, decision-tree, cellular, and hybrid fusion \u2014 on one chip, voting on every answer.",
+  "history": "Developed by the Signature System on 2026-09-30.",
+  "kind": "signature",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature Hybrid Fusion Core",
+   "blurb": "The Hybrid Fusion Core runs every problem through all eleven lenses and fuses the answers, showing each lens's vote. Its demo solves one puzzle eleven ways at once and lets you watch the fusion happen.",
+   "demo": "cpu4"
+  }
+ },
+ {
+  "id": "sys-sig-temporal",
+  "name": "Signature Temporal Register Stack",
+  "cat": "signature",
+  "era": "2026",
+  "tag": "Memory that remembers when",
+  "desc": "His original registers: a stack where every value carries its own timestamp, so the processor can reach back to any past state without saving snapshots. Time travel for data, built in.",
+  "history": "Developed by the Signature System on 2026-09-30.",
+  "kind": "signature",
+  "patent": null,
+  "demo": "stored",
+  "sig": {
+   "name": "Signature Temporal Register Stack",
+   "blurb": "The Temporal Register Stack shows every register with its history as a visible timeline you can scrub. Its demo rewinds a crashed program to before the bug and steps forward to watch it happen.",
+   "demo": "stored"
+  }
+ },
+ {
+  "id": "sys-sig-collapse",
+  "name": "Signature Probability Collapse Unit",
+  "cat": "signature",
+  "era": "2026",
+  "tag": "Chance, tamed",
+  "desc": "His original unit: a probabilistic engine that collapses chance into certainty by running every branch deterministically and keeping the proven winner. Randomness in, proof out.",
+  "history": "Developed by the Signature System on 2026-09-30.",
+  "kind": "signature",
+  "patent": null,
+  "demo": "quantum",
+  "sig": {
+   "name": "Signature Probability Collapse Unit",
+   "blurb": "The Probability Collapse Unit shows a thousand possible futures branching on screen, then collapses them to the proven one. Its demo plays dice games where every roll is verified before it counts.",
+   "demo": "quantum"
+  }
+ },
+ {
+  "id": "sys-sig-golden",
+  "name": "Signature Golden Ratio ALU",
+  "cat": "signature",
+  "era": "2026",
+  "tag": "Math in nature's proportion",
+  "desc": "His original arithmetic unit: an ALU that encodes numbers in golden-ratio base, where multiplication by phi is just a shift. It finds the elegant path through every calculation.",
+  "history": "Developed by the Signature System on 2026-09-30.",
+  "kind": "signature",
+  "patent": null,
+  "demo": "gates",
+  "sig": {
+   "name": "Signature Golden Ratio ALU",
+   "blurb": "The Golden Ratio ALU does arithmetic in base-phi, and its display draws each calculation as a growing spiral. Its demo multiplies by the golden ratio with a single shift, shown as the spiral blooming.",
+   "demo": "gates"
+  }
+ }
+]
