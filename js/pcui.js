@@ -135,6 +135,7 @@ window.PCUI = (function () {
       name: rec.name, desc: rec.desc, generator_version: ID.DRIP_RULE_VERSION,
       generation_seed: rec._generation_seed, component_set: rec._component_set,
       record_schema: ID.RECORD_SCHEMA };
+    rec._spec_hash = ID.specHash(core);
     rec._governance = ID.governanceChain(rec._system_id, 'GENERATED', rec._spec_hash);
     rec._provenance = provenanceFor(rec, 'GENERATED');
     rec._buildability = ID.buildabilityFor('GENERATED');
@@ -250,8 +251,28 @@ window.PCUI = (function () {
 
   /* ---------- canonical system.json ---------- */
   function recordJSON(o) {
-    // o: {system_id, system_type, name, ...} — build the canonical machine-readable record
-    return o;
+    // Build the canonical machine-readable record from an enriched record
+    // (o = result of enrichSeed/enrichDrip). Never invents sibling IDs.
+    var sys = {
+      system_json: 'JAH-PC-SYSTEM/1.0',
+      system_id: o._system_id, id_scheme: ID.ID_SCHEME,
+      system_type: o._system_type, type_label: o._type_label,
+      name: (o.sig && o.sig.name) || o.name,
+      record_schema: ID.RECORD_SCHEMA,
+      spec_hash: 'sha256:' + o._spec_hash,
+      generator_version: o._generator_version || null,
+      generation_seed: o._generation_seed || null,
+      provenance: o._provenance, buildability: o._buildability,
+      governance: o._governance, xrefs: o._xrefs,
+      ai_contract: ID.AI_CONTRACT, source_classes: ID.SOURCE_CLASSES
+    };
+    if (o._component_set) sys.component_set = o._component_set;
+    if (o._arch_vocab) sys.architecture = o._arch_vocab;
+    if (o._tech_specs) sys.tech_specs = o._tech_specs;
+    if (o._validity) sys.validity = o._validity;
+    if (o._assumptions) sys.assumptions = o._assumptions;
+    if (o.sig && o.sig._relationship) sys.signature_relationship = o.sig._relationship;
+    return sys;
   }
   function jsonLDHTML(rec) {
     var ld = {

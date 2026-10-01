@@ -140,12 +140,24 @@ const SITE_NAME = "The Signature PC System Depository";
 const PCID = window.PCIDENT, PCUI = window.PCUI;
 let SYSTEMS = [], DRIP = [], DRIP_N = 0, COUNT = {seed:0, generated:0};
 let fCat = "ALL", fAz = "", fQ = "", fPage = 1;
+let pendingSystem = null; // ?system= deep link, resolved after drip chunks finish loading
 const PER_PAGE = 48;
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}
 function allRecords(){return SYSTEMS.concat(DRIP)}
 function findRecord(id){
   id = String(id||"");
-  return allRecords().find(r => r._system_id===id || r.id===id) || null;
+  return allRecords().find(r => r._system_id===id || r.id===id ||
+    (r.sig && r.sig._system_id===id)) || null;
+}
+function systemNotFound(id){
+  const d = document.getElementById("detail");
+  d.innerHTML = '<div class="kv" style="padding:18px 6px"><b>SYSTEM NOT FOUND</b> — no file carries the ID &ldquo;'+esc(String(id||""))+'&rdquo;.<br><br>' +
+    'Check the ID or use the GRAND LIST search. Deep-link formats:<br>' +
+    '· recorded/Signature file: <span class="hist">?system=JAH-PC-90000001</span><br>' +
+    '· possible model number: <span class="hist">?model=728194</span><br>' +
+    '· shareable random seed: <span class="hist">?seed=728194</span><br><br>' +
+    '<button onclick="closeDetail()">← BACK TO GRAND LIST</button></div>';
+  d.style.display = "block"; d.scrollIntoView({behavior:"smooth"});
 }
 function filteredList(){
   let list = allRecords().filter(r => PCUI.matchesFilter(r, fCat));
@@ -207,7 +219,17 @@ function sysJsonFor(rec){
   };
 }
 function openSystem(id){
-  const r = findRecord(id); if(!r) return; window._rec = r;
+  const r = findRecord(id);
+  if(!r){
+    // canonical on-demand IDs (JAH-PC-00000001..01000000) and legacy pcm-NNNNNN
+    // resolve to the possible-model view; everything else gets an explicit not-found.
+    let m = /^JAH-PC-(\d{1,8})$/.exec(String(id||"").toUpperCase());
+    if (m){ const n=parseInt(m[1],10); if(n>=1&&n<=1000000){ document.getElementById("pnum").value=n; openPossible(n); return; } }
+    m = /^PCM-(\d{1,6})$/.exec(String(id||"").toUpperCase());
+    if (m){ const n=parseInt(m[1],10); if(n>=1&&n<=1000000){ document.getElementById("pnum").value=n; openPossible(n); return; } }
+    systemNotFound(id); return;
+  }
+  window._rec = r;
   const d = document.getElementById("detail");
   const simKey = r.demo || r._sim_key || "gates";
   const sim = window.SIMS[simKey] || window.SIMS.gates;
@@ -337,6 +359,8 @@ function loadDripChunks(){
   }
   function done(){
     DRIP_N = DRIP.length; renderCounters(); renderPills(); renderGrid();
+    // resolve a ?system= deep link only now that every file is on file
+    if (pendingSystem){ const id = pendingSystem; pendingSystem = null; openSystem(id); }
   }
   next();
 }
@@ -354,7 +378,8 @@ function boot(){
     loadDripChunks();
     const qs = location.search;
     let m = /[?&]system=([^&]+)/.exec(qs);
-    if (m){ openSystem(decodeURIComponent(m[1])); return; }
+    // ?system= waits for drip chunks (see done()); ?seed= / ?model= are pure on-demand.
+    if (m){ pendingSystem = decodeURIComponent(m[1]); return; }
     m = /[?&]seed=(\d+)/.exec(qs);
     if (m){ const seed = parseInt(m[1],10); const n = PCID.seedToModelNumber(seed);
       document.getElementById("pnum").value = n; openPossible(n, seed); return; }
