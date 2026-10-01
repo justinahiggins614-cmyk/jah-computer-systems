@@ -61,8 +61,12 @@ footer{margin-top:30px;border-top:1px solid var(--line);padding:16px 4px;color:v
 <div class="hero">
 <h1>THE <span class="pc">SIGNATURE PC SYSTEM</span> DEPOSITORY</h1>
 <p>Every computer system, from the most original machines ever built to every recorded model — and every possible model still to come. Each file ships a working simulator you can sample right here, a Signature-made version you can copy, download, and run, and the full story behind the machine.</p>
-<div class="counter"><small>MODELS ON FILE</small><span id="count">…</span> / 1,000,000</div>
+<div class="counter"><small>RECORDED SYSTEMS ON FILE</small><span id="count_rec">…</span></div>
+<div class="counter"><small>SIGNATURE SYSTEMS</small><span id="count_sig">…</span></div>
+<div class="counter"><small>GENERATABLE SPACE</small><span id="count_gen">1,000,000</span></div>
+<p class="kv" style="margin-top:10px;max-width:70ch">The 1,000,000 figure is the <b>generatable model space</b> — computed on demand from components × architectures × materials × scales. Nothing stored, nothing slow. It is not a count of completed historical records. Recorded systems and Signature systems are counted separately above.</p>
 </div>
+<div class="hud" id="scopebox"></div>
 <div class="hud" id="grandlist">
 <h2>GRAND LIST</h2>
 <input type="text" id="q" placeholder="Search every system… (try &quot;quantum&quot;, &quot;ENIAC&quot;, &quot;graphene&quot;)">
@@ -73,21 +77,25 @@ footer{margin-top:30px;border-top:1px solid var(--line);padding:16px 4px;color:v
 <div class="hud" id="detail"></div>
 <div class="hud">
 <h2>EVERY POSSIBLE MODEL</h2>
-<p class="kv">The depository charts <b>1,000,000 possible models</b> — computed on demand from components × architectures × materials × scales. Nothing stored, nothing slow. Dial any number:</p>
+<p class="kv">The depository charts <b>1,000,000 possible models</b> — computed on demand from components × architectures × materials × scales. Nothing stored, nothing slow. Every model carries a permanent canonical ID (<b>JAH-PC-########</b>): opening the same number always yields the identical record. Dial any number:</p>
 <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
 <input type="number" id="pnum" min="1" max="1000000" value="1" style="max-width:180px">
 <button onclick="openPossible()">OPEN MODEL</button>
-<button onclick="openPossible(Math.floor(Math.random()*1000000))">RANDOM MODEL</button>
+<button onclick="openRandom()">RANDOM MODEL</button>
 </div>
+<p class="kv hist" style="margin-top:8px">Random models are reproducible: each one records its seed, so “random model 728194” can be shared and re-opened exactly.</p>
 <div id="possible" style="margin-top:10px"></div>
 </div>
 <footer>
 <div class="hist">THE SIGNATURE PC SYSTEM DEPOSITORY · every file is a working model — sample it, copy it, download it, build with it.</div>
 <div style="margin-top:8px">Historical records are reference only. Signature versions are original designs. Predicted models are clearly marked speculation — not history.</div>
+<div style="margin-top:8px">Offline: once loaded, the on-demand generator and all simulators run fully offline. Recorded-system data requires a network fetch.</div>
 </footer>
 </div>
+<script src="js/identity.js"></script>
 <script src="js/gen.js"></script>
 <script src="js/sims.js"></script>
+<script src="js/pcui.js"></script>
 <script>
 /* ================= read aloud: tiered TTS (ResponsiveVoice -> Google x2) ================= */
 var RD={audio:null,queue:[],playing:false,stopped:true,timer:null,speed:1};
@@ -122,41 +130,241 @@ function rdNext(){
 function rdSpeak(text){rdStop();RD.queue=rdChunks(text);if(!RD.queue.length)return;RD.stopped=false;
  var b=document.getElementById("rdbtn");if(b)b.textContent="⏹ Stop";
  rdNext()}
-function rdToggle(){if(!RD.stopped){rdStop()}else{var r=window._rec;if(r)rdSpeak((r.sig?r.sig.name:r.name)+". "+(r.sig?r.sig.blurb:r.desc)+" "+r.desc+". "+(r.history||""))}}
+function rdToggle(){if(!RD.stopped){rdStop()}else{var r=window._rec;if(r){var nm=r.sig?r.sig.name:r.name;var bl=r.sig?r.sig.blurb:(r.blurb||r.desc||"");rdSpeak(nm+". "+bl+" "+(r.desc||"")+". "+(r.history||""))}}}
 /* ===== dictionary term links (IWB Dictionary ?w= deep links) ===== */
 var DICT_BASE="https://justinahiggins614-cmyk.github.io/jah-dictionary/?w=";
 var STOPW={the:1,a:1,an:1,of:1,and:1,for:1,in:1,on:1,to:1,with:1,by:1,from:1,at:1,or:1,as:1,is:1,it:1,its:1};
 function dictTerms(r){var words=((r.name||"")+" "+(r.tag||"")).toLowerCase().replace(/[^a-z0-9\- ]/g," ").split(/\s+/).filter(function(w){return w.length>2&&!STOPW[w]});var out=[];words.forEach(function(w){if(out.length<6&&out.indexOf(w)<0)out.push(w)});return out}
 /* ===== SITE NAME — rename here and the <title> above ===== */
 const SITE_NAME = "The Signature PC System Depository";
-const CATS = {historic:"Historic Machines",modern:"Modern Systems",quantum:"Quantum Systems",materials:"Materials & Substrates",mixes:"Mixes",predicted:"Predicted Models",signature:"Signature-Developed"};
-let SYSTEMS = [], COUNT = {seed:0, generated:0}, fCat="", fAz="", fQ="";
-function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
-function counts(){const c={};SYSTEMS.forEach(r=>c[r.cat]=(c[r.cat]||0)+1);return c}
-function renderPills(){const c=counts();let h='<span class="pill'+(fCat==""?" on":"")+'" data-c="">ALL <b>'+SYSTEMS.length+'</b></span>';for(const k in CATS){h+='<span class="pill'+(fCat==k?" on":"")+'" data-c="'+k+'">'+CATS[k]+' <b>'+(c[k]||0)+'</b></span>'}document.getElementById("pills").innerHTML=h;document.querySelectorAll("#pills .pill").forEach(p=>p.onclick=()=>{fCat=p.dataset.c;renderPills();renderGrid()})}
-function renderAZ(){let h='<span class="'+(fAz==""?"on":"")+'" data-a="">•</span>';for(let i=65;i<=90;i++){const a=String.fromCharCode(i);h+='<span class="'+(fAz==a?"on":"")+'" data-a="'+a+'">'+a+'</span>'}document.getElementById("az").innerHTML=h;document.querySelectorAll("#az span").forEach(s=>s.onclick=()=>{fAz=s.dataset.a;renderAZ();renderGrid()})}
-function renderGrid(){const g=document.getElementById("grid");const list=SYSTEMS.filter(r=>(!fCat||r.cat===fCat)&&(!fAz||r.name.toUpperCase().startsWith(fAz))&&(!fQ||(r.name+" "+r.tag+" "+r.desc).toLowerCase().includes(fQ)));g.innerHTML=list.slice(0,300).map(r=>'<div class="card" onclick="openSystem(\''+r.id+'\')"><div class="cat">'+esc(CATS[r.cat]||r.cat)+'</div><h3>'+esc(r.sig?r.sig.name:r.name)+'</h3><div class="tag">'+esc(r.tag||"")+'</div></div>').join("")||'<div class="kv">No systems match. Try another search.</div>'}
+const PCID = window.PCIDENT, PCUI = window.PCUI;
+let SYSTEMS = [], DRIP = [], DRIP_N = 0, COUNT = {seed:0, generated:0};
+let fCat = "ALL", fAz = "", fQ = "", fPage = 1;
+const PER_PAGE = 48;
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}
+function allRecords(){return SYSTEMS.concat(DRIP)}
+function findRecord(id){
+  id = String(id||"");
+  return allRecords().find(r => r._system_id===id || r.id===id) || null;
+}
+function filteredList(){
+  let list = allRecords().filter(r => PCUI.matchesFilter(r, fCat));
+  if (fAz) list = list.filter(r => ((r.sig&&r.sig.name)||r.name||"").toUpperCase().startsWith(fAz));
+  list = PCUI.searchList(list, fQ);
+  return list;
+}
+function renderPills(){
+  const list = allRecords();
+  let h = PCUI.FILTERS.map(f => {
+    const n = f==="ALL" ? list.length : list.filter(r => PCUI.matchesFilter(r, f)).length;
+    return '<span class="pill'+(fCat===f?" on":"")+'" data-c="'+f+'">'+f+' <b>'+n+'</b></span>';
+  }).join("");
+  document.getElementById("pills").innerHTML = h;
+  document.querySelectorAll("#pills .pill").forEach(p => p.onclick = () => { fCat = p.dataset.c; fPage = 1; renderPills(); renderGrid(); });
+}
+function renderAZ(){
+  let h = '<span class="'+(fAz===""?"on":"")+'" data-a="">•</span>';
+  for (let i=65;i<=90;i++){const a=String.fromCharCode(i);h+='<span class="'+(fAz==a?"on":"")+'" data-a="'+a+'">'+a+'</span>'}
+  document.getElementById("az").innerHTML = h;
+  document.querySelectorAll("#az span").forEach(s => s.onclick = () => { fAz = s.dataset.a; fPage = 1; renderAZ(); renderGrid(); });
+}
+function typeDot(st){
+  const c = st==="HISTORICAL"?"#9fd8ff":st==="SIGNATURE_ORIGINAL"?"#ffd75e":st==="PREDICTED"?"#d0a6ff":st==="GENERATED"?"#8affc1":"#ffb27d";
+  return '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:'+c+';margin-right:6px" title="'+esc(PCID.TYPE_LABEL[st]||st)+'"></span>';
+}
+function renderGrid(){
+  const g = document.getElementById("grid");
+  const list = filteredList();
+  const pg = PCUI.paginate(list, fPage, PER_PAGE);
+  fPage = pg.page;
+  if (!pg.total){ g.innerHTML = PCUI.zeroResultHTML(fQ || fCat); return; }
+  g.innerHTML = pg.items.map(r => {
+    const nm = (r.sig && r.sig.name) || r.name;
+    return '<div class="card" onclick="openSystem(\''+esc(r._system_id)+'\')"><div class="cat">'+typeDot(r._system_type)+esc(r._type_label)+'</div><h3>'+esc(nm)+'</h3><div class="tag">'+esc(r.tag||"")+'</div><div class="kv hist">'+esc(r._system_id)+'</div></div>';
+  }).join("") + '<div style="grid-column:1/-1;display:flex;gap:8px;align-items:center;justify-content:center;margin-top:6px;flex-wrap:wrap">' +
+    (pg.page>1?'<button onclick="fPage--;renderGrid()">← PREV</button>':"") +
+    '<span class="kv">PAGE '+pg.page+' / '+pg.pages+' · '+pg.total.toLocaleString()+' SYSTEMS</span>' +
+    (pg.page<pg.pages?'<button onclick="fPage++;renderGrid()">NEXT →</button>':"") + '</div>';
+}
 function dl(name, text){const b=new Blob([text],{type:"text/plain"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
 function copyTxt(t,btn){navigator.clipboard.writeText(t).then(()=>{const o=btn.textContent;btn.textContent="COPIED ✓";setTimeout(()=>btn.textContent=o,1200)})}
-function openSystem(id){const r=SYSTEMS.find(x=>x.id===id);if(!r)return;window._rec=r;const d=document.getElementById("detail");const sim=window.SIMS[r.demo]||window.SIMS.gates;const s=r.sig||{name:r.name,blurb:r.desc,demo:r.demo};
-let h='<div class="hist">FILE · '+esc(r.id).toUpperCase()+'</div><span class="sigstar">★ SIGNATURE VERSION — ORIGINAL DESIGN</span><h2 style="font-size:24px;margin:4px 0 8px;color:#fff">'+esc(s.name)+'</h2><p>'+esc(s.blurb)+'</p>';
-h+='<div style="margin:8px 0"><button id="rdbtn" onclick="rdToggle()">🔊 Read entry</button> <button onclick="rdStop()">⏹ Stop</button> <select onchange="RD.speed=parseFloat(this.value)" title="Reading speed"><option value="0.8">0.8×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></div>';
-h+='<div class="sec"><h3>WORKING MODEL — SAMPLE IT HERE</h3><div id="simbox"></div></div>';
-h+='<div class="sec"><h3>CODE</h3><button onclick="copyTxt(window.SIMS[\''+r.demo+'\'].codeJS(SYSTEMS.find(x=>x.id===\''+r.id+'\')),this)">⧉ COPY .JS</button><button onclick="dl(\''+r.id+'.js\',window.SIMS[\''+r.demo+'\'].codeJS(SYSTEMS.find(x=>x.id===\''+r.id+'\')))">⤓ DOWNLOAD .JS</button><button onclick="copyTxt(window.SIMS[\''+r.demo+'\'].codePY(SYSTEMS.find(x=>x.id===\''+r.id+'\')),this)">⧉ COPY .PY</button><button onclick="dl(\''+r.id+'.py\',window.SIMS[\''+r.demo+'\'].codePY(SYSTEMS.find(x=>x.id===\''+r.id+'\')))">⤓ DOWNLOAD .PY</button></div>';
-h+='<div class="notice">🤖 Give this file to an AI and it will use it as a persona — the model above becomes how the AI thinks and answers.</div>';
-if(r.cat==="quantum"){h+='<div class="sec"><h3>REPLACEMENT MODEL (CLASSICAL)</h3><p class="kv">Quantum hardware cannot run in a browser, so this file ships two things: the <b>quantum simulator</b> above (run real circuits and sample real measurements), and a <b>replacement PC model</b> — <b>'+esc(s.name)+'–Classical</b> — an ordinary classical computer that reproduces this system\'s observable behavior gate-for-gate on standard hardware. Same answers, no quantum chip required.</p></div>'}
-h+='<div class="sec"><h3>HISTORICAL RECORD <span class="hist">— REFERENCE</span></h3><p class="kv"><b>'+esc(r.name)+'</b> · '+esc(r.era||"")+'</p><p>'+esc(r.desc)+'</p><p class="kv">'+esc(r.history||"")+'</p>';
-if(r.kind==="predicted")h+='<p class="kv" style="color:var(--gold)">⚠ Predicted model — speculation, not history.</p>';
-if(r.kind==="signature")h+='<p class="kv" style="color:var(--gold)">★ Developed by the Signature System on 2026-09-30.</p>';
-h+='<p class="kv">Patent link: '+(r.patent?'<a href="'+esc(r.patent)+'" target="_blank" rel="noopener">view patent</a>':"no linked patent — none recorded for this system.")+'</p></div>';
-h+='<div class="sec"><h3>IN THE SIGNATURE DICTIONARY</h3><p class="kv">'+dictTerms(r).map(function(t){return '<a href="'+DICT_BASE+encodeURIComponent(t)+'" target="_blank" rel="noopener">📖 '+esc(t)+'</a>'}).join(" · ")+'</p></div>';
-h+='<button onclick="closeDetail()">← BACK TO GRAND LIST</button> <button onclick="copyTxt(location.origin+location.pathname+\'?system='+r.id+'\',this)">⧉ COPY LINK</button>';
-d.innerHTML=h;d.style.display="block";d.scrollIntoView({behavior:"smooth"});sim.render(document.getElementById("simbox"),r);try{history.replaceState(null,"","?system="+r.id)}catch(e){}}
+function simMetaFor(rec, simKey){
+  const c = (window.SIMS.CONTRACTS||{})[simKey]||{};
+  return { system_id: rec._system_id, system_type: rec._system_type, spec_hash: rec._spec_hash,
+    generator_version: rec._generator_version||PCID.GEN_RULE_VERSION, simulator: simKey,
+    simulator_version: c.SIMULATOR_VERSION||"SIM/1.0", simulation_class: c.SIMULATION_CLASS||"n/a",
+    safety: c.SAFETY||"SIMULATION_ONLY", dependencies: "none — standalone",
+    source: "The Signature PC System Depository", created: "2026-09-30" };
+}
+function sysJsonFor(rec){
+  return {
+    system_json: "JAH-PC-SYSTEM/1.0", system_id: rec._system_id, id_scheme: PCID.ID_SCHEME,
+    system_type: rec._system_type, type_label: rec._type_label, name: (rec.sig&&rec.sig.name)||rec.name,
+    record_schema: PCID.RECORD_SCHEMA, spec_hash: "sha256:"+rec._spec_hash,
+    generator_version: rec._generator_version, governance: rec._governance,
+    provenance: rec._provenance, buildability: rec._buildability, xrefs: rec._xrefs,
+    ai_contract: PCID.AI_CONTRACT, source_classes: PCID.SOURCE_CLASSES
+  };
+}
+function openSystem(id){
+  const r = findRecord(id); if(!r) return; window._rec = r;
+  const d = document.getElementById("detail");
+  const simKey = r.demo || r._sim_key || "gates";
+  const sim = window.SIMS[simKey] || window.SIMS.gates;
+  const s = r.sig || {name:r.name, blurb:r.desc, demo:simKey};
+  let h = PCUI.jsonLDHTML(r);
+  h += '<div class="hist">FILE · '+esc(r._system_id)+'</div>';
+  h += PCUI.badgeHTML(r._system_type);
+  // Signature version (prominent, as before)
+  if (r.sig && r._system_type !== "SIGNATURE_ORIGINAL"){
+    h += '<div style="margin-top:6px">'+PCUI.badgeHTML("SIGNATURE_ORIGINAL")+'</div>';
+  }
+  h += '<h2 style="font-size:24px;margin:4px 0 8px;color:#fff">'+esc(s.name)+'</h2><p>'+esc(s.blurb||"")+'</p>';
+  h += '<div style="margin:8px 0"><button id="rdbtn" onclick="rdToggle()">🔊 Read entry</button> <button onclick="rdStop()">⏹ Stop</button> <select onchange="RD.speed=parseFloat(this.value)" title="Reading speed"><option value="0.8">0.8×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></div>';
+  h += '<div class="sec"><h3>WORKING MODEL — SAMPLE IT HERE</h3><div id="simbox"></div></div>';
+  h += PCUI.contractHTML(simKey);
+  const meta = simMetaFor(r, simKey);
+  const jsHead = PCID.jsHeader(meta), pyHead = PCID.pyHeader(meta);
+  h += '<div class="sec"><h3>CODE & DOWNLOADS <span class="hist">— VERSIONED, HASHED</span></h3>' +
+    '<button onclick="copyTxt(window._simHeadJS+window.SIMS[\''+simKey+'\'].codeJS(window._rec),this)">⧉ COPY .JS</button>' +
+    '<button onclick="dl(window._rec._system_id+\'.js\',window._simHeadJS+window.SIMS[\''+simKey+'\'].codeJS(window._rec))">⤓ DOWNLOAD .JS</button>' +
+    '<button onclick="copyTxt(window._simHeadPY+window.SIMS[\''+simKey+'\'].codePY(window._rec),this)">⧉ COPY .PY</button>' +
+    '<button onclick="dl(window._rec._system_id+\'.py\',window._simHeadPY+window.SIMS[\''+simKey+'\'].codePY(window._rec))">⤓ DOWNLOAD .PY</button>' +
+    '<button onclick="dl(window._rec._system_id+\'.system.json\',JSON.stringify(sysJsonFor(window._rec),null,2))">⤓ SYSTEM.JSON</button></div>';
+  window._simHeadJS = jsHead; window._simHeadPY = pyHead;
+  h += '<div class="notice">🤖 Give this file to an AI and it will use it as a persona — the model above becomes how the AI thinks and answers. <b>Source class: '+esc(r._system_type)+'.</b> An AI must never present this as anything else.</div>';
+  if (r.sig && r.sig._relationship) h += PCUI.sigRelHTML(r.sig._relationship);
+  if (r.sig && r.sig._governance) h += PCUI.governanceHTML(r.sig._governance);
+  // base record section
+  h += '<div class="sec"><h3>BASE RECORD <span class="hist">— '+esc(r._type_label)+'</span></h3>';
+  h += '<p class="kv"><b>'+esc(r.name)+'</b> · '+esc(r.era||"")+'</p><p>'+esc(r.desc||"")+'</p><p class="kv">'+esc(r.history||"")+'</p>';
+  h += '<p class="kv">Patent link: '+(r.patent?'<a href="'+esc(r.patent)+'" target="_blank" rel="noopener">view patent</a>':"no linked patent — none recorded for this system.")+'</p></div>';
+  if (r._component_set) h += '<div class="sec"><h3>COMPONENT SET</h3>'+ '<table style="width:100%;border-collapse:collapse;font-size:13px">'+Object.keys(r._component_set).map(k=>'<tr><td style="border-bottom:1px solid #16324f;padding:5px 8px;color:#8fb8d8;width:38%">'+esc(k)+'</td><td style="border-bottom:1px solid #16324f;padding:5px 8px">'+esc(r._component_set[k])+'</td></tr>').join("")+'</table></div>';
+  if (r._arch_vocab) h += PCUI.archVocabHTML(r._arch_vocab);
+  if (r._tech_specs) h += PCUI.techSpecsHTML(r._tech_specs);
+  if (r._validity) h += PCUI.validityHTML(r._validity);
+  if (r._assumptions) h += PCUI.assumptionsHTML(r._assumptions);
+  h += PCUI.buildabilityHTML(r._buildability);
+  h += PCUI.provenanceHTML(r._provenance);
+  h += PCUI.governanceHTML(r._governance);
+  h += PCUI.xrefsHTML(r._xrefs);
+  h += '<div class="sec"><h3>IN THE SIGNATURE DICTIONARY</h3><p class="kv">'+dictTerms(r).map(function(t){return '<a href="'+DICT_BASE+encodeURIComponent(t)+'" target="_blank" rel="noopener">📖 '+esc(t)+'</a>'}).join(" · ")+'</p></div>';
+  h += PCUI.aiContractHTML();
+  h += '<button onclick="closeDetail()">← BACK TO GRAND LIST</button> <button onclick="copyTxt(location.origin+location.pathname+\'?system='+r._system_id+'\',this)">⧉ COPY LINK</button>';
+  d.innerHTML = h; d.style.display = "block"; d.scrollIntoView({behavior:"smooth"});
+  sim.render(document.getElementById("simbox"), r);
+  try{history.replaceState(null,"","?system="+r._system_id)}catch(e){}
+}
 function closeDetail(){document.getElementById("detail").style.display="none";try{history.replaceState(null,"","./")}catch(e){}document.getElementById("grandlist").scrollIntoView({behavior:"smooth"})}
-function openPossible(n){n=n==null?parseInt(document.getElementById("pnum").value||"1",10):n;n=Math.min(1000000,Math.max(1,n));const m=window.PCMODELS.at(n-1);document.getElementById("possible").innerHTML='<div class="card" style="cursor:default"><div class="cat">POSSIBLE MODEL #'+n.toLocaleString()+' / 1,000,000</div><h3>'+esc(m.name)+'</h3><div class="tag">'+esc(m.blurb)+'</div><div class="kv">ID '+esc(m.id)+' · computed on demand — nothing stored.</div></div>'}
-function boot(){const q=document.getElementById("q");q.addEventListener("input",()=>{fQ=q.value.trim().toLowerCase();renderGrid()});
-Promise.all([fetch("data/systems.json").then(r=>r.json()),fetch("data/count.json").then(r=>r.json()).catch(()=>({seed:0,generated:0}))]).then(([s,c])=>{SYSTEMS=s;COUNT=c;const total=SYSTEMS.length+(COUNT.generated||0);document.getElementById("count").textContent=total.toLocaleString();renderPills();renderAZ();renderGrid();const m=/[?&]system=([^&]+)/.exec(location.search);if(m)openSystem(decodeURIComponent(m[1]))}).catch(e=>{document.getElementById("grid").innerHTML='<div class="kv">Loading…</div>'})}
+function kvRows(o){return '<table style="width:100%;border-collapse:collapse;font-size:13px">'+Object.keys(o).map(k=>'<tr><td style="border-bottom:1px solid #16324f;padding:5px 8px;color:#8fb8d8;width:38%">'+esc(k)+'</td><td style="border-bottom:1px solid #16324f;padding:5px 8px;color:#d7e9f7">'+esc(o[k])+'</td></tr>').join("")+'</table>'}
+function openPossible(n, seed){
+  n = n==null ? parseInt(document.getElementById("pnum").value||"1",10) : n;
+  n = Math.min(1000000, Math.max(1, n));
+  const m = window.PCMODELS.at(n-1);
+  window._rec = m;
+  const simKey = m.simulator_key, sim = window.SIMS[simKey]||window.SIMS.gates;
+  const meta = { system_id: m.system_id, system_type: "GENERATED", spec_hash: m.spec_hash,
+    generator_version: m.generator_version, simulator: simKey, simulator_version: "SIM/1.0",
+    simulation_class: ((window.SIMS.CONTRACTS||{})[simKey]||{}).SIMULATION_CLASS||"n/a",
+    safety: ((window.SIMS.CONTRACTS||{})[simKey]||{}).SAFETY||"SIMULATION_ONLY",
+    dependencies: "none — standalone", source: "The Signature PC System Depository", created: "2026-09-30" };
+  let h = '<div class="card" style="cursor:default;max-width:760px">';
+  h += '<div class="hist">POSSIBLE MODEL #'+n.toLocaleString()+' / 1,000,000 · '+esc(m.system_id)+'</div>';
+  h += PCUI.badgeHTML("GENERATED");
+  h += '<h3 style="margin-top:6px">'+esc(m.name)+'</h3><div class="tag">'+esc(m.blurb)+'</div>';
+  h += '<div class="kv">Legacy ID '+esc(m.legacy_id)+' · generator '+esc(m.generator_version)+' · spec hash <span class="hist">sha256:'+esc(m.spec_hash.slice(0,16))+'…</span></div>';
+  if (seed != null) h += '<div class="kv">🎲 Random seed <b>'+esc(String(seed))+'</b> — shareable: anyone opening seed '+esc(String(seed))+' gets this exact model.</div>';
+  h += '<div class="sec"><h3>COMPONENT SET</h3>'+kvRows(m.component_set)+'</div>';
+  h += PCUI.archVocabHTML(m.architecture);
+  h += PCUI.techSpecsHTML(m.tech_specs);
+  h += PCUI.validityHTML(m.validity);
+  h += PCUI.assumptionsHTML(m.assumptions);
+  h += PCUI.buildabilityHTML(m.buildability);
+  h += '<div class="sec"><h3>WORKING MODEL — SAMPLE IT HERE</h3><div class="kv hist">'+esc(m.simulator_note)+'</div><div id="psim"></div></div>';
+  h += PCUI.contractHTML(simKey);
+  h += PCUI.governanceHTML(m.governance);
+  h += PCUI.xrefsHTML(m.xrefs);
+  h += '<div class="sec"><h3>DOWNLOADS <span class="hist">— VERSIONED, HASHED</span></h3>' +
+    '<button onclick="dl(window._rec.system_id+\'.system.json\',JSON.stringify(window._rec,null,2))">⤓ SYSTEM.JSON</button> ' +
+    '<button onclick="dl(window._rec.system_id+\'.txt\',window._phead+\'MODEL #\'+window._rec.model_number+\' — \'+window._rec.name+\'\\n\'+window._rec.blurb+\'\\n\')">⤓ SPEC SHEET .TXT</button> ' +
+    '<button onclick="copyTxt(location.origin+location.pathname+\'?model='+n+(seed!=null?'&seed='+seed:'')+'\',this)">⧉ COPY LINK</button></div>';
+  h += PCUI.aiContractHTML();
+  h += '</div>';
+  window._phead = PCID.downloadHeader(meta)+"\n";
+  document.getElementById("possible").innerHTML = h;
+  sim.render(document.getElementById("psim"), {name:m.name, demo:simKey});
+  try{history.replaceState(null,"","?model="+n+(seed!=null?"&seed="+seed:""))}catch(e){}
+  document.getElementById("possible").scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+function openRandom(){
+  const seed = Math.floor(Math.random()*1000000000);
+  const n = PCID.seedToModelNumber(seed);
+  document.getElementById("pnum").value = n;
+  openPossible(n, seed);
+}
+function renderScope(){
+  const S = PCID.SCOPE_DEFINITION;
+  document.getElementById("scopebox").innerHTML =
+    '<h2>'+esc(S.title)+'</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">' +
+    '<div><p class="kv"><b style="color:#8affc1">IN SCOPE</b></p><ul style="font-size:13px;color:#d7e9f7;margin:4px 0;padding-left:18px">' +
+    S.includes.map(i=>'<li>'+esc(i)+'</li>').join("") + '</ul></div>' +
+    '<div><p class="kv"><b style="color:#ff8a8a">OUT OF SCOPE</b></p><ul style="font-size:13px;color:#d7e9f7;margin:4px 0;padding-left:18px">' +
+    S.excludes.map(i=>'<li>'+esc(i)+'</li>').join("") + '</ul></div></div>' +
+    '<p class="kv hist">'+esc(S.note)+'</p>';
+}
+function renderCounters(){
+  const c = PCUI.splitCounts(SYSTEMS, DRIP_N);
+  document.getElementById("count_rec").textContent = c.RECORDED_SYSTEMS.toLocaleString();
+  document.getElementById("count_sig").textContent = c.SIGNATURE_SYSTEMS.toLocaleString();
+  document.getElementById("count_gen").textContent = c.GENERATABLE_SPACE.toLocaleString();
+}
+function loadDripChunks(){
+  // probe chunk-0000, chunk-0001, ... until 404 (drip appends over time; never hardcode)
+  let i = 0;
+  function next(){
+    if (i > 400) return done();
+    const name = "data/drip/chunk-"+String(i).padStart(4,"0")+".jsonl";
+    fetch(name).then(r => {
+      if (!r.ok) return done();
+      return r.text().then(t => {
+        t.split("\n").forEach(line => {
+          line = line.trim(); if(!line) return;
+          try { DRIP.push(PCUI.enrichDrip(JSON.parse(line))); } catch(e){}
+        });
+        i++; next();
+      });
+    }).catch(done);
+  }
+  function done(){
+    DRIP_N = DRIP.length; renderCounters(); renderPills(); renderGrid();
+  }
+  next();
+}
+function boot(){
+  const q = document.getElementById("q");
+  q.addEventListener("input", () => { fQ = q.value.trim(); fPage = 1; renderGrid(); });
+  renderScope();
+  Promise.all([
+    fetch("data/systems.json").then(r=>r.json()),
+    fetch("data/count.json").then(r=>r.json()).catch(()=>({seed:0,generated:0}))
+  ]).then(([s,c]) => {
+    SYSTEMS = s.map((r,i) => PCUI.enrichSeed(r,i));
+    COUNT = c; DRIP_N = c.generated||0;
+    renderCounters(); renderPills(); renderAZ(); renderGrid();
+    loadDripChunks();
+    const qs = location.search;
+    let m = /[?&]system=([^&]+)/.exec(qs);
+    if (m){ openSystem(decodeURIComponent(m[1])); return; }
+    m = /[?&]seed=(\d+)/.exec(qs);
+    if (m){ const seed = parseInt(m[1],10); const n = PCID.seedToModelNumber(seed);
+      document.getElementById("pnum").value = n; openPossible(n, seed); return; }
+    m = /[?&]model=(\d+)/.exec(qs);
+    if (m){ const n = Math.min(1000000, Math.max(1, parseInt(m[1],10)));
+      document.getElementById("pnum").value = n; openPossible(n); }
+  }).catch(e => { document.getElementById("grid").innerHTML = '<div class="kv">Unable to load the archive. <button onclick="location.reload()">RETRY</button></div>'; });
+}
 boot();
+
 </script>
 </body>
 </html>

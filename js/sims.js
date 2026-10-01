@@ -658,5 +658,67 @@ window.SIMS = (function () {
     return String(n).replace(/[\r\n]+/g, ' ');
   }
 
-  return { abacus: abacus, gates: gates, cpu4: cpu4, stored: stored, quantum: quantum, material: material };
+  /* ================= SIMULATOR EXECUTION CONTRACTS =================
+     Every simulator ships a machine-readable contract: what it is, what it
+     takes, what it returns, what it cannot do, and its safety envelope.
+     Simulation classes: VISUAL_SIMULATION / FUNCTIONAL_EMULATION /
+     ARCHITECTURAL_SIMULATION / CYCLE_ACCURATE_EMULATION. */
+  var CONTRACTS = {
+    abacus: {
+      SIMULATOR_STATUS: 'WORKING', SIMULATOR_VERSION: 'SIM/1.0',
+      SIMULATION_CLASS: 'VISUAL_SIMULATION',
+      INPUT_FORMAT: 'clicks on beads (add/subtract per row)',
+      OUTPUT_FORMAT: 'running total, decimal + hexadecimal readout',
+      SUPPORTED_OPERATIONS: ['bead arithmetic (add, subtract)', 'place-value readout', 'running total ledger'],
+      KNOWN_LIMITATIONS: ['Manual bead model only — does not model historical abacus variants exactly', 'no multiplication/division automation'],
+      SAFETY: 'SIMULATION_ONLY — browser UI, no host execution, no network, no file access'
+    },
+    gates: {
+      SIMULATOR_STATUS: 'WORKING', SIMULATOR_VERSION: 'SIM/1.0',
+      SIMULATION_CLASS: 'FUNCTIONAL_EMULATION',
+      INPUT_FORMAT: 'binary switch inputs (0/1)',
+      OUTPUT_FORMAT: 'gate outputs per truth table; half/full adder sum and carry',
+      SUPPORTED_OPERATIONS: ['AND/OR/NOT/XOR truth tables', 'half adder', 'full adder'],
+      KNOWN_LIMITATIONS: ['Ideal logic only — no propagation delay, no electrical characteristics'],
+      SAFETY: 'SIMULATION_ONLY — browser UI, no host execution, no network, no file access'
+    },
+    cpu4: {
+      SIMULATOR_STATUS: 'WORKING', SIMULATOR_VERSION: 'SIM/1.0',
+      SIMULATION_CLASS: 'ARCHITECTURAL_SIMULATION',
+      INPUT_FORMAT: '4-bit assembly-like program (mnemonic per line)',
+      OUTPUT_FORMAT: 'register dump, program counter, step trace',
+      SUPPORTED_OPERATIONS: ['fetch-decode-execute cycle', '4-bit ALU ops', 'register file', 'step/run'],
+      KNOWN_LIMITATIONS: ['Instruction set is illustrative, not a real ISA', 'not cycle-accurate to any historical CPU'],
+      SAFETY: 'SIMULATION_ONLY — interpreted in-page, no host execution, no network, no file access'
+    },
+    stored: {
+      SIMULATOR_STATUS: 'WORKING', SIMULATOR_VERSION: 'SIM/1.0',
+      SIMULATION_CLASS: 'ARCHITECTURAL_SIMULATION',
+      INPUT_FORMAT: 'stored-program listing (data + instructions in one memory)',
+      OUTPUT_FORMAT: 'memory dump, accumulator, execution trace',
+      SUPPORTED_OPERATIONS: ['von Neumann stored-program execution', 'load/store', 'arithmetic', 'branch'],
+      KNOWN_LIMITATIONS: ['Teaching model — simplified memory model, not cycle-accurate'],
+      SAFETY: 'SIMULATION_ONLY — interpreted in-page, no host execution, no network, no file access'
+    },
+    quantum: {
+      SIMULATOR_STATUS: 'WORKING', SIMULATOR_VERSION: 'SIM/1.0',
+      SIMULATION_CLASS: 'FUNCTIONAL_EMULATION',
+      INPUT_FORMAT: 'quantum circuit (gates per qubit line)',
+      OUTPUT_FORMAT: 'measurement samples with probabilities',
+      SUPPORTED_OPERATIONS: ['single-qubit gates', 'entangling gates', 'measurement sampling'],
+      KNOWN_LIMITATIONS: ['Classical state-vector math — exponential cost, few qubits only', 'not cycle-accurate; decoherence and noise not modeled unless stated'],
+      SAFETY: 'SIMULATION_ONLY — browser math, no host execution, no network, no file access'
+    },
+    material: {
+      SIMULATOR_STATUS: 'WORKING', SIMULATOR_VERSION: 'SIM/1.0',
+      SIMULATION_CLASS: 'VISUAL_SIMULATION',
+      INPUT_FORMAT: 'material selection + temperature slider',
+      OUTPUT_FORMAT: 'conductivity curve and band-gap readout',
+      SUPPORTED_OPERATIONS: ['material property curves', 'temperature sweep', 'substrate comparison'],
+      KNOWN_LIMITATIONS: ['Illustrative curves from textbook models — not measured device data'],
+      SAFETY: 'SIMULATION_ONLY — browser UI, no host execution, no network, no file access'
+    }
+  };
+
+  return { abacus: abacus, gates: gates, cpu4: cpu4, stored: stored, quantum: quantum, material: material, CONTRACTS: CONTRACTS };
 })();

@@ -48,6 +48,13 @@ window.PCMODELS = (function () {
   var CATS = ['Historic Machines', 'Modern Systems', 'Quantum Systems', 'Materials & Substrates',
               'Mixes', 'Predicted Models', 'Signature-Developed Models'];
 
+  /* simulator class per architecture (representative: illustrates the architecture class) */
+  var SIM_FOR_ARCH = {
+    'von Neumann': 'cpu4', 'Harvard': 'stored', 'Dataflow': 'gates',
+    'Neuromorphic': 'cpu4', 'Quantum-Classical Hybrid': 'quantum',
+    'Systolic Array': 'gates', 'Photonic': 'material', 'Analog Memristor': 'material'
+  };
+
   function catFor(arch, era) {
     if (arch === 'Quantum-Classical Hybrid') return 'Quantum Systems';
     if (arch === 'Photonic' || arch === 'Analog Memristor') return 'Materials & Substrates';
@@ -70,7 +77,33 @@ window.PCMODELS = (function () {
     var blurb = 'A ' + era + ' ' + form.toLowerCase() + ' concept pairing a ' + arch.toLowerCase() +
       ' architecture with a ' + mat.toLowerCase() + ' substrate: ' + alu +
       '-bit ALU, ' + reg + ' registers, ' + core + ' core' + (core === 1 ? '' : 's') + '.';
-    return { id: 'pcm-' + pad(i + 1, 6), name: name, cat: cat, blurb: blurb };
+    var n = i + 1;
+    var ID = window.PCIDENT;
+    var validity = ID.validateCombination(arch, mat, form, era);
+    var specRng = ID.mulberry32(i * 40503 + 17);
+    var core2 = {
+      system_id: ID.onDemandId(n),
+      id_scheme: ID.ID_SCHEME,
+      system_type: 'GENERATED',
+      source_class: 'GENERATED MODEL',
+      generator_version: ID.GEN_RULE_VERSION,
+      record_schema: ID.RECORD_SCHEMA,
+      model_number: n,
+      legacy_id: 'pcm-' + pad(n, 6),
+      name: name, blurb: blurb, category: cat,
+      component_set: { ARCHITECTURE: arch, MATERIAL: mat, ALU_WIDTH_BIT: alu, REGISTERS: reg, CORES: core, ERA: era, FORM_FACTOR: form },
+      architecture: ID.archVocab(arch, alu),
+      tech_specs: ID.techSpecs(specRng, { alu: alu, reg: reg, core: core, form: form, era: era, mat: mat }),
+      validity: validity,
+      assumptions: ID.assumptionsFor({ mat: mat, era: era }, validity),
+      buildability: ID.buildabilityFor('GENERATED'),
+      simulator_key: SIM_FOR_ARCH[arch] || 'gates',
+      simulator_note: 'Representative simulator — illustrates the ' + arch + ' architecture class, not this exact model.'
+    };
+    core2.spec_hash = ID.specHash(core2);
+    core2.governance = ID.governanceChain(core2.system_id, 'GENERATED', core2.spec_hash);
+    core2.xrefs = ID.xrefs(core2.system_id, core2.legacy_id, []);
+    return core2;
   }
 
   function countByCat() {
