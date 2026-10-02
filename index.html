@@ -15,6 +15,7 @@ a{color:var(--blue)}
 .jahnet a{color:#bfe6ff;text-decoration:none;padding:3px 6px;border-radius:4px;white-space:nowrap}
 .jahnet a:hover{background:#10243d}
 .jahnet a.cur{background:#0e2c4d;color:#fff;box-shadow:0 0 8px #0af6}
+.jahnet span.youarehere{color:#8fb8d8;letter-spacing:2px;font-size:11px;margin-left:auto;border:1px solid var(--line);border-radius:4px;padding:3px 8px}
 .wrap{max-width:1060px;margin:0 auto;padding:18px 14px 60px}
 .hero{border:1px solid var(--line);border-radius:10px;background:linear-gradient(180deg,#0d1830,#080e1a);padding:26px 22px;margin:16px 0;position:relative;overflow:hidden}
 .hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 34px,rgba(53,208,255,.05) 34px 35px);pointer-events:none}
@@ -56,7 +57,7 @@ footer{margin-top:30px;border-top:1px solid var(--line);padding:16px 4px;color:v
 </style>
 </head>
 <body>
-<div class="jahnet"><span>THE JAH NETWORK</span><a href="https://justinahiggins614-cmyk.github.io/cyber-patent-catalog/">Globally Rejustered Patent Catalog</a><a href="https://justinahiggins614-cmyk.github.io/signature-one-archive/specs.html">Signature Spec Catalog Pending Patents</a><a href="https://justinahiggins614-cmyk.github.io/jah-dictionary/">The Signature Dictionary</a><a href="https://justinahiggins614-cmyk.github.io/jah-wiki/">JAH Wiki</a><a href="https://justinahiggins614-cmyk.github.io/jah-n-wiki-leaks/">JAH-N Wiki</a><a href="https://justinahiggins614-cmyk.github.io/jah-calculator/">Signature Universal Paradox Immune Calculator</a><a href="https://justinahiggins614-cmyk.github.io/jah-ai-models/">The Signature AI Telephone Book</a><a href="https://justinahiggins614-cmyk.github.io/signature-llama/">Signature Llama</a><a class="cur" href="https://justinahiggins614-cmyk.github.io/jah-computer-systems/">The Signature PC System Depository</a></div>
+<div class="jahnet"><span>THE JAH NETWORK</span><a href="https://justinahiggins614-cmyk.github.io/jah-ai-models/">The Signature AI Telephone Book</a><a href="https://justinahiggins614-cmyk.github.io/jah-calculator/">Signature Universal Paradox Immune Calculator</a><a href="https://justinahiggins614-cmyk.github.io/jah-dictionary/">The Signature Dictionary</a><a href="https://justinahiggins614-cmyk.github.io/jah-wiki/">JAH Wiki</a><a href="https://justinahiggins614-cmyk.github.io/jah-n-wiki-leaks/">JAH-N Wiki</a><a href="https://justinahiggins614-cmyk.github.io/cyber-patent-catalog/">Globally Rejustered Patent Catalog</a><a href="https://justinahiggins614-cmyk.github.io/signature-one-archive/specs.html">Signature Spec Catalog Pending Patents</a><a href="https://justinahiggins614-cmyk.github.io/signature-llama/">Signature Llama</a><a class="cur" href="https://justinahiggins614-cmyk.github.io/jah-computer-systems/">The Signature PC System Depository</a><span class="youarehere">YOU ARE HERE: THE SIGNATURE PC SYSTEM DEPOSITORY</span></div>
 <div class="wrap">
 <div class="hero">
 <h1>THE <span class="pc">SIGNATURE PC SYSTEM</span> DEPOSITORY</h1>
@@ -64,12 +65,13 @@ footer{margin-top:30px;border-top:1px solid var(--line);padding:16px 4px;color:v
 <div class="counter"><small>RECORDED SYSTEMS ON FILE</small><span id="count_rec">…</span></div>
 <div class="counter"><small>SIGNATURE SYSTEMS</small><span id="count_sig">…</span></div>
 <div class="counter"><small>GENERATABLE SPACE</small><span id="count_gen">1,000,000</span></div>
+<div class="kv hist" id="lastupd" style="margin-top:8px;max-width:70ch">LAST UPDATED · loading…</div>
 <p class="kv" style="margin-top:10px;max-width:70ch">The 1,000,000 figure is the <b>generatable model space</b> — computed on demand from components × architectures × materials × scales. Nothing stored, nothing slow. It is not a count of completed historical records. Recorded systems and Signature systems are counted separately above.</p>
 </div>
 <div class="hud" id="scopebox"></div>
 <div class="hud" id="grandlist">
 <h2>GRAND LIST</h2>
-<input type="text" id="q" placeholder="Search every system… (try &quot;quantum&quot;, &quot;ENIAC&quot;, &quot;graphene&quot;)">
+<input type="text" id="q" aria-label="Search every system by name, tag, description, or ID" placeholder="Search every system… (try &quot;quantum&quot;, &quot;ENIAC&quot;, &quot;graphene&quot;)">
 <div class="pills" id="pills"></div>
 <div class="az" id="az"></div>
 <div class="grid" id="grid"></div>
@@ -79,7 +81,7 @@ footer{margin-top:30px;border-top:1px solid var(--line);padding:16px 4px;color:v
 <h2>EVERY POSSIBLE MODEL</h2>
 <p class="kv">The depository charts <b>1,000,000 possible models</b> — computed on demand from components × architectures × materials × scales. Nothing stored, nothing slow. Every model carries a permanent canonical ID (<b>JAH-PC-########</b>): opening the same number always yields the identical record. Dial any number:</p>
 <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-<input type="number" id="pnum" min="1" max="1000000" value="1" style="max-width:180px">
+<input type="number" id="pnum" min="1" max="1000000" value="1" aria-label="Possible model number, 1 to 1,000,000" style="max-width:180px">
 <button onclick="openPossible()">OPEN MODEL</button>
 <button onclick="openRandom()">RANDOM MODEL</button>
 </div>
@@ -192,7 +194,8 @@ function renderGrid(){
   if (!pg.total){ g.innerHTML = PCUI.zeroResultHTML(fQ || fCat); return; }
   g.innerHTML = pg.items.map(r => {
     const nm = (r.sig && r.sig.name) || r.name;
-    return '<div class="card" onclick="openSystem(\''+esc(r._system_id)+'\')"><div class="cat">'+typeDot(r._system_type)+esc(r._type_label)+'</div><h3>'+esc(nm)+'</h3><div class="tag">'+esc(r.tag||"")+'</div><div class="kv hist">'+esc(r._system_id)+'</div></div>';
+    const sid = esc(r._system_id);
+    return '<div class="card" role="button" tabindex="0" aria-label="Open ' + esc(nm) + '" onclick="openSystem(\''+sid+'\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();openSystem(\''+sid+'\')}"><div class="cat">'+typeDot(r._system_type)+esc(r._type_label)+'</div><h3>'+esc(nm)+'</h3><div class="tag">'+esc(r.tag||"")+'</div><div class="kv hist">'+sid+'</div></div>';
   }).join("") + '<div style="grid-column:1/-1;display:flex;gap:8px;align-items:center;justify-content:center;margin-top:6px;flex-wrap:wrap">' +
     (pg.page>1?'<button onclick="fPage--;renderGrid()">← PREV</button>':"") +
     '<span class="kv">PAGE '+pg.page+' / '+pg.pages+' · '+pg.total.toLocaleString()+' SYSTEMS</span>' +
@@ -240,6 +243,11 @@ function openSystem(id){
   // Signature version (prominent, as before)
   if (r.sig && r._system_type !== "SIGNATURE_ORIGINAL"){
     h += '<div style="margin-top:6px">'+PCUI.badgeHTML("SIGNATURE_ORIGINAL")+'</div>';
+  }
+  // Category labels: derived from the record's own name/tag/description text (see PCUI.tagsFor) — labels, not restrictions.
+  if (r._tags && r._tags.length){
+    h += '<div class="kv" style="margin-top:4px">CATEGORIES · ' + r._tags.map(function(t){return esc(t)}).join(' · ') +
+      ' <span class="hist">(derived from this record\u2019s own text)</span></div>';
   }
   h += '<h2 style="font-size:24px;margin:4px 0 8px;color:#fff">'+esc(s.name)+'</h2><p>'+esc(s.blurb||"")+'</p>';
   h += '<div style="margin:8px 0"><button id="rdbtn" onclick="rdToggle()">🔊 Read entry</button> <button onclick="rdStop()">⏹ Stop</button> <select onchange="RD.speed=parseFloat(this.value)" title="Reading speed"><option value="0.8">0.8×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></div>';
@@ -340,6 +348,15 @@ function renderCounters(){
   document.getElementById("count_sig").textContent = c.SIGNATURE_SYSTEMS.toLocaleString();
   document.getElementById("count_gen").textContent = c.GENERATABLE_SPACE.toLocaleString();
 }
+function renderLastUpdated(){
+  // "Last updated" stamp is written by code/drip/append_models.py on every drip run;
+  // kept visually separate from the system counters by design (TIER 2-6).
+  fetch("data/last-updated.json").then(r=>{if(!r.ok)throw 0;return r.json()}).then(u=>{
+    var t = "LAST UPDATED · " + (u.updated || "—");
+    if (u.recorded) t += " · " + Number(u.recorded).toLocaleString() + " recorded systems on file at that stamp";
+    document.getElementById("lastupd").textContent = t;
+  }).catch(()=>{document.getElementById("lastupd").textContent = "LAST UPDATED · —";});
+}
 function loadDripChunks(){
   // probe chunk-0000, chunk-0001, ... until 404 (drip appends over time; never hardcode)
   let i = 0;
@@ -374,7 +391,7 @@ function boot(){
   ]).then(([s,c]) => {
     SYSTEMS = s.map((r,i) => PCUI.enrichSeed(r,i));
     COUNT = c; DRIP_N = c.generated||0;
-    renderCounters(); renderPills(); renderAZ(); renderGrid();
+    renderCounters(); renderLastUpdated(); renderPills(); renderAZ(); renderGrid();
     loadDripChunks();
     const qs = location.search;
     let m = /[?&]system=([^&]+)/.exec(qs);

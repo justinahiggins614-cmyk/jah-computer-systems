@@ -7,14 +7,23 @@ window.PCUI = (function () {
   var esc = ID.esc;
 
   /* ---------- filter taxonomy ---------- */
-  var FILTERS = ['ALL', 'HISTORICAL', 'PC', 'MAINFRAME', 'SUPERCOMPUTER', 'MOBILE',
-                 'QUANTUM', 'ANALOG', 'MECHANICAL', 'SIGNATURE', 'PREDICTED', 'GENERATED'];
+  // Category labels are derived from each record's own name/tag/description text —
+  // never assigned by hand, never invented specs. "PC" stays the broad personal-computing tag.
+  var FILTERS = ['ALL', 'HISTORICAL', 'MAINFRAME', 'DESKTOP', 'LAPTOP', 'WORKSTATION',
+                 'SERVER', 'SUPERCOMPUTER', 'MOBILE', 'EMBEDDED', 'PC', 'QUANTUM',
+                 'ANALOG', 'MECHANICAL', 'EXPERIMENTAL', 'SIGNATURE', 'PREDICTED', 'GENERATED'];
   function tagsFor(rec) {
     var t = [];
     var s = ((rec.name || '') + ' ' + (rec.tag || '') + ' ' + (rec.desc || '')).toLowerCase();
     function has(re) { return re.test(s); }
     if (has(/mainframe/)) t.push('MAINFRAME');
     if (has(/supercomputer|exascale|\bcluster\b/)) t.push('SUPERCOMPUTER');
+    if (has(/workstation/)) t.push('WORKSTATION');
+    if (has(/\bserver\b/)) t.push('SERVER');
+    if (has(/embedded|microcontroller/)) t.push('EMBEDDED');
+    if (has(/experimental|prototype/)) t.push('EXPERIMENTAL');
+    if (has(/laptop|notebook/)) t.push('LAPTOP');
+    if (has(/desktop/)) t.push('DESKTOP');
     if (rec.cat === 'quantum' || has(/quantum/)) t.push('QUANTUM');
     if (has(/analog/)) t.push('ANALOG');
     if (has(/mechanical|geared|\bbead\b|abacus|pascaline|difference engine/)) t.push('MECHANICAL');

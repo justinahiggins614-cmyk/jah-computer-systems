@@ -58,4 +58,14 @@ with open(chunk_path, "w") as f:
 
 count["generated"] = start + BATCH
 json.dump(count, open(count_path, "w"))
+
+# last-updated stamp (read by the page header, visually separate from the counters)
+stamp = {
+    "updated": __import__("datetime").date.today().isoformat(),
+    "recorded": count["seed"] + count["generated"],
+    "seed": count["seed"],
+    "generated": count["generated"],
+    "source": "PC depository drip (code/drip/append_models.py)",
+}
+json.dump(stamp, open(os.path.join(DATA, "last-updated.json"), "w"), indent=1)
 print(f"DRIP: +{BATCH} generated, seed={count['seed']}, generated={count['generated']}")
