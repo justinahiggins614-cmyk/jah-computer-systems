@@ -10,7 +10,7 @@ import urllib.request
 
 BASE = "https://justinahiggins614-cmyk.github.io/jah-computer-systems/"
 NAV = [
-    ("1 Telephone Book", "https://justinahiggins614-cmyk.github.io/jah-ai-models/"),
+    ("1 The Signature AI Phone Book", "https://justinahiggins614-cmyk.github.io/jah-ai-models/"),
     ("2 Calculator", "https://justinahiggins614-cmyk.github.io/jah-calculator/"),
     ("3 Dictionary", "https://justinahiggins614-cmyk.github.io/jah-dictionary/"),
     ("4 JAH Wiki", "https://justinahiggins614-cmyk.github.io/jah-wiki/"),
@@ -19,6 +19,22 @@ NAV = [
     ("7 Spec Catalog", "https://justinahiggins614-cmyk.github.io/signature-one-archive/specs.html"),
     ("8 Signature Llama", "https://justinahiggins614-cmyk.github.io/signature-llama/"),
     ("9 PC Depository (self)", BASE),
+    ("10 Cyber Mega-Mall", "https://justinahiggins614-cmyk.github.io/signature-cyber-mega-mall/"),
+    ("11 Signature University", "https://justinahiggins614-cmyk.github.io/signature-university/"),
+    ("12 Book Depository", "https://justinahiggins614-cmyk.github.io/signature-books/"),
+    ("13 Comic Store", "https://justinahiggins614-cmyk.github.io/signature-comics/"),
+    ("14 Global Newspaper Archive", "https://justinahiggins614-cmyk.github.io/signature-newspapers/"),
+    ("15 3D Print Depository", "https://justinahiggins614-cmyk.github.io/signature-3d-print/"),
+    ("16 Signature Backend", "https://justinahiggins614-cmyk.github.io/signature-backend/"),
+    ("17 Boundless Generator Archive", "https://justinahiggins614-cmyk.github.io/signature-boundless-generators/"),
+    ("18 AI Mix Lab", "https://justinahiggins614-cmyk.github.io/signature-ai-mixlab/"),
+    ("19 AI Olypics", "https://justinahiggins614-cmyk.github.io/signature-ai-olypics/"),
+    ("20 Chip Maker and Archive", "https://justinahiggins614-cmyk.github.io/signature-chip-maker/"),
+    ("21 App Archive", "https://justinahiggins614-cmyk.github.io/signature-app-archive/"),
+    ("22 AI Robot Matcher", "https://justinahiggins614-cmyk.github.io/signature-ai-robot-matcher/"),
+    ("23 Experiment Solver", "https://justinahiggins614-cmyk.github.io/signature-experiment-solver/"),
+    ("24 Signature AI Pixel", "https://justinahiggins614-cmyk.github.io/signature-ai-image-video-maker/"),
+    ("25 Video Maker AI", "https://justinahiggins614-cmyk.github.io/signature-ai-video-maker/"),
 ]
 OWN = [
     ("sitemap index", BASE + "sitemap.xml"),
