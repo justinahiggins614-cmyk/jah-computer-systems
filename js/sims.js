@@ -567,12 +567,15 @@ window.SIMS = (function () {
         { name: 'Silicon Carbide (SiC)', eg: 3.26, mu: 900, debye: 1200, note: 'Power-electronics vault-grade.' }
       ];
       var sel = document.createElement('select');
+      sel.setAttribute('aria-label', 'Substrate material');
       sel.style.cssText = 'background:#0e1522;color:#7dd3fc;border:1px solid #38bdf8;border-radius:6px;' +
         'padding:6px;font-family:inherit;font-size:13px;margin:6px 0;';
       MATS.forEach(function (m, i) { var o = document.createElement('option'); o.value = i; o.textContent = m.name; sel.appendChild(o); });
       var info = document.createElement('div');
       info.style.cssText = 'font-size:13px;line-height:1.9;margin:8px 0;';
       var cv = document.createElement('canvas');
+      cv.setAttribute('role', 'img');
+      cv.setAttribute('aria-label', 'Conductivity vs temperature curve for the selected substrate material');
       cv.width = 560; cv.height = 220;
       cv.style.cssText = 'width:100%;max-width:560px;border:1px solid #1e90ff;border-radius:6px;background:#05080d;margin-top:8px;';
       function sigma(T, m) { // simple model: sigma ~ mu * exp(-Eg / 2kT), normalized

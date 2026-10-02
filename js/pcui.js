@@ -287,9 +287,13 @@ window.PCUI = (function () {
     var ld = {
       '@context': 'https://schema.org', '@type': 'Product',
       'name': rec.name, 'identifier': rec._system_id,
+      'url': 'https://justinahiggins614-cmyk.github.io/jah-computer-systems/?system=' + rec._system_id,
+      'description': ((rec.tag ? rec.tag + '. ' : '') + (rec.desc || '')).slice(0, 300),
       'additionalProperty': [
         { 'name': 'system_type', 'value': rec._system_type },
+        { 'name': 'type_label', 'value': rec._type_label },
         { 'name': 'spec_hash', 'value': 'sha256:' + rec._spec_hash },
+        { 'name': 'generator_version', 'value': rec._generator_version || ID.DRIP_RULE_VERSION },
         { 'name': 'governance', 'value': 'JAH-SIGNATURE (own authority — not government, not USPTO)' }
       ]
     };

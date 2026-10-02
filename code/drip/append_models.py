@@ -69,3 +69,54 @@ stamp = {
 }
 json.dump(stamp, open(os.path.join(DATA, "last-updated.json"), "w"), indent=1)
 print(f"DRIP: +{BATCH} generated, seed={count['seed']}, generated={count['generated']}")
+
+# --- static crawlable counts: refresh the <!-- STATIC-COUNTS-... --> block in
+# index.html so curl/raw-HTML readers see current numbers (with as-of date and
+# the recorded/Signature/generated/simulated distinctions). Additive only.
+try:
+    from collections import Counter
+    seeds = json.load(open(os.path.join(DATA, "systems.json")))
+    kinds = Counter(r.get("kind") for r in seeds)
+    kind_line = (f"{kinds.get('historical', 0)} historical records, "
+                 f"{kinds.get('signature', 0)} Signature-original designs, "
+                 f"{kinds.get('predicted', 0)} predicted concepts")
+    sig_n = sum(1 for r in seeds if r.get("sig")) + count["generated"]
+    rec_n = count["seed"] + count["generated"]
+    html_path = os.path.join(ROOT, "index.html")
+    html = open(html_path).read()
+    block = (
+        '<div class="hud" id="crawl-counts">\n'
+        '<h2>THE COUNT — ON FILE VS. GENERATABLE</h2>\n'
+        f'<p class="kv">Completed systems on file: <b>{rec_n:,}</b> '
+        f'<span class="hist">(as of {stamp["updated"]})</span></p>\n'
+        '<ul style="font-size:13px;color:#d7e9f7;margin:4px 0;padding-left:18px">\n'
+        f'<li><b>RECORDED</b> — {len(seeds)} seed records: {kind_line}.</li>\n'
+        f'<li><b>SIGNATURE</b> — {sig_n:,} Signature systems on file: every record carries a Signature-made version.</li>\n'
+        f'<li><b>GENERATED</b> — {count["generated"]:,} deterministically generated models (drip chunks), each reproducible from its seed.</li>\n'
+        '<li><b>SIMULATED</b> — every system on file ships a working in-browser simulator; sample any file right here.</li>\n'
+        '</ul>\n'
+        '<p class="kv">Generatable model space: <b>1,000,000</b> possible models '
+        '(<span class="hist">JAH-PC-00000001</span> through <span class="hist">JAH-PC-01000000</span>) '
+        '— computed on demand from components × architectures × materials × scales. Nothing stored, nothing slow.</p>\n'
+        '<p class="kv hist">Static snapshot for crawlers; live counters above update in your browser. Refreshed by the depository drip every 2 hours.</p>\n'
+        '</div>'
+    )
+    start_m, end_m = "<!-- STATIC-COUNTS-START -->", "<!-- STATIC-COUNTS-END -->"
+    if start_m in html and end_m in html:
+        pre = html.split(start_m)[0] + start_m + "\n"
+        post = "\n" + end_m + html.split(end_m)[1]
+        open(html_path, "w").write(pre + block + post)
+        print(f"STATIC-COUNTS: index.html refreshed (recorded={rec_n}, as of {stamp['updated']})")
+    else:
+        print("STATIC-COUNTS: markers not found in index.html — skipped")
+except Exception as e:  # noqa: BLE001 - drip must never die on the static block
+    print(f"STATIC-COUNTS: skipped ({e})")
+
+# --- sitemap: regenerate so new generated models appear as crawlable URLs
+try:
+    import subprocess
+    subprocess.run([sys.executable, os.path.join(ROOT, "code", "gen_sitemap.py")],
+                   check=True, capture_output=True, text=True)
+    print("SITEMAP: regenerated")
+except Exception as e:  # noqa: BLE001
+    print(f"SITEMAP: skipped ({e})")
