@@ -1023,6 +1023,7 @@ footer{margin-top:30px;border-top:1px solid var(--line);padding:16px 4px;color:v
 <script src="js/gen.js"></script>
 <script src="js/sims.js"></script>
 <script src="js/pcui.js"></script>
+<script src="js/jah-talk-fallback.js"></script>
 <script>
 /* ================= SYSTEM FINDER (additive): deterministic keyword finder over the depository's own search index ================= */
 var Finder={};
@@ -1061,10 +1062,42 @@ Finder.ask=function(){
 };
 document.addEventListener("DOMContentLoaded",function(){var fq=document.getElementById("fq");if(fq)fq.addEventListener("keydown",function(e){if(e.key==="Enter")Finder.ask()})});
 /* ================= record-view helper: answers only from the open file's record ================= */
+/* JAHtalk conversational wiring (shared module: js/jah-talk-fallback.js).
+   The PC Helper is a generic site helper — it claims NO canon JAH-AI ID.
+   JAHtalk.reply() talks human as the fallback under the grounded record engine;
+   JAHtalk.guard() scrubs every final reply; JAHtalk.greet() auto-greets the box. */
+function askTalk(){return (typeof JAHtalk!=="undefined")?JAHtalk:null;}
+function askProfile(r){
+  var nm=(r&&r.sig&&r.sig.name)||(r&&r.name)||"a system file";
+  var bl=(r&&r.sig&&r.sig.blurb)||(r&&(r.desc||r.blurb))||"";
+  return {name:"PC Helper",
+    description:"I help you understand this system file — "+nm+(bl?". "+bl:" — ask me about its type, maker, description, or ID."),
+    abilities:["Explain the file's type, maker and description in plain words",
+      "Answer about its history, era, categories, spec hash and linked patent",
+      "Point you to the working in-browser simulator for the file"],
+    domain:nm+" — this file's own record",kind:"helper"};
+}
+function askIsSmallTalk(q){
+  var t=String(q||"").toLowerCase();
+  return /^(hi|hii+|hey|hello|yo|howdy|good\s?(morning|afternoon|evening|day)|greetings|sup|hiya)\b/.test(t)
+    ||/who are you|your name|introduce yourself|about yourself/.test(t)
+    ||/what are your duties|what is your duty|what do you do|what can you do|your duties|your job|your role|your abilities|your capabilities|explain your duties|what are you for/.test(t)
+    ||(/\bduties\b/.test(t)&&t.length<30)
+    ||/thank/.test(t)||/^(bye|goodbye|good ?night|see you|later|gtg)\b/.test(t)
+    ||/how are you|how's it going|how do you feel/.test(t);
+}
+function askGreet(r){
+  var JT=askTalk();
+  if(JT){try{return JT.greet(askProfile(r))}catch(e){}}
+  return "Ask about this file — its type, its maker, its description, its ID.";
+}
 function askAbout(){
   var box=document.getElementById("askans"),q=document.getElementById("askq").value.trim();
-  if(!q){box.textContent="Ask about this file — its type, its maker, its description, its ID.";return}
+  if(!q){box.textContent=askGreet(window._rec);return}
   var r=window._rec,ql=q.toLowerCase();
+  var JT=askTalk(),prof=askProfile(r);
+  if(JT&&askIsSmallTalk(q)){box.innerHTML="<b>Helper:</b> "+esc(JT.guard(JT.reply(prof,q),prof));return}
+  if(!r){box.innerHTML="<b>Helper:</b> "+esc(JT?JT.guard(JT.reply(prof,"hello"),prof):"No system file is open — open one from the Grand List, then ask away.");return}
   var s=r.sig||{name:r.name,blurb:r.desc||r.blurb||""};
   function flat(o){return JSON.stringify(o||{}).toLowerCase()}
   var A="";
@@ -1092,7 +1125,7 @@ function askAbout(){
   }else{
     A="This file's record doesn't cover that.";
   }
-  box.innerHTML="<b>Helper:</b> "+esc(A);
+  box.innerHTML="<b>Helper:</b> "+esc(JT?JT.guard(A,prof):A);
 }
 /* ================= read aloud: tiered TTS (ResponsiveVoice -> Google x2) ================= */
 var RD={audio:null,queue:[],playing:false,stopped:true,timer:null,speed:1};
@@ -1153,7 +1186,7 @@ function systemNotFound(id){
     '· recorded/Signature file: <span class="hist">?system=JAH-PC-90000001</span><br>' +
     '· possible model number: <span class="hist">?model=728194</span><br>' +
     '· shareable random seed: <span class="hist">?seed=728194</span><br><br>' +
-    '<div class="sec"><h3>ASK ABOUT THIS FILE</h3><p class="kv">A helper that answers only from this file&apos;s own record — it says plainly when the record doesn&apos;t cover something.</p><p class="kv askbox"><input id="askq" placeholder="Ask about this system&hellip;" aria-label="Ask about this system"><button onclick="askAbout()">ASK</button></p><div class="kv" id="askans"></div></div><button onclick="closeDetail()">← BACK TO GRAND LIST</button></div>';
+    '<div class="sec"><h3>ASK ABOUT THIS FILE</h3><p class="kv">A helper that answers only from this file&apos;s own record — it says plainly when the record doesn&apos;t cover something.</p><p class="kv askbox"><input id="askq" placeholder="Ask about this system&hellip;" aria-label="Ask about this system"><button onclick="askAbout()">ASK</button></p><div class="kv" id="askans">'+esc(askGreet(null))+'</div></div><button onclick="closeDetail()">← BACK TO GRAND LIST</button></div>';
   d.style.display = "block"; d.scrollIntoView({behavior:"smooth"});
 }
 function filteredList(){
