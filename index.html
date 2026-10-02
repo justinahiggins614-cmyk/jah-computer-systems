@@ -922,7 +922,7 @@ footer{margin-top:30px;border-top:1px solid var(--line);padding:16px 4px;color:v
 </script>
 </head>
 <body>
-<div class="jahnet"><span>THE JAH NETWORK</span><a href="https://justinahiggins614-cmyk.github.io/jah-ai-models/">The Signature AI Telephone Book</a><a href="https://justinahiggins614-cmyk.github.io/jah-calculator/">Signature Universal Paradox Immune Calculator</a><a href="https://justinahiggins614-cmyk.github.io/jah-dictionary/">The Signature Dictionary</a><a href="https://justinahiggins614-cmyk.github.io/jah-wiki/">JAH Wiki</a><a href="https://justinahiggins614-cmyk.github.io/jah-n-wiki-leaks/">JAH-N Wiki</a><a href="https://justinahiggins614-cmyk.github.io/cyber-patent-catalog/">Globally Rejustered Patent Catalog</a><a href="https://justinahiggins614-cmyk.github.io/signature-one-archive/specs.html">Signature Spec Catalog Pending Patents</a><a href="https://justinahiggins614-cmyk.github.io/signature-llama/">Signature Llama</a><a class="cur" href="https://justinahiggins614-cmyk.github.io/jah-computer-systems/">The Signature PC System Depository</a><a href="https://justinahiggins614-cmyk.github.io/signature-cyber-mega-mall/">Signature Cyber Mega-Mall</a><a href="https://justinahiggins614-cmyk.github.io/signature-university/">Signature University</a><a href="https://justinahiggins614-cmyk.github.io/signature-books/">The Signature Book Depository</a><span class="youarehere">YOU ARE HERE: THE SIGNATURE PC SYSTEM DEPOSITORY</span></div>
+<div class="jahnet"><span>THE JAH NETWORK</span><a href="https://justinahiggins614-cmyk.github.io/jah-ai-models/">Telephone Book</a><a href="https://justinahiggins614-cmyk.github.io/jah-calculator/">Calculator</a><a href="https://justinahiggins614-cmyk.github.io/jah-dictionary/">Dictionary</a><a href="https://justinahiggins614-cmyk.github.io/jah-wiki/">JAH Wiki</a><a href="https://justinahiggins614-cmyk.github.io/jah-n-wiki-leaks/">JAH-N Wiki</a><a href="https://justinahiggins614-cmyk.github.io/cyber-patent-catalog/">Patent Catalog</a><a href="https://justinahiggins614-cmyk.github.io/signature-one-archive/specs.html">Spec Catalog</a><a href="https://justinahiggins614-cmyk.github.io/signature-llama/">Signature Llama</a><a class="cur" href="https://justinahiggins614-cmyk.github.io/jah-computer-systems/">PC Depository</a><a href="https://justinahiggins614-cmyk.github.io/signature-cyber-mega-mall/">Mega-Mall</a><a href="https://justinahiggins614-cmyk.github.io/signature-university/">University</a><a href="https://justinahiggins614-cmyk.github.io/signature-books/">Book Depository</a><a href="https://justinahiggins614-cmyk.github.io/signature-comics/">Comic Store</a><a href="https://justinahiggins614-cmyk.github.io/signature-newspapers/">Newspaper Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-3d-print/">3D Print Depository</a><a href="https://justinahiggins614-cmyk.github.io/signature-backend/">Backend</a><a href="https://justinahiggins614-cmyk.github.io/signature-boundless-generators/">Generator Archive</a><span class="youarehere">YOU ARE HERE: THE SIGNATURE PC SYSTEM DEPOSITORY</span></div>
 <div class="wrap">
 <div class="hero">
 <h1>THE <span class="pc">SIGNATURE PC SYSTEM</span> DEPOSITORY</h1>
@@ -952,6 +952,27 @@ footer{margin-top:30px;border-top:1px solid var(--line);padding:16px 4px;color:v
 <h2>GRAND LIST</h2>
 <input type="text" id="q" aria-label="Search every system by name, tag, description, or ID" placeholder="Search every system… (try &quot;quantum&quot;, &quot;ENIAC&quot;, &quot;graphene&quot;)">
 <div class="kv hist" style="margin-top:6px">Popular: <a href="?q=quantum">quantum</a> · <a href="?q=ENIAC">ENIAC</a> · <a href="?q=graphene">graphene</a> · <a href="?q=mainframe">mainframe</a> · <a href="?q=abacus">abacus</a></div>
+<style>
+/* SYSTEM FINDER — additive, does not restyle existing components */
+.finder{margin:10px 0;border:1px solid #16324f;border-radius:12px;padding:12px 14px;background:#071428}
+.finder .fhead{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.finder .fhost{font-size:22px}
+.finder .fhead b{color:#ffd75e;letter-spacing:.06em}
+.finder .fhead span{display:block;font-size:12px;color:#8fb8d8}
+.finder .frow{display:flex;gap:8px;flex-wrap:wrap}
+.finder .frow input{flex:1;min-width:200px}
+.finder .fres{margin-top:10px}
+.finder .fcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:8px}
+.finder .fcard{border:1px solid #16324f;border-radius:8px;padding:10px;background:#0a1c30}
+.finder .fcard h4{margin:2px 0 4px;color:#fff;font-size:14px}
+.finder .fcard .go{color:#ffd75e;font-weight:700;text-decoration:none}
+.askbox input{width:100%;max-width:420px;margin-right:8px}
+</style>
+<div class="finder" id="finder">
+<div class="fhead"><span class="fhost" aria-hidden="true">🔎</span><div><b>SYSTEM FINDER</b><span>describe the machine you want in plain words — it checks the depository's own search</span></div></div>
+<div class="frow"><input id="fq" maxlength="160" placeholder="Describe what you&apos;re looking for&hellip;" aria-label="Describe the system you want to find"><button onclick="Finder.ask()">FIND</button></div>
+<div class="fres" id="fresults"></div>
+</div>
 <div class="pills" id="pills"></div>
 <div class="az" id="az"></div>
 <div class="grid" id="grid"></div>
@@ -1003,6 +1024,76 @@ footer{margin-top:30px;border-top:1px solid var(--line);padding:16px 4px;color:v
 <script src="js/sims.js"></script>
 <script src="js/pcui.js"></script>
 <script>
+/* ================= SYSTEM FINDER (additive): deterministic keyword finder over the depository's own search index ================= */
+var Finder={};
+Finder.STOP={a:1,an:1,the:1,and:1,or:1,but:1,if:1,then:1,of:1,to:1,in:1,on:1,for:1,with:1,by:1,from:1,at:1,as:1,is:1,are:1,was:1,were:1,be:1,been:1,it:1,its:1,this:1,that:1,these:1,those:1,what:1,when:1,where:1,which:1,who:1,whom:1,how:1,why:1,does:1,do:1,did:1,can:1,could:1,would:1,should:1,will:1,about:1,into:1,over:1,under:1,again:1,there:1,their:1,them:1,they:1,you:1,your:1,tell:1,me:1,please:1,find:1,looking:1,look:1,show:1,want:1,need:1,get:1,some:1,any:1,all:1,both:1,more:1,most:1,very:1,just:1,like:1,such:1,than:1,kind:1,type:1,thing:1,model:1,machine:1,system:1,systems:1,computer:1,computers:1,pc:1,one:1,that:1};
+Finder.keywords=function(q){
+  return String(q||"").toLowerCase().replace(/[^a-z0-9]+/g," ").split(" ")
+    .filter(function(w){return w.length>=3&&!Finder.STOP[w]});
+};
+/* same haystack rule as PCUI.searchList — reuses the site's own search, no second index */
+Finder.hay=function(r){
+  return (((r.sig&&r.sig.name)||r.name||"")+" "+(r.tag||"")+" "+(r.desc||"")+" "+(r._system_id||"")+" "+(r.id||"")).toLowerCase();
+};
+Finder.card=function(r,nm,sid,deep){
+  return '<div class="fcard"><div class="kv hist">'+esc(sid)+'</div><h4>'+esc(nm)+'</h4>'+
+    '<div class="tag">'+esc(r.tag||"")+'</div>'+
+    '<p class="kv"><a class="go" href="'+deep+'">Take me there &rarr;</a></p></div>';
+};
+Finder.ask=function(){
+  var box=document.getElementById("fresults");
+  var kws=Finder.keywords(document.getElementById("fq").value);
+  if(!kws.length){box.innerHTML='<p class="kv">Describe what you want — a use, an era, a material, a name — and I will match the depository&apos;s own records.</p>';return}
+  var scored=allRecords().map(function(r){
+    var hay=Finder.hay(r),sc=0;
+    kws.forEach(function(k){if(hay.indexOf(k)>=0)sc++});
+    return {r:r,sc:sc};
+  }).filter(function(x){return x.sc>0});
+  scored.sort(function(a,b){return b.sc-a.sc});
+  var top=scored.slice(0,5);
+  if(!top.length){box.innerHTML='<p class="kv"><b>Nothing matched.</b> Try fewer, simpler words — e.g. &ldquo;quantum&rdquo;, &ldquo;portable&rdquo;, &ldquo;wood&rdquo;.</p>';return}
+  box.innerHTML='<p class="kv">'+top.length+' of '+scored.length+' matches for &ldquo;'+esc(kws.join(" "))+'&rdquo;:</p>'+
+    '<div class="fcards">'+top.map(function(x){
+      var r=x.r,nm=(r.sig&&r.sig.name)||r.name;
+      var deep=location.pathname+"?system="+r._system_id;
+      return '<div class="fcard" role="button" tabindex="0" aria-label="Open '+esc(nm)+'" onclick="openSystem(\''+esc(r._system_id)+'\')" onkeydown="if(event.key===\'Enter\'){openSystem(\''+esc(r._system_id)+'\')}"><div class="kv hist">'+esc(r._system_id)+'</div><h4>'+esc(nm)+'</h4><div class="tag">'+esc(r.tag||"")+'</div><p class="kv"><a class="go" href="'+deep+'" onclick="event.stopPropagation()">Take me there &rarr;</a></p></div>';
+    }).join("")+'</div>';
+};
+document.addEventListener("DOMContentLoaded",function(){var fq=document.getElementById("fq");if(fq)fq.addEventListener("keydown",function(e){if(e.key==="Enter")Finder.ask()})});
+/* ================= record-view helper: answers only from the open file's record ================= */
+function askAbout(){
+  var box=document.getElementById("askans"),q=document.getElementById("askq").value.trim();
+  if(!q){box.textContent="Ask about this file — its type, its maker, its description, its ID.";return}
+  var r=window._rec,ql=q.toLowerCase();
+  var s=r.sig||{name:r.name,blurb:r.desc||r.blurb||""};
+  function flat(o){return JSON.stringify(o||{}).toLowerCase()}
+  var A="";
+  if(/who (made|built|created|designed|author)|maker|author/.test(ql)){
+    A=r._system_type==="SIGNATURE_ORIGINAL"
+      ?"This is a Signature-original design — made by the Signature System (label: "+r._type_label+")."
+      :"This file's type label is "+r._type_label+" ("+r._system_type+"). ";
+    A+="The record does not name a human inventor.";
+  }else if(/what (type|class|kind)|type of/.test(ql)){
+    A="Type: "+r._type_label+" ("+r._system_id+")."+(r._tags&&r._tags.length?" Categories derived from its own text: "+r._tags.join(", ")+".":"");
+  }else if(/describe|what is|about|summary|overview/.test(ql)){
+    A=(s.blurb||"No description in this record.")+((r.desc&&s.blurb!==r.desc)?" "+r.desc:"");
+  }else if(/id|identifier|number/.test(ql)){
+    A="File ID: "+r._system_id+" ("+r._type_label+")."+(r.id&&r.id!==r._system_id?" Legacy ID: "+r.id+".":"");
+  }else if(/patent/.test(ql)){
+    A=r.patent?"This file links a patent record — see the BASE RECORD section for the link.":"No linked patent — none recorded for this system in its file.";
+  }else if(/history|era|when|history/.test(ql)){
+    A=r.history||r.era||"No history or era is recorded for this file.";
+  }else if(/tag|label|categor/.test(ql)){
+    A=r._tags&&r._tags.length?r._tags.join(", "):"No categories are derived for this file.";
+  }else if(/spec hash|hash|checksum/.test(ql)){
+    A=r._spec_hash?"Spec hash: sha256:"+r._spec_hash:"No spec hash in this record.";
+  }else if(/simulate|demo|simulator|run/.test(ql)){
+    A="Every file ships a working in-browser simulator — scroll to WORKING MODEL and sample it there. It is a simulation, not the hardware.";
+  }else{
+    A="This file's record doesn't cover that.";
+  }
+  box.innerHTML="<b>Helper:</b> "+esc(A);
+}
 /* ================= read aloud: tiered TTS (ResponsiveVoice -> Google x2) ================= */
 var RD={audio:null,queue:[],playing:false,stopped:true,timer:null,speed:1};
 var RD_TIERS=[
@@ -1062,7 +1153,7 @@ function systemNotFound(id){
     '· recorded/Signature file: <span class="hist">?system=JAH-PC-90000001</span><br>' +
     '· possible model number: <span class="hist">?model=728194</span><br>' +
     '· shareable random seed: <span class="hist">?seed=728194</span><br><br>' +
-    '<button onclick="closeDetail()">← BACK TO GRAND LIST</button></div>';
+    '<div class="sec"><h3>ASK ABOUT THIS FILE</h3><p class="kv">A helper that answers only from this file&apos;s own record — it says plainly when the record doesn&apos;t cover something.</p><p class="kv askbox"><input id="askq" placeholder="Ask about this system&hellip;" aria-label="Ask about this system"><button onclick="askAbout()">ASK</button></p><div class="kv" id="askans"></div></div><button onclick="closeDetail()">← BACK TO GRAND LIST</button></div>';
   d.style.display = "block"; d.scrollIntoView({behavior:"smooth"});
 }
 function filteredList(){
