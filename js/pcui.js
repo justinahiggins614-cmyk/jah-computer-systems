@@ -174,89 +174,151 @@ window.PCUI = (function () {
       }).join('') + '</table>';
   }
 
+  /* ---------- collapsible section card (Site-9 diagnostic FIX-4): spec cards collapse on mobile ---------- */
+  function secHTML(titleHTML, body, open) {
+    return '<details class="sec"' + (open ? ' open' : '') + '>' +
+      '<summary class="sechd">' + titleHTML + '</summary><div class="secbody">' + body + '</div></details>';
+  }
+
+  /* ---------- status pills (Site-9 diagnostic FIX-4): type + validity + simulator at a glance ---------- */
+  function statusPillsHTML(r) {
+    var col = r._system_type === 'HISTORICAL' ? '#9fd8ff'
+      : r._system_type === 'SIGNATURE_ORIGINAL' ? '#ffd75e'
+      : r._system_type === 'PREDICTED' ? '#d0a6ff'
+      : r._system_type === 'GENERATED' ? '#8affc1' : '#ffb27d';
+    var h = '<div class="statline"><span class="statpill" style="border-color:' + col + ';color:' + col + '">' +
+      esc(r._type_label || r._system_type) + '</span>';
+    if (r._validity && r._validity.validity) h += '<span class="statpill">CONSTRAINT: ' + esc(r._validity.validity) + '</span>';
+    h += '<span class="statpill">SIM READY</span><span class="statpill hist">' + esc(r._system_id) + '</span></div>';
+    return h;
+  }
+
+  /* ---------- at-a-glance tabbed panel (Site-9 diagnostic FIX-4): PROCESSOR / MEMORY / RUNTIME ----------
+     Pure-CSS tabs (radio inputs) — no JS needed. Every value comes from the record's own
+     fields; anything missing is stated plainly, never invented. */
+  function glanceHTML(procObj, techObj, simKey, uid) {
+    uid = uid || 'd';
+    var proc = procObj
+      ? kvTable(Object.keys(procObj).map(function (k) { return [k, String(procObj[k])]; }))
+      : '<p class="kv">No processor detail recorded for this file.</p>';
+    var memRows = [];
+    if (techObj) {
+      ['MEMORY', 'STORAGE', 'REGISTERS', 'CLOCK', 'CORES'].forEach(function (k) {
+        if (techObj[k]) memRows.push([k, techObj[k]]);
+      });
+    }
+    var mem = memRows.length ? kvTable(memRows)
+      : '<p class="kv">No memory/storage spec recorded for this file.</p>';
+    var c = {};
+    try { c = (window.SIMS && window.SIMS.CONTRACTS && window.SIMS.CONTRACTS[simKey]) || {}; } catch (e) { c = {}; }
+    var run = kvTable([
+      ['SIMULATOR', simKey],
+      ['VERSION', c.SIMULATOR_VERSION || 'SIM/1.0'],
+      ['CLASS', c.SIMULATION_CLASS || 'n/a'],
+      ['SAFETY', c.SAFETY || 'SIMULATION_ONLY']
+    ]);
+    return '<div class="glance" role="group" aria-label="Hardware at a glance">' +
+      '<input type="radio" class="gtab gtab-p" name="glancetab-' + uid + '" id="gt-p-' + uid + '" checked><label for="gt-p-' + uid + '">PROCESSOR</label>' +
+      '<input type="radio" class="gtab gtab-m" name="glancetab-' + uid + '" id="gt-m-' + uid + '"><label for="gt-m-' + uid + '">MEMORY</label>' +
+      '<input type="radio" class="gtab gtab-r" name="glancetab-' + uid + '" id="gt-r-' + uid + '"><label for="gt-r-' + uid + '">RUNTIME</label>' +
+      '<div class="gpane gpane-p">' + proc + '</div>' +
+      '<div class="gpane gpane-m">' + mem + '</div>' +
+      '<div class="gpane gpane-r">' + run + '</div></div>';
+  }
+
   function governanceHTML(gov) {
-    var h = '<div class="sec"><h3>SIGNATURE GOVERNANCE IDENTITY</h3>';
-    h += '<p class="kv">' + esc(gov.governance_note) + '</p>';
-    h += '<div class="kv" style="margin:8px 0">' + gov.chain.map(function (c) {
+    var body = '<p class="kv">' + esc(gov.governance_note) + '</p>';
+    body += '<div class="kv" style="margin:8px 0">' + gov.chain.map(function (c) {
       return '<span style="display:inline-block;border:1px solid #1d3a5f;border-radius:4px;padding:3px 8px;margin:2px;font-size:11px;color:#8fb8d8">' +
         esc(c.step) + '</span>';
     }).join('<span style="color:#35d0ff"> → </span>') + '</div>';
-    h += kvTable(gov.chain.map(function (c) { return [c.step, c.value]; }));
-    h += '<div style="margin-top:8px">' + kvTable(Object.keys(gov.statuses).map(function (k) { return [k, gov.statuses[k]]; })) + '</div></div>';
-    return h;
+    body += kvTable(gov.chain.map(function (c) { return [c.step, c.value]; }));
+    body += '<div style="margin-top:8px">' + kvTable(Object.keys(gov.statuses).map(function (k) { return [k, gov.statuses[k]]; })) + '</div>';
+    return secHTML('SIGNATURE GOVERNANCE IDENTITY', body, false);
   }
+
 
   function provenanceHTML(p) {
     var rows = ['SOURCE_TYPE', 'SOURCE_TITLE', 'SOURCE_URL', 'SOURCE_DATE', 'RETRIEVAL_DATE',
                 'SOURCE_ID', 'CLAIM_SCOPE', 'VERIFICATION_STATE'].map(function (k) {
       return [k, p[k] == null ? '—' : String(p[k])];
     });
-    return '<div class="sec"><h3>SOURCE PROVENANCE</h3>' + kvTable(rows) +
-      '<p class="kv">' + esc(p.note || '') + '</p></div>';
+    return secHTML('SOURCE PROVENANCE', kvTable(rows) + '<p class="kv">' + esc(p.note || '') + '</p>', false);
   }
+
 
   function contractHTML(simKey) {
     var c = (window.SIMS && window.SIMS.CONTRACTS && window.SIMS.CONTRACTS[simKey]) || null;
-    if (!c) return '<div class="sec"><h3>SIMULATOR CONTRACT</h3><p class="kv">No contract attached.</p></div>';
+    if (!c) return secHTML('SIMULATOR CONTRACT', '<p class="kv">No contract attached.</p>', true);
     var rows = ['SIMULATOR_STATUS', 'SIMULATOR_VERSION', 'SIMULATION_CLASS', 'INPUT_FORMAT',
                 'OUTPUT_FORMAT', 'SAFETY'].map(function (k) { return [k, c[k]]; });
-    var h = '<div class="sec"><h3>SIMULATOR CONTRACT — ' + esc(simKey) + '</h3>' + kvTable(rows);
-    h += '<p class="kv"><b>Supported operations:</b> ' + esc(c.SUPPORTED_OPERATIONS.join('; ')) + '</p>';
-    h += '<p class="kv"><b>Known limitations:</b> ' + esc(c.KNOWN_LIMITATIONS.join('; ')) + '</p></div>';
-    return h;
+    var body = kvTable(rows);
+    body += '<p class="kv"><b>Supported operations:</b> ' + esc(c.SUPPORTED_OPERATIONS.join('; ')) + '</p>';
+    body += '<p class="kv"><b>Known limitations:</b> ' + esc(c.KNOWN_LIMITATIONS.join('; ')) + '</p>';
+    return secHTML('SIMULATOR CONTRACT — ' + esc(simKey), body, true);
   }
+
 
   function techSpecsHTML(specs) {
-    var h = '<div class="sec"><h3>TECHNICAL SPECIFICATIONS <span class="hist">— UNITS EXPLICIT</span></h3>';
-    h += kvTable(Object.keys(specs).map(function (k) { return [k, specs[k] + '  [source: derived — GEN/2.0]']; }));
-    return h + '</div>';
+    var body = kvTable(Object.keys(specs).map(function (k) { return [k, specs[k] + '  [source: derived — GEN/2.0]']; }));
+    return secHTML('TECHNICAL SPECIFICATIONS <span class="hist">— UNITS EXPLICIT</span>', body, true);
   }
 
+
   function archVocabHTML(v) {
-    return '<div class="sec"><h3>ARCHITECTURE VOCABULARY <span class="hist">— STANDARDIZED</span></h3>' +
-      kvTable(Object.keys(v).map(function (k) { return [k, v[k]]; })) + '</div>';
+    return secHTML('ARCHITECTURE VOCABULARY <span class="hist">— STANDARDIZED</span>',
+      kvTable(Object.keys(v).map(function (k) { return [k, v[k]]; })), true);
   }
+
 
   function validityHTML(v) {
     var col = v.validity === 'VALID' ? '#8affc1' : v.validity === 'INVALID' ? '#ff8a8a' : '#ffd75e';
-    return '<div class="sec"><h3>CONSTRAINT VALIDATION</h3><p class="kv">Combination status: <b style="color:' +
+    var body = '<p class="kv">Combination status: <b style="color:' +
       col + '">' + esc(v.validity) + '</b> <span class="hist">(' + esc(v.rules) + ' — heuristic, not a fabrication guarantee)</span></p>' +
-      '<p class="kv">' + esc(v.reason) + '</p></div>';
+      '<p class="kv">' + esc(v.reason) + '</p>';
+    return secHTML('CONSTRAINT VALIDATION', body, true);
   }
+
 
   function assumptionsHTML(list) {
-    return '<div class="sec"><h3>ASSUMPTIONS <span class="hist">— EXPOSED, NOT HIDDEN</span></h3><ul style="font-size:13px;color:#d7e9f7">' +
-      list.map(function (a) { return '<li>' + esc(a) + '</li>'; }).join('') + '</ul></div>';
+    var body = '<ul style="font-size:13px;color:#d7e9f7">' +
+      list.map(function (a) { return '<li>' + esc(a) + '</li>'; }).join('') + '</ul>';
+    return secHTML('ASSUMPTIONS <span class="hist">— EXPOSED, NOT HIDDEN</span>', body, true);
   }
+
 
   function buildabilityHTML(b) {
-    return '<div class="sec"><h3>BUILDABILITY</h3><p class="kv">Level: <b>' + esc(b.level) + '</b></p>' +
+    var body = '<p class="kv">Level: <b>' + esc(b.level) + '</b></p>' +
       '<p class="kv">' + esc(b.meaning) + '</p>' +
-      '<p class="kv hist">Ladder: ' + esc(b.ladder.join(' → ')) + '</p></div>';
+      '<p class="kv hist">Ladder: ' + esc(b.ladder.join(' → ')) + '</p>';
+    return secHTML('BUILDABILITY', body, true);
   }
 
+
   function sigRelHTML(rel) {
-    return '<div class="sec"><h3>SIGNATURE RELATIONSHIP <span class="hist">— FORMAL</span></h3>' +
-      kvTable([['BASED_ON', rel.BASED_ON], ['RELATIONSHIP', rel.RELATIONSHIP],
+    var body = kvTable([['BASED_ON', rel.BASED_ON], ['RELATIONSHIP', rel.RELATIONSHIP],
                ['HISTORICAL_COMPONENTS_REUSED', rel.HISTORICAL_COMPONENTS_REUSED],
                ['ORIGINAL_COMPONENTS', rel.ORIGINAL_COMPONENTS]]) +
-      '<p class="kv">' + esc(rel.ORIGINALITY_RECORD) + '</p></div>';
+      '<p class="kv">' + esc(rel.ORIGINALITY_RECORD) + '</p>';
+    return secHTML('SIGNATURE RELATIONSHIP <span class="hist">— FORMAL</span>', body, true);
   }
+
 
   function xrefsHTML(x) {
     var rows = Object.keys(x).filter(function (k) { return k !== 'note'; }).map(function (k) {
       var v = x[k];
       return [k, v == null ? '— (reserved)' : (Array.isArray(v) ? v.join(', ') || '—' : String(v))];
     });
-    return '<div class="sec"><h3>CROSS-SITE IDS</h3>' + kvTable(rows) +
-      '<p class="kv hist">' + esc(x.note) + '</p></div>';
+    return secHTML('CROSS-SITE IDS', kvTable(rows) + '<p class="kv hist">' + esc(x.note) + '</p>', false);
   }
 
+
   function aiContractHTML() {
-    return '<div class="sec"><h3>FOR AI READERS <span class="hist">— INGESTION CONTRACT</span></h3>' +
-      '<pre class="code">' + esc(ID.AI_CONTRACT) + '</pre>' +
-      '<p class="kv">Source classes: ' + esc(ID.SOURCE_CLASSES.join(' · ')) + '</p></div>';
+    var body = '<pre class="code">' + esc(ID.AI_CONTRACT) + '</pre>' +
+      '<p class="kv">Source classes: ' + esc(ID.SOURCE_CLASSES.join(' · ')) + '</p>';
+    return secHTML('FOR AI READERS <span class="hist">— INGESTION CONTRACT</span>', body, false);
   }
+
 
   /* ---------- canonical system.json ---------- */
   function recordJSON(o) {
@@ -283,22 +345,52 @@ window.PCUI = (function () {
     if (o.sig && o.sig._relationship) sys.signature_relationship = o.sig._relationship;
     return sys;
   }
+  /* ---------- hardware schema JSON-LD (Site-9 diagnostic FIX-1): creator authorship + architecture ---------- */
   function jsonLDHTML(rec) {
+    var props = [
+      { 'name': 'system_type', 'value': rec._system_type },
+      { 'name': 'type_label', 'value': rec._type_label },
+      { 'name': 'spec_hash', 'value': 'sha256:' + rec._spec_hash },
+      { 'name': 'generator_version', 'value': rec._generator_version || ID.DRIP_RULE_VERSION },
+      { 'name': 'governance', 'value': 'JAH-SIGNATURE (own authority — not government, not USPTO)' }
+    ];
+    // hardware architecture specs — straight from the record's own fields, never invented
+    if (rec._arch_vocab) {
+      ['ISA', 'MICROARCHITECTURE', 'CPU_ARCHITECTURE', 'WORD_SIZE', 'ENDIANNESS', 'PROCESSING_MODEL'].forEach(function (k) {
+        if (rec._arch_vocab[k]) props.push({ 'name': 'architecture_' + k.toLowerCase(), 'value': rec._arch_vocab[k] });
+      });
+    }
+    if (rec._component_set) {
+      ['ARCHITECTURE', 'MATERIAL', 'ALU_WIDTH_BIT', 'SCALE'].forEach(function (k) {
+        if (rec._component_set[k] != null) props.push({ 'name': 'component_' + k.toLowerCase(), 'value': String(rec._component_set[k]) });
+      });
+    }
     var ld = {
-      '@context': 'https://schema.org', '@type': 'Product',
-      'name': rec.name, 'identifier': rec._system_id,
-      'url': 'https://justinahiggins614-cmyk.github.io/jah-computer-systems/?system=' + rec._system_id,
-      'description': ((rec.tag ? rec.tag + '. ' : '') + (rec.desc || '')).slice(0, 300),
-      'additionalProperty': [
-        { 'name': 'system_type', 'value': rec._system_type },
-        { 'name': 'type_label', 'value': rec._type_label },
-        { 'name': 'spec_hash', 'value': 'sha256:' + rec._spec_hash },
-        { 'name': 'generator_version', 'value': rec._generator_version || ID.DRIP_RULE_VERSION },
-        { 'name': 'governance', 'value': 'JAH-SIGNATURE (own authority — not government, not USPTO)' }
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Product',
+          'name': rec.name,
+          'identifier': rec._system_id,
+          'url': 'https://justinahiggins614-cmyk.github.io/jah-computer-systems/?system=' + rec._system_id,
+          'description': ((rec.tag ? rec.tag + '. ' : '') + (rec.desc || '')).slice(0, 300),
+          'creator': { '@type': 'Person', 'name': 'Justin Addam Higgins' },
+          'additionalProperty': props
+        },
+        {
+          '@type': 'SoftwareApplication',
+          'name': rec.name + ' — in-browser simulator',
+          'applicationCategory': 'DeveloperApplication',
+          'operatingSystem': 'Web browser',
+          'url': 'https://justinahiggins614-cmyk.github.io/jah-computer-systems/?system=' + rec._system_id,
+          'author': { '@type': 'Person', 'name': 'Justin Addam Higgins' },
+          'description': 'Working in-browser simulator for ' + rec.name + ' (simulation only, SIM/1.0).'
+        }
       ]
     };
     return '<script type="application/ld+json">' + JSON.stringify(ld) + '<\/script>';
   }
+
 
   /* ---------- zero-result state ---------- */
   function zeroResultHTML(q) {
@@ -340,6 +432,7 @@ window.PCUI = (function () {
   return {
     FILTERS: FILTERS, tagsFor: tagsFor, matchesFilter: matchesFilter,
     enrichSeed: enrichSeed, enrichDrip: enrichDrip, provenanceFor: provenanceFor,
+    secHTML: secHTML, statusPillsHTML: statusPillsHTML, glanceHTML: glanceHTML,
     badgeHTML: badgeHTML, governanceHTML: governanceHTML, provenanceHTML: provenanceHTML,
     contractHTML: contractHTML, techSpecsHTML: techSpecsHTML, archVocabHTML: archVocabHTML,
     validityHTML: validityHTML, assumptionsHTML: assumptionsHTML, buildabilityHTML: buildabilityHTML,

@@ -120,3 +120,13 @@ try:
     print("SITEMAP: regenerated")
 except Exception as e:  # noqa: BLE001
     print(f"SITEMAP: skipped ({e})")
+
+# --- inventory feed + static category tables for crawlers (Site-9 FIX-2 / FIX-3)
+for _label, _script in (("INDEX-FEED", "gen_index_feed.py"),
+                        ("STATIC-CATS", "gen_static_cats.py")):
+    try:
+        subprocess.run([sys.executable, os.path.join(ROOT, "code", _script)],
+                       check=True, capture_output=True, text=True)
+        print(f"{_label}: regenerated")
+    except Exception as e:  # noqa: BLE001 - drip must never die on auxiliary steps
+        print(f"{_label}: skipped ({e})")
