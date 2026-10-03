@@ -999,24 +999,24 @@ paint();})();
 <p>Every computer system, from the most original machines ever built to every recorded model — and every possible model still to come. Each file ships a working simulator you can sample right here, a Signature-made version you can copy, download, and run, and the full story behind the machine.</p>
 <details class="stattoggle" open><summary class="stattoggle-s">DEPOSITORY STATS</summary>
 <div class="counter"><small>RECORDED SYSTEMS ON FILE</small><span id="count_rec">…</span></div>
-<div class="counter"><small>SIGNATURE SYSTEMS</small><span id="count_sig">…</span></div>
+<div class="counter"><small>SIGNATURE VERSIONS</small><span id="count_sig">…</span></div>
 <div class="counter"><small>GENERATABLE SPACE</small><span id="count_gen">1,000,000</span></div>
-<div class="kv hist" id="lastupd" style="margin-top:8px;max-width:70ch">LAST UPDATED · loading…</div>
+<div class="kv hist" id="lastupd" style="margin-top:8px;max-width:70ch">LAST UPDATED · 2026-10-03 · 12,521 recorded systems on file at that stamp · <span id="countsrc">count source: data/counts.json</span></div>
 </details>
-<p class="kv" style="margin-top:10px;max-width:70ch">The 1,000,000 figure is the <b>generatable model space</b> — computed on demand from components × architectures × materials × scales. Nothing stored, nothing slow. It is not a count of completed historical records. Recorded systems and Signature systems are counted separately above.</p>
+<p class="kv" style="margin-top:10px;max-width:70ch">121 seed records → 12,521 total records on file, each carrying its own Signature-made version. The 1,000,000 figure is the <b>generatable model space</b> — computed on demand from components × architectures × materials × scales. Nothing stored, nothing slow. It is not a count of completed historical records. Recorded systems, Signature versions, and generatable space are counted separately — the single authoritative count lives in <a href="data/counts.json">data/counts.json</a>.</p>
 </div>
 <!-- STATIC-COUNTS-START -->
 <div class="hud" id="crawl-counts">
 <h2>THE COUNT — ON FILE VS. GENERATABLE</h2>
 <p class="kv">Completed systems on file: <b>12,521</b> <span class="hist">(as of 2026-10-03)</span></p>
 <ul style="font-size:13px;color:#d7e9f7;margin:4px 0;padding-left:18px">
-<li><b>RECORDED</b> — 121 seed records: 96 historical records, 13 Signature-original designs, 12 predicted concepts.</li>
-<li><b>SIGNATURE</b> — 12,521 Signature systems on file: every record carries a Signature-made version.</li>
+<li><b>RECORDED</b> — 121 seed records: 96 historical records, 13 Signature-original designs, 12 predicted concepts. 121 seed records → 12,521 total records on file.</li>
+<li><b>SIGNATURE VERSIONS</b> — 12,521 Signature-made versions on file: every record carries its own Signature-made version.</li>
 <li><b>GENERATED</b> — 12,400 deterministically generated models (drip chunks), each reproducible from its seed.</li>
 <li><b>SIMULATED</b> — every system on file ships a working in-browser simulator; sample any file right here.</li>
 </ul>
 <p class="kv">Generatable model space: <b>1,000,000</b> possible models (<span class="hist">JAH-PC-00000001</span> through <span class="hist">JAH-PC-01000000</span>) — computed on demand from components × architectures × materials × scales. Nothing stored, nothing slow.</p>
-<p class="kv hist">Static snapshot for crawlers; live counters above update in your browser. Refreshed by the depository drip every 2 hours.</p>
+<p class="kv hist">Static snapshot for crawlers; live counters above read the authoritative <a href="data/counts.json">data/counts.json</a> in your browser. Refreshed by the depository drip every 2 hours.</p>
 </div>
 <!-- STATIC-COUNTS-END -->
 <!-- STATIC-CATS-START -->
@@ -1262,6 +1262,26 @@ paint();})();
 <li><b>GENERATED MODEL</b> — a deterministically generated possible model from the combinatorial space. Not evidence the machine exists or was built.</li>
 <li><b>SIMULATED</b> — every system on file ships a working in-browser simulator (SIMULATOR_VERSION SIM/1.0, simulation-class labeled per contract, SIMULATION_ONLY safety). Sampling the model here never claims the hardware exists.</li>
 </ul>
+<h3>DEFINITIONS — WHAT EACH WORD COUNTS</h3>
+<p class="kv">The count counts <b>records on file</b>. One record = one canonical <span class="hist">JAH-PC-########</span> ID. Machine-readable: <a href="data/glossary.json">data/glossary.json</a>.</p>
+<ul style="font-size:13px;color:#d7e9f7;margin:4px 0;padding-left:18px">
+<li><b>SYSTEM</b> — a complete computer system (machine), as defined by the scope box above.</li>
+<li><b>SYSTEM RECORD</b> — the canonical JAH-PC-RECORD/1.0 entry for one system: exactly one canonical ID, one system type, one spec_hash.</li>
+<li><b>SEED RECORD</b> — one of the 121 curated base records in data/systems.json — the depository's recorded file for a system.</li>
+<li><b>SIGNATURE VERSION</b> — the Signature-made version of a record (.sig block): an original Signature System design inspired by (never claiming to be) the base system. Every record on file carries one — 121 seed Signature versions + 12,400 generated Signature versions = 12,521.</li>
+<li><b>GENERATED MODEL</b> — a deterministically generated possible model from the combinatorial space (DRIP/1.0 drip records or GEN/2.0 on-demand). Not evidence the machine exists or was built.</li>
+<li><b>PREDICTED CONCEPT</b> — a forward-looking concept record. Speculation, not history, not evidence of existence.</li>
+<li><b>HISTORICAL RECORD</b> — a record of a machine that existed, per cited curatorial summaries. Reference only; primary-source attachment is pending and no source is ever invented.</li>
+<li><b>SIMULATION</b> — the working in-browser model attached to a record (SIM/1.0, SIMULATION ONLY). Sampling it never claims the hardware exists.</li>
+<li><b>POSSIBLE MODEL</b> — one of the 1,000,000 models addressable in the on-demand lattice (JAH-PC-00000001 .. JAH-PC-01000000).</li>
+<li><b>MODEL SPACE</b> — the full 1,000,000-model generatable space: components × architectures × materials × scales, computed on demand, never stored.</li>
+<li><b>CANONICAL MODEL</b> — the one deterministic record an ID always resolves to: opening the same ID yields the identical record, forever.</li>
+<li><b>ORIGINAL_NAME / SIGNATURE_NAME</b> — on historical records the system's own name (e.g. <span class="hist">Apple I</span>) is kept separate from the Signature version's name (e.g. <span class="hist">Signature Garage Board</span>); the display name is the Signature name where a Signature version exists.</li>
+</ul>
+<h3>HASH CANONICALIZATION</h3>
+<p class="kv">Every record's <span class="hist">spec_hash</span> is SHA-256 over canonical JSON: keys sorted, no whitespace, UTF-8 encoded — exactly as <span class="hist">PCIDENT.specHash</span> in <span class="hist">js/identity.js</span> computes it. Recompute any record's hash in your browser with the <b>VERIFY HASH</b> control on its file page; it must match the stored <span class="hist">sha256:…</span> value byte for byte. File-level hashes for every data file ship in <a href="data/hashes.json">data/hashes.json</a>.</p>
+<h3>OFFLINE SCOPE</h3>
+<p class="kv"><b>OFFLINE VERIFIED: PARTIAL</b> (static code audit, 2026-10-03 — no network calls exist in the on-demand generator, identity module, simulators, or UI logic; full offline browser test pending). What works with the network cut <em>after the first load</em>: the on-demand generator (all 1,000,000 possible models), every simulator, search, and filters. What needs the network: the recorded-system data files (<span class="hist">data/*.json</span>, drip chunks) are fetched once at load and cached by the browser thereafter. No record is ever silently degraded: if data fails to load, the page says so and offers RETRY.</p>
 <h3>VERSIONING</h3>
 <p class="kv">Record schema <span class="hist">JAH-PC-RECORD/1.0</span> · seed generator <span class="hist">SEED/1.0</span> · drip generator <span class="hist">DRIP/1.0</span> · on-demand lattice <span class="hist">GEN/2.0</span>. Every record carries a <span class="hist">spec_hash (sha256:…)</span> over its canonical fields plus a Signature governance chain — the deterministic ID coding is the record's identity and protection.</p>
 <p class="kv">Browse by category: <a href="?cat=HISTORICAL">Historical</a> · <a href="?cat=SIGNATURE">Signature</a> · <a href="?cat=PREDICTED">Predicted</a> · <a href="?cat=GENERATED">Generated</a> · <a href="?cat=QUANTUM">Quantum</a> · <a href="?cat=MAINFRAME">Mainframe</a> · <a href="?cat=SUPERCOMPUTER">Supercomputer</a> · <a href="?cat=">All systems</a></p>
@@ -1270,7 +1290,7 @@ paint();})();
 <div class="hist">THE SIGNATURE PC SYSTEM DEPOSITORY · every file is a working model — sample it, copy it, download it, build with it.</div>
 <div style="margin-top:8px">Historical records are reference only. Signature versions are original designs. Predicted models are clearly marked speculation — not history.</div>
 <div style="margin-top:8px">Offline: once loaded, the on-demand generator and all simulators run fully offline. Recorded-system data requires a network fetch.</div>
-<div style="margin-top:8px">Machine-readable inventory: <a href="data/systems-index.json">systems-index.json</a> · <a href="data/wiki-index.json">wiki-index.json</a></div>
+<div style="margin-top:8px">Machine-readable inventory: <a href="data/systems-index.json">systems-index.json</a> · <a href="data/wiki-index.json">wiki-index.json</a> · <a href="data/counts.json">counts.json</a> (authoritative counts) · <a href="data/manifest.json">manifest.json</a> · <a href="data/schema.json">schema.json</a> · <a href="data/api.json">api.json</a> · <a href="llms.txt">llms.txt</a></div>
 </footer>
 </div>
 <script src="js/identity.js"></script>
@@ -1422,7 +1442,7 @@ function dictTerms(r){var words=((r.name||"")+" "+(r.tag||"")).toLowerCase().rep
 /* ===== SITE NAME — rename here and the <title> above ===== */
 const SITE_NAME = "The Signature PC System Depository";
 const PCID = window.PCIDENT, PCUI = window.PCUI;
-let SYSTEMS = [], DRIP = [], DRIP_N = 0, COUNT = {seed:0, generated:0};
+let SYSTEMS = [], DRIP = [], DRIP_N = 0, COUNT = {seed:0, generated:0}, COUNT2 = null;
 let fCat = "ALL", fAz = "", fQ = "", fPage = 1;
 let pendingSystem = null; // ?system= deep link, resolved after drip chunks finish loading
 const PER_PAGE = 48;
@@ -1539,6 +1559,13 @@ function openSystem(id){
       : ((r._provenance && r._provenance.SOURCE_TITLE ? r._provenance.SOURCE_TITLE + ' · ' : '') + (r._provenance ? r._provenance.VERIFICATION_STATE : ''))
   });
   h += '<div class="kv" style="margin:6px 0"><b>RECORD CLASS:</b> '+esc(r._type_label||r._system_type)+' <span class="hist">— '+esc(PCID.TYPE_MEANING[r._system_type]||'')+'</span></div>';
+  // Name identity: ORIGINAL_NAME and SIGNATURE_NAME are kept separate on every
+  // historical record — the Signature version is an original design, never the machine.
+  if ((r._system_type === 'HISTORICAL' || r._system_type === 'HYBRID') && r.sig && r.sig.name){
+    h += '<div class="kv" style="margin:6px 0"><b>NAME IDENTITY</b> · ORIGINAL_NAME: <b>'+esc(r.name)+
+      '</b> · SIGNATURE_NAME: <b>'+esc(r.sig.name)+
+      '</b> <span class="hist">(kept separate — machine-readable in the raw record below)</span></div>';
+  }
   h += PCUI.statusPillsHTML(r);
   // Signature version (prominent, as before)
   if (r.sig && r._system_type !== "SIGNATURE_ORIGINAL"){
@@ -1593,13 +1620,70 @@ function openSystem(id){
   h += PCUI.xrefsHTML(r._xrefs);
   h += '<div class="sec"><h3>IN THE SIGNATURE DICTIONARY</h3><p class="kv">'+dictTerms(r).map(function(t){return '<a href="'+DICT_BASE+encodeURIComponent(t)+'" target="_blank" rel="noopener">📖 '+esc(t)+'</a>'}).join(" · ")+'</p></div>';
   h += PCUI.aiContractHTML();
-  h += '<button onclick="closeDetail()">← BACK TO GRAND LIST</button> <button onclick="copyTxt(location.origin+location.pathname+\'?system='+r._system_id+'\',this)">⧉ COPY LINK</button> <button onclick="shareSystem(this)">⤴ SHARE</button>';
+  h += rawRecordHTML(r);
+  h += '<button onclick="stepRecord(-1)">← PREV</button> <button onclick="stepRecord(1)">NEXT →</button> <button onclick="closeDetail()">← BACK TO GRAND LIST</button> <button onclick="copyTxt(location.origin+location.pathname+\'?system='+r._system_id+'\',this)">⧉ COPY LINK</button> <button onclick="shareSystem(this)">⤴ SHARE</button> <button onclick="reportError(this)">⚠ REPORT AN ERROR</button>';
   d.innerHTML = h; d.style.display = "block"; d.scrollIntoView({behavior:"smooth"});
   sim.render(document.getElementById("simbox"), r);
   try{history.replaceState(null,"","?system="+r._system_id)}catch(e){}
   try{document.title = (s.name||"System")+" · "+r._system_id+" · The Signature PC System Depository"}catch(e){}
 }
 function closeDetail(){document.getElementById("detail").style.display="none";try{history.replaceState(null,"","./")}catch(e){}document.getElementById("grandlist").scrollIntoView({behavior:"smooth"})}
+/* ---------- Site-9 fix wave: raw record view + VERIFY HASH + prev/next + error reports ---------- */
+function rawRecordHTML(r){
+  var j = PCUI.recordJSON(r);
+  var body = '<p class="kv">Canonical machine-readable record <span class="hist">(JAH-PC-RECORD/1.0)</span> — the same object offered as SYSTEM.JSON above.</p>' +
+    '<pre class="code" id="rawjson" style="max-height:320px;overflow:auto">' + esc(JSON.stringify(j, null, 2)) + '</pre>' +
+    '<button onclick="copyTxt(JSON.stringify(PCUI.recordJSON(window._rec),null,2),this)">⧉ COPY JSON</button> ' +
+    '<button onclick="verifyHash(this)">✓ VERIFY HASH</button> ' +
+    '<div class="kv hist" id="hashverdict" style="margin-top:6px">Hash not yet verified in this session.</div>';
+  return PCUI.secHTML('RAW RECORD <span class="hist">— CANONICAL JSON + VERIFY HASH</span>', body, false);
+}
+function verifyHash(btn){
+  var out = document.getElementById("hashverdict"), r = window._rec;
+  function say(ok, msg){
+    out.innerHTML = (ok ? '<b style="color:#8affc1">✓ HASH VERIFIED</b> ' : '<b style="color:#ff8a8a">✗ HASH MISMATCH</b> ') + esc(msg);
+  }
+  try {
+    if (r && r.model_number != null) {
+      // on-demand possible model: recompute from the lattice — determinism IS the verification
+      var fresh = window.PCMODELS.at(r.model_number - 1);
+      if (fresh.spec_hash === r.spec_hash) say(true, 'recomputed model #' + r.model_number.toLocaleString() + ' from the GEN/2.0 lattice; spec_hash sha256:' + r.spec_hash.slice(0, 16) + '… matches.');
+      else say(false, 'recomputed hash differs from stored hash — record may be stale.');
+      return;
+    }
+    if (r && r._hash_core && r._spec_hash) {
+      var re = PCID.specHash(r._hash_core);
+      if (re === r._spec_hash) say(true, 'recomputed sha256:' + r._spec_hash.slice(0, 16) + '… over the canonical fields matches the stored value.');
+      else say(false, 'recomputed ' + re.slice(0, 16) + '… vs stored ' + String(r._spec_hash).slice(0, 16) + '…');
+      return;
+    }
+    say(false, 'no hash input available for this record.');
+  } catch (e) { say(false, 'verification error: ' + e.message); }
+}
+function stepRecord(d){
+  // prev/next through the list the visitor is currently browsing (filter + search applied)
+  var list = filteredList(), r = window._rec, i = -1;
+  for (var k = 0; k < list.length; k++){ if (list[k]._system_id === (r && r._system_id)){ i = k; break; } }
+  if (i < 0 || !list.length) return;
+  var n = list[(i + d + list.length) % list.length];
+  if (n) openSystem(n._system_id);
+}
+function reportError(btn){
+  var r = window._rec;
+  var rid = 'JAH-PC-REPORT-' + String(Date.now()).slice(-8);
+  var txt = rid + '\nRecord: ' + (r ? r._system_id + ' — ' + ((r.sig && r.sig.name) || r.name) : 'n/a') +
+    '\nPage: ' + location.href +
+    '\n\nWhat is wrong:\n[describe the error here]\n\nWhat it should say:\n[the correction, with sources if historical]';
+  var box = document.createElement("div");
+  box.className = "sec"; box.style.marginTop = "8px";
+  box.innerHTML = '<h3>REPORT AN ERROR <span class="hist">— ' + esc(rid) + '</span></h3>' +
+    '<p class="kv">There is no automatic ticket system — copy the report below and send it wherever you reach the depository team. ' +
+    'Quote the report ID <span class="hist">' + esc(rid) + '</span> so it can be tracked; corrections arrive as new record versions, never silent edits.</p>' +
+    '<textarea id="errtext" rows="8" style="width:100%;background:#0a1626;color:#d7e9f7;border:1px solid #1d3a5f;border-radius:6px;padding:8px;font-size:13px">' + esc(txt) + '</textarea>' +
+    '<div style="margin-top:6px"><button onclick="copyTxt(document.getElementById(\'errtext\').value,this)">⧉ COPY REPORT</button></div>';
+  btn.parentNode.insertBefore(box, btn);
+  box.scrollIntoView({behavior: "smooth", block: "nearest"});
+}
 function kvRows(o){return '<table style="width:100%;border-collapse:collapse;font-size:13px">'+Object.keys(o).map(k=>'<tr><td style="border-bottom:1px solid #16324f;padding:5px 8px;color:#8fb8d8;width:38%">'+esc(k)+'</td><td style="border-bottom:1px solid #16324f;padding:5px 8px;color:#d7e9f7">'+esc(o[k])+'</td></tr>').join("")+'</table>'}
 function openPossible(n, seed){
   n = n==null ? parseInt(document.getElementById("pnum").value||"1",10) : n;
@@ -1671,6 +1755,14 @@ function renderScope(){
     '<p class="kv hist">'+esc(S.note)+'</p>';
 }
 function renderCounters(){
+  // Single authoritative count source: data/counts.json (regenerated by every drip).
+  // Falls back to the loaded data files if the fetch hasn't landed yet.
+  if (COUNT2 && COUNT2.recorded_count != null){
+    document.getElementById("count_rec").textContent = Number(COUNT2.recorded_count).toLocaleString();
+    document.getElementById("count_sig").textContent = Number(COUNT2.signature_versions_count).toLocaleString();
+    document.getElementById("count_gen").textContent = Number(COUNT2.possible_model_count).toLocaleString();
+    return;
+  }
   const c = PCUI.splitCounts(SYSTEMS, DRIP_N);
   document.getElementById("count_rec").textContent = c.RECORDED_SYSTEMS.toLocaleString();
   document.getElementById("count_sig").textContent = c.SIGNATURE_SYSTEMS.toLocaleString();
@@ -1679,11 +1771,14 @@ function renderCounters(){
 function renderLastUpdated(){
   // "Last updated" stamp is written by code/drip/append_models.py on every drip run;
   // kept visually separate from the system counters by design (TIER 2-6).
-  fetch("data/last-updated.json").then(r=>{if(!r.ok)throw 0;return r.json()}).then(u=>{
-    var t = "LAST UPDATED · " + (u.updated || "—");
-    if (u.recorded) t += " · " + Number(u.recorded).toLocaleString() + " recorded systems on file at that stamp";
+  // The div carries a static stamped fallback in the HTML — on fetch failure we keep
+  // it (a real timestamp) instead of replacing it with a dash.
+  fetch("data/counts.json").then(r=>{if(!r.ok)throw 0;return r.json()}).then(u=>{
+    var t = "LAST UPDATED · " + (u.dataset_version || "—");
+    t += " · " + Number(u.recorded_count||0).toLocaleString() + " recorded systems on file at that stamp";
+    t += " · snapshot " + (u.snapshot_id || "—") + " · count source: data/counts.json";
     document.getElementById("lastupd").textContent = t;
-  }).catch(()=>{document.getElementById("lastupd").textContent = "LAST UPDATED · —";});
+  }).catch(()=>{/* keep the static stamped fallback already in the HTML */});
 }
 function loadDripChunks(){
   // probe chunk-0000, chunk-0001, ... until 404 (drip appends over time; never hardcode)
@@ -1715,10 +1810,11 @@ function boot(){
   renderScope();
   Promise.all([
     fetch("data/systems.json").then(r=>r.json()),
-    fetch("data/count.json").then(r=>r.json()).catch(()=>({seed:0,generated:0}))
-  ]).then(([s,c]) => {
+    fetch("data/count.json").then(r=>r.json()).catch(()=>({seed:0,generated:0})),
+    fetch("data/counts.json").then(r=>r.json()).catch(()=>null)
+  ]).then(([s,c,c2]) => {
     SYSTEMS = s.map((r,i) => PCUI.enrichSeed(r,i));
-    COUNT = c; DRIP_N = c.generated||0;
+    COUNT = c; COUNT2 = c2; DRIP_N = c.generated||0;
     // category (?cat=) and search (?q=) deep links — categories and search as real links
     const qs0 = location.search;
     let cm = /[?&]cat=([A-Z_]*)/.exec(qs0);

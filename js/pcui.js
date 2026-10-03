@@ -94,6 +94,7 @@ window.PCUI = (function () {
       name: rec.name, era: rec.era || null, tag: rec.tag || null, desc: rec.desc || null,
       history: rec.history || null, generator_version: 'SEED/1.0', record_schema: ID.RECORD_SCHEMA };
     rec._spec_hash = ID.specHash(core);
+    rec._hash_core = core; // kept so VERIFY HASH recomputes over the exact hashed input
     rec._governance = ID.governanceChain(rec._system_id, st, rec._spec_hash);
     rec._provenance = provenanceFor(rec, st);
     rec._buildability = ID.buildabilityFor(st);
@@ -107,6 +108,7 @@ window.PCUI = (function () {
       rec.sig._system_type = 'SIGNATURE_ORIGINAL';
       rec.sig._type_label = ID.TYPE_LABEL.SIGNATURE_ORIGINAL;
       rec.sig._spec_hash = ID.specHash(sigCore);
+      rec.sig._hash_core = sigCore; // kept so VERIFY HASH recomputes over the exact hashed input
       rec.sig._governance = ID.governanceChain(sid, 'SIGNATURE_ORIGINAL', rec.sig._spec_hash);
       rec.sig._relationship = ID.sigRelationship(st, rec.name, rec.sig.name);
       rec.sig._provenance = provenanceFor(rec.sig, 'SIGNATURE_ORIGINAL');
@@ -145,6 +147,7 @@ window.PCUI = (function () {
       generation_seed: rec._generation_seed, component_set: rec._component_set,
       record_schema: ID.RECORD_SCHEMA };
     rec._spec_hash = ID.specHash(core);
+    rec._hash_core = core; // kept so VERIFY HASH recomputes over the exact hashed input
     rec._governance = ID.governanceChain(rec._system_id, 'GENERATED', rec._spec_hash);
     rec._provenance = provenanceFor(rec, 'GENERATED');
     rec._buildability = ID.buildabilityFor('GENERATED');
@@ -344,11 +347,18 @@ window.PCUI = (function () {
   function recordJSON(o) {
     // Build the canonical machine-readable record from an enriched record
     // (o = result of enrichSeed/enrichDrip). Never invents sibling IDs.
+    // ORIGINAL_NAME / SIGNATURE_NAME are kept separate on every record:
+    // historical records carry the system's own name apart from the Signature
+    // version's name; generated records have no historical original (null).
+    var isHist = (o._system_type === 'HISTORICAL' || o._system_type === 'HYBRID');
     var sys = {
       system_json: 'JAH-PC-SYSTEM/1.0',
       system_id: o._system_id, id_scheme: ID.ID_SCHEME,
       system_type: o._system_type, type_label: o._type_label,
       name: (o.sig && o.sig.name) || o.name,
+      display_name: (o.sig && o.sig.name) || o.name,
+      original_name: isHist ? o.name : null,
+      signature_name: (o.sig && o.sig.name) || null,
       record_schema: ID.RECORD_SCHEMA,
       spec_hash: 'sha256:' + o._spec_hash,
       generator_version: o._generator_version || null,

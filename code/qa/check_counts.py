@@ -54,5 +54,38 @@ if os.path.exists(stamp_path):
 else:
     check(False, "data/last-updated.json exists")
 
+# --- authoritative counts.json (Site-9 fix wave): the single count source must
+# agree with the data files, never with page text ---
+counts_path = os.path.join(DATA, "counts.json")
+if os.path.exists(counts_path):
+    cj = json.load(open(counts_path))
+    check(cj.get("recorded_count") == recorded, "counts.json recorded_count matches data",
+          f"counts.json={cj.get('recorded_count')} actual={recorded}")
+    check(cj.get("seed_count") == count["seed"], "counts.json seed_count matches count.json",
+          f"counts.json={cj.get('seed_count')} count.json={count['seed']}")
+    check(cj.get("generated_count") == count["generated"], "counts.json generated_count matches count.json",
+          f"counts.json={cj.get('generated_count')} count.json={count['generated']}")
+    check(cj.get("signature_versions_count") == recorded,
+          "counts.json signature_versions_count == recorded (every record carries a Signature version)",
+          f"counts.json={cj.get('signature_versions_count')} actual={recorded}")
+    check(cj.get("possible_model_count") == 1000000, "counts.json possible_model_count == 1000000",
+          f"counts.json={cj.get('possible_model_count')}")
+    for field in ("generated_at", "dataset_version", "schema_version", "snapshot_id",
+                  "last_drip_id", "historical_count", "predicted_count", "simulator_count"):
+        check(field in cj and cj[field] not in (None, ""), f"counts.json carries {field}")
+    check(cj.get("schema_version") == "JAH-PC-RECORD/1.0", "counts.json schema_version",
+          f"counts.json={cj.get('schema_version')}")
+else:
+    check(False, "data/counts.json exists")
+
+# --- test vectors: the DRIP/1.0 ground truth recomputed here must match the stored records ---
+tv_path = os.path.join(DATA, "test-vectors.json")
+if os.path.exists(tv_path):
+    tv = json.load(open(tv_path))
+    check(tv.get("all_stored_match") is True, "drip test vectors match stored records",
+          f"mismatches={tv.get('mismatches')}")
+else:
+    check(False, "data/test-vectors.json exists")
+
 print(f"\nRESULT: {len(fails)} failures")
 sys.exit(1 if fails else 0)

@@ -90,25 +90,34 @@ try:
         f'<p class="kv">Completed systems on file: <b>{rec_n:,}</b> '
         f'<span class="hist">(as of {stamp["updated"]})</span></p>\n'
         '<ul style="font-size:13px;color:#d7e9f7;margin:4px 0;padding-left:18px">\n'
-        f'<li><b>RECORDED</b> — {len(seeds)} seed records: {kind_line}.</li>\n'
-        f'<li><b>SIGNATURE</b> — {sig_n:,} Signature systems on file: every record carries a Signature-made version.</li>\n'
+        f'<li><b>RECORDED</b> — {len(seeds)} seed records: {kind_line}. {len(seeds)} seed records → {rec_n:,} total records on file.</li>\n'
+        f'<li><b>SIGNATURE VERSIONS</b> — {sig_n:,} Signature-made versions on file: every record carries its own Signature-made version.</li>\n'
         f'<li><b>GENERATED</b> — {count["generated"]:,} deterministically generated models (drip chunks), each reproducible from its seed.</li>\n'
         '<li><b>SIMULATED</b> — every system on file ships a working in-browser simulator; sample any file right here.</li>\n'
         '</ul>\n'
         '<p class="kv">Generatable model space: <b>1,000,000</b> possible models '
         '(<span class="hist">JAH-PC-00000001</span> through <span class="hist">JAH-PC-01000000</span>) '
         '— computed on demand from components × architectures × materials × scales. Nothing stored, nothing slow.</p>\n'
-        '<p class="kv hist">Static snapshot for crawlers; live counters above update in your browser. Refreshed by the depository drip every 2 hours.</p>\n'
+        '<p class="kv hist">Static snapshot for crawlers; live counters above read the authoritative <a href="data/counts.json">data/counts.json</a> in your browser. Refreshed by the depository drip every 2 hours.</p>\n'
         '</div>'
     )
     start_m, end_m = "<!-- STATIC-COUNTS-START -->", "<!-- STATIC-COUNTS-END -->"
     if start_m in html and end_m in html:
         pre = html.split(start_m)[0] + start_m + "\n"
         post = "\n" + end_m + html.split(end_m)[1]
-        open(html_path, "w").write(pre + block + post)
+        html = pre + block + post
         print(f"STATIC-COUNTS: index.html refreshed (recorded={rec_n}, as of {stamp['updated']})")
     else:
         print("STATIC-COUNTS: markers not found in index.html — skipped")
+    # --- static #lastupd fallback: stamp the real timestamp into the div so crawlers
+    # and no-JS readers never see "loading…"; the live fetch overwrites it on success.
+    import re as _re
+    _lastupd = (f'LAST UPDATED · {stamp["updated"]} · {rec_n:,} recorded systems on file at that stamp · '
+                f'<span id="countsrc">count source: data/counts.json</span>')
+    html, _n = _re.subn(r'(<div class="kv hist" id="lastupd"[^>]*>).*?(</div>)',
+                        lambda m: m.group(1) + _lastupd + m.group(2), html, count=1, flags=_re.S)
+    open(html_path, "w").write(html)
+    print(f"STATIC-LASTUPD: stamped ({_n} block{'s' if _n != 1 else ''})")
 except Exception as e:  # noqa: BLE001 - drip must never die on the static block
     print(f"STATIC-COUNTS: skipped ({e})")
 
@@ -120,6 +129,15 @@ try:
     print("SITEMAP: regenerated")
 except Exception as e:  # noqa: BLE001
     print(f"SITEMAP: skipped ({e})")
+
+# --- machine-readable suite: regenerate so counts.json can never diverge again
+# (Site-9 fix wave: counts.json is the single authoritative count source)
+try:
+    subprocess.run([sys.executable, os.path.join(ROOT, "code", "gen_machine_readable.py")],
+                   check=True, capture_output=True, text=True)
+    print("MACHINE-READABLE: regenerated (counts.json authoritative)")
+except Exception as e:  # noqa: BLE001
+    print(f"MACHINE-READABLE: skipped ({e})")
 
 # --- inventory feed + static category tables for crawlers (Site-9 FIX-2 / FIX-3)
 for _label, _script in (("INDEX-FEED", "gen_index_feed.py"),

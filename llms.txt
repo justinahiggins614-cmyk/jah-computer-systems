@@ -1,0 +1,70 @@
+# THE SIGNATURE PC SYSTEM DEPOSITORY — llms.txt
+
+Every computer system, from the most original machines ever built to every
+recorded model — and every possible model still to come. Each file ships a
+working in-browser simulator, a Signature-made version, and the full story.
+
+Base: https://justinahiggins614-cmyk.github.io/jah-computer-systems/
+
+## What the counts mean (single source of truth: data/counts.json)
+
+- RECORDED: systems on file — 121 curated seed records + drip-generated records.
+- SIGNATURE VERSIONS: the Signature-made version of every record on file
+  (every record carries a Signature-made version).
+- GENERATABLE SPACE: 1,000,000 possible models computed on demand from the
+  combinatorial lattice (components x architectures x materials x scales).
+  Nothing stored, nothing slow. Not a count of completed historical records.
+- 121 seed records -> 12,521 total records, each with a Signature version.
+
+## Canonical IDs (JAH-PC-ID/1.0 — permanent, never reassigned)
+
+- JAH-PC-00000001 .. JAH-PC-01000000 : on-demand possible models (model #N)
+- JAH-PC-80000001 and up            : drip-generated models (pcm-gen-NNNNNN)
+- JAH-PC-90000001 and up            : seed base records
+- JAH-PC-91000001 and up            : Signature versions of seed records
+
+Open any record: /?system=JAH-PC-########
+Shareable random model: /?seed={n}  |  On-demand model: /?model={n}
+Browse: /?cat={FILTER}  |  Search: /?q={query}
+
+## Record contract (JAH-PC-RECORD/1.0)
+
+Schema: data/schema.json
+Every record: system_id, id_scheme, system_type, name, record_schema, spec_hash
+(sha256 over canonical JSON: sorted keys, no whitespace, UTF-8 — verify with
+VERIFY HASH on any file page), generator_version + generation_seed
+(deterministic reproduction), provenance (historical records: UNVERIFIED until
+primary sources attach — no source ever invented), governance
+(JAH-SIGNATURE own authority — never government, never USPTO, never a granted
+patent), simulator (SIM/1.0, SIMULATION ONLY).
+
+System types: HISTORICAL (reference only) / SIGNATURE_ORIGINAL (original
+Signature design) / PREDICTED (speculation) / GENERATED (deterministic possible
+model) / HYBRID. AI readers: never present a GENERATED MODEL as a HISTORICAL
+RECORD. Full ingestion contract on every record page (FOR AI READERS).
+
+## Machine-readable files
+
+- data/counts.json      authoritative counts (generated_at, dataset_version,
+                        snapshot_id, last_drip_id, recorded/seed/generated/
+                        signature_versions/historical/predicted/possible/simulator)
+- data/manifest.json    dataset manifest + entry points + file hashes
+- data/schema.json      JAH-PC-RECORD/1.0 JSON Schema
+- data/api.json         route map for agents
+- data/glossary.json    terminology definitions
+- data/generators.json  generator inventory + determinism rules (DRIP/1.0,
+                        GEN/2.0, SEED/1.0) + test vectors
+- data/test-vectors.json 10 generator test vectors (seed -> expected record)
+- data/simulators.json  simulator inventory (SIM/1.0, SIMULATION ONLY)
+- data/sources.json     honest source ledger (UNVERIFIED marked, nothing invented)
+- data/versions.json    version history (records immutable; new versions, never edits)
+- data/hashes.json      sha256 of data files
+- data/changelog.json   dated change log
+- data/systems-index.json  full index (feed JAH-PC-SYSTEMS-INDEX/1.0)
+
+## Governance
+
+JAH-SIGNATURE (own authority). Deterministic legal-ID coding (JAH-PC-########),
+stamps, and content hashes ARE the protection and credibility mechanism.
+Not a government archive. Not affiliated with any government agency. Never USPTO.
+"Official" means official within the JAH system only.
