@@ -1,6 +1,6 @@
 {
  "feed": "sources",
- "generated_at": "2026-10-03T15:59:00Z",
+ "generated_at": "2026-10-03T17:59:03Z",
  "note": "Honest source ledger. No source is ever invented: primary sources not yet attached are marked UNVERIFIED with PRIMARY_SOURCE_AVAILABLE=false. Historical records remain reference-only curatorial summaries until then.",
  "sources": [
   {
@@ -16,7 +16,7 @@
    "source_id": "JAH-PC-SOURCE-000002",
    "source_type": "deterministic derivation",
    "title": "Depository combinatorial engine (code/drip/append_models.py, DRIP/1.0)",
-   "covers": "13200 generated records",
+   "covers": "13600 generated records",
    "claim_scope": "Possible models \u2014 not evidence of existence",
    "verification_state": "n/a \u2014 generated; reproducible from seed + generator version",
    "primary_source_available": false
@@ -25,7 +25,7 @@
    "source_id": "JAH-PC-SOURCE-000003",
    "source_type": "JAH original design",
    "title": "Signature System design records (.sig blocks)",
-   "covers": "13321 Signature versions",
+   "covers": "13721 Signature versions",
    "claim_scope": "Design record only \u2014 never a historical claim",
    "verification_state": "JAH-SIGNATURE-RECORDED",
    "primary_source_available": true,
