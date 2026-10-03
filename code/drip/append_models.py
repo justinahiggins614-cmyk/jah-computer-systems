@@ -116,6 +116,23 @@ try:
                 f'<span id="countsrc">count source: data/counts.json</span>')
     html, _n = _re.subn(r'(<div class="kv hist" id="lastupd"[^>]*>).*?(</div>)',
                         lambda m: m.group(1) + _lastupd + m.group(2), html, count=1, flags=_re.S)
+    # --- count-contradiction fix (2026-10-03): prose lines that state totals
+    # must be re-stamped every drip, or they go stale as the generated count
+    # grows (+400/run) while the STATIC-COUNTS block moves on.
+    _intro_new = (f'{len(seeds)} seed records → {rec_n:,} total records on file')
+    html, _n2 = _re.subn(r'\d+ seed records → [\d,]+ total records on file',
+                         _intro_new, html, count=1)
+    _sigver_new = (f'{len(seeds)} seed Signature versions + '
+                   f'{count["generated"]:,} generated Signature versions = {sig_n:,}')
+    html, _n3 = _re.subn(r'\d+ seed Signature versions \+ [\d,]+ generated Signature versions = [\d,]+',
+                         _sigver_new, html, count=1)
+    # --- stamped-chip pattern: top counters boot with last-known real numbers,
+    # never a bare "…"; renderCounters() overwrites them live from counts.json.
+    html, _n4 = _re.subn(r'(<span id="count_rec">).*?(</span>)',
+                         lambda m: m.group(1) + f'{rec_n:,}' + m.group(2), html, count=1)
+    html, _n5 = _re.subn(r'(<span id="count_sig">).*?(</span>)',
+                         lambda m: m.group(1) + f'{sig_n:,}' + m.group(2), html, count=1)
+    print(f"STATIC-PROSE: intro={_n2} sigver={_n3} chips=rec:{_n4}/sig:{_n5}")
     open(html_path, "w").write(html)
     print(f"STATIC-LASTUPD: stamped ({_n} block{'s' if _n != 1 else ''})")
 except Exception as e:  # noqa: BLE001 - drip must never die on the static block
