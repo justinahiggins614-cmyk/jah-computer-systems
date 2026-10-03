@@ -1259,9 +1259,9 @@ Finder.ask=function(){
   var kws=Finder.keywords(document.getElementById("fq").value);
   if(!kws.length){box.innerHTML='<p class="kv">Describe what you want — a use, an era, a material, a name — and I will match the depository&apos;s own records.</p>';return}
   var scored=allRecords().map(function(r){
-    var hay=Finder.hay(r),sc=0;
-    kws.forEach(function(k){if(hay.indexOf(k)>=0)sc++});
-    return {r:r,sc:sc};
+    var hay=Finder.hay(r),sc=0,hit=[];
+    kws.forEach(function(k){if(hay.indexOf(k)>=0){sc++;hit.push(k)}});
+    return {r:r,sc:sc,hit:hit};
   }).filter(function(x){return x.sc>0});
   scored.sort(function(a,b){return b.sc-a.sc});
   var top=scored.slice(0,5);
@@ -1270,7 +1270,7 @@ Finder.ask=function(){
     '<div class="fcards">'+top.map(function(x){
       var r=x.r,nm=(r.sig&&r.sig.name)||r.name;
       var deep=location.pathname+"?system="+r._system_id;
-      return '<div class="fcard" role="button" tabindex="0" aria-label="Open '+esc(nm)+'" onclick="openSystem(\''+esc(r._system_id)+'\')" onkeydown="if(event.key===\'Enter\'){openSystem(\''+esc(r._system_id)+'\')}"><div class="kv hist">'+esc(r._system_id)+'</div><h4>'+esc(nm)+'</h4><div class="tag">'+esc(r.tag||"")+'</div><p class="kv"><a class="go" href="'+deep+'" onclick="event.stopPropagation()">Take me there &rarr;</a></p></div>';
+      return '<div class="fcard" role="button" tabindex="0" aria-label="Open '+esc(nm)+'" onclick="openSystem(\''+esc(r._system_id)+'\')" onkeydown="if(event.key===\'Enter\'){openSystem(\''+esc(r._system_id)+'\')}"><div class="kv hist">'+esc(r._system_id)+'</div><h4>'+esc(nm)+'</h4><div class="tag">'+esc(r.tag||"")+'</div><div class="hist" style="margin-top:4px">matched: '+esc(x.hit.join(", "))+'</div><p class="kv"><a class="go" href="'+deep+'" onclick="event.stopPropagation()">Take me there &rarr;</a></p></div>';
     }).join("")+'</div>';
 };
 document.addEventListener("DOMContentLoaded",function(){var fq=document.getElementById("fq");if(fq)fq.addEventListener("keydown",function(e){if(e.key==="Enter")Finder.ask()})});
@@ -1449,6 +1449,8 @@ function renderGrid(){
 }
 function dl(name, text){const b=new Blob([text],{type:"text/plain"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
 function copyTxt(t,btn){navigator.clipboard.writeText(t).then(()=>{const o=btn.textContent;btn.textContent="COPIED ✓";setTimeout(()=>btn.textContent=o,1200)})}
+function shareSystem(btn){var r=window._rec;if(!r)return;var url=location.origin+location.pathname+'?system='+r._system_id;var nm=((r.sig&&r.sig.name)||r.name||'A system file');if(navigator.share){try{navigator.share({title:nm+' · The Signature PC System Depository',url:url}).catch(function(){})}catch(e){copyTxt(url,btn)}}else{copyTxt(url,btn)}}
+function sharePossible(n,seed,btn){var url=location.origin+location.pathname+'?model='+n+(seed!=null?'&seed='+seed:'');if(navigator.share){try{navigator.share({title:'Possible model #'+n+' · The Signature PC System Depository',url:url}).catch(function(){})}catch(e){copyTxt(url,btn)}}else{copyTxt(url,btn)}}
 function simMetaFor(rec, simKey){
   const c = (window.SIMS.CONTRACTS||{})[simKey]||{};
   return { system_id: rec._system_id, system_type: rec._system_type, spec_hash: rec._spec_hash,
@@ -1486,6 +1488,7 @@ function openSystem(id){
   let h = PCUI.jsonLDHTML(r);
   h += '<div class="hist">FILE · '+esc(r._system_id)+'</div>';
   h += PCUI.badgeHTML(r._system_type);
+  h += '<div class="kv" style="margin:6px 0"><b>RECORD CLASS:</b> '+esc(r._type_label||r._system_type)+' <span class="hist">— '+esc(PCID.TYPE_MEANING[r._system_type]||'')+'</span></div>';
   h += PCUI.statusPillsHTML(r);
   // Signature version (prominent, as before)
   if (r.sig && r._system_type !== "SIGNATURE_ORIGINAL"){
@@ -1498,8 +1501,13 @@ function openSystem(id){
   }
   h += '<h2 style="font-size:24px;margin:4px 0 8px;color:#fff">'+esc(s.name)+'</h2><p>'+esc(s.blurb||"")+'</p>';
   h += PCUI.glanceHTML(r._arch_vocab || r._component_set, r._tech_specs, simKey, 'd');
+  if (r._system_type === 'GENERATED' && r._generation_seed != null) {
+    h += PCUI.secHTML('GENERATION INPUTS <span class="hist">— REPRODUCIBLE</span>',
+      '<p class="kv">Generator: <b>'+esc(r._generator_version||'DRIP/1.0')+'</b> · seed: <b>'+esc(String(r._generation_seed))+'</b></p>' +
+      '<p class="kv">Exactly these inputs generated this machine — the same seed always produces the same machine. Share it with <span class="hist">?system='+esc(r._system_id)+'</span> and it re-opens exactly.</p>', true);
+  }
   h += '<div style="margin:8px 0"><button id="rdbtn" onclick="rdToggle()">🔊 Read entry</button> <button onclick="rdStop()">⏹ Stop</button> <select onchange="RD.speed=parseFloat(this.value)" title="Reading speed" aria-label="Reading speed"><option value="0.8">0.8×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></div>';
-  h += '<div class="sec"><h3>WORKING MODEL — SAMPLE IT HERE</h3><div id="simbox"></div></div>';
+  h += '<div class="sec"><h3>WORKING MODEL — SAMPLE IT HERE</h3><p class="kv"><b>This is a model/simulation.</b> It demonstrates the concept in your browser — it is not an accurate emulation of the historical machine.</p><div id="simbox"></div></div>';
   h += PCUI.contractHTML(simKey);
   const meta = simMetaFor(r, simKey);
   const jsHead = PCID.jsHeader(meta), pyHead = PCID.pyHeader(meta);
@@ -1524,11 +1532,18 @@ function openSystem(id){
   if (r._assumptions) h += PCUI.assumptionsHTML(r._assumptions);
   h += PCUI.buildabilityHTML(r._buildability);
   h += PCUI.provenanceHTML(r._provenance);
+  if (r._system_type === 'HISTORICAL' || r._system_type === 'HYBRID') {
+    h += PCUI.secHTML('SOURCES & REFERENCES',
+      '<ul style="font-size:13px;color:#d7e9f7;margin:4px 0;padding-left:18px">' +
+      '<li>Depository curatorial record <span class="hist">'+esc(r._system_id)+'</span> — source type "JAH curatorial summary"; claim scope: general description, dates approximate.</li>' +
+      '<li>Primary sources: pending attachment — none invented here; verification state: UNVERIFIED.</li>' +
+      '<li>Sourced articles: <a href="https://justinahiggins614-cmyk.github.io/jah-wiki/" target="_blank" rel="noopener">JAH Wiki</a>.</li></ul>', false);
+  }
   h += PCUI.governanceHTML(r._governance);
   h += PCUI.xrefsHTML(r._xrefs);
   h += '<div class="sec"><h3>IN THE SIGNATURE DICTIONARY</h3><p class="kv">'+dictTerms(r).map(function(t){return '<a href="'+DICT_BASE+encodeURIComponent(t)+'" target="_blank" rel="noopener">📖 '+esc(t)+'</a>'}).join(" · ")+'</p></div>';
   h += PCUI.aiContractHTML();
-  h += '<button onclick="closeDetail()">← BACK TO GRAND LIST</button> <button onclick="copyTxt(location.origin+location.pathname+\'?system='+r._system_id+'\',this)">⧉ COPY LINK</button>';
+  h += '<button onclick="closeDetail()">← BACK TO GRAND LIST</button> <button onclick="copyTxt(location.origin+location.pathname+\'?system='+r._system_id+'\',this)">⧉ COPY LINK</button> <button onclick="shareSystem(this)">⤴ SHARE</button>';
   d.innerHTML = h; d.style.display = "block"; d.scrollIntoView({behavior:"smooth"});
   sim.render(document.getElementById("simbox"), r);
   try{history.replaceState(null,"","?system="+r._system_id)}catch(e){}
@@ -1550,9 +1565,13 @@ function openPossible(n, seed){
   let h = '<div class="card" style="cursor:default;max-width:760px">';
   h += '<div class="hist">POSSIBLE MODEL #'+n.toLocaleString()+' / 1,000,000 · '+esc(m.system_id)+'</div>';
   h += PCUI.badgeHTML("GENERATED");
+  h += '<div class="kv" style="margin:6px 0"><b>RECORD CLASS:</b> GENERATED MODEL <span class="hist">— '+esc(PCID.TYPE_MEANING.GENERATED)+'</span></div>';
   h += '<h3 style="margin-top:6px">'+esc(m.name)+'</h3><div class="tag">'+esc(m.blurb)+'</div>';
   h += '<div class="kv">Legacy ID '+esc(m.legacy_id)+' · generator '+esc(m.generator_version)+' · spec hash <span class="hist">sha256:'+esc(m.spec_hash.slice(0,16))+'…</span></div>';
   h += PCUI.glanceHTML(m.architecture, m.tech_specs, simKey, 'p');
+  h += PCUI.secHTML('GENERATION INPUTS <span class="hist">— REPRODUCIBLE</span>',
+    '<p class="kv">Generator: <b>'+esc(m.generator_version||'GEN/2.0')+'</b> · model <b>#'+n.toLocaleString()+'</b> of 1,000,000</p>' +
+    '<p class="kv">The model number is the input — opening the same number always yields the identical record.</p>', true);
   if (seed != null) h += '<div class="kv">🎲 Random seed <b>'+esc(String(seed))+'</b> — shareable: anyone opening seed '+esc(String(seed))+' gets this exact model.</div>';
   h += '<div class="sec"><h3>COMPONENT SET</h3>'+kvRows(m.component_set)+'</div>';
   h += PCUI.archVocabHTML(m.architecture);
@@ -1560,14 +1579,14 @@ function openPossible(n, seed){
   h += PCUI.validityHTML(m.validity);
   h += PCUI.assumptionsHTML(m.assumptions);
   h += PCUI.buildabilityHTML(m.buildability);
-  h += '<div class="sec"><h3>WORKING MODEL — SAMPLE IT HERE</h3><div class="kv hist">'+esc(m.simulator_note)+'</div><div id="psim"></div></div>';
+  h += '<div class="sec"><h3>WORKING MODEL — SAMPLE IT HERE</h3><div class="kv hist">'+esc(m.simulator_note)+'</div><p class="kv"><b>This is a model/simulation</b> of a possible model — not physical hardware.</p><div id="psim"></div></div>';
   h += PCUI.contractHTML(simKey);
   h += PCUI.governanceHTML(m.governance);
   h += PCUI.xrefsHTML(m.xrefs);
   h += '<div class="sec"><h3>DOWNLOADS <span class="hist">— VERSIONED, HASHED</span></h3>' +
     '<button onclick="dl(window._rec.system_id+\'.system.json\',JSON.stringify(window._rec,null,2))">⤓ SYSTEM.JSON</button> ' +
     '<button onclick="dl(window._rec.system_id+\'.txt\',window._phead+\'MODEL #\'+window._rec.model_number+\' — \'+window._rec.name+\'\\n\'+window._rec.blurb+\'\\n\')">⤓ SPEC SHEET .TXT</button> ' +
-    '<button onclick="copyTxt(location.origin+location.pathname+\'?model='+n+(seed!=null?'&seed='+seed:'')+'\',this)">⧉ COPY LINK</button></div>';
+    '<button onclick="copyTxt(location.origin+location.pathname+\'?model='+n+(seed!=null?'&seed='+seed:'')+'\',this)">⧉ COPY LINK</button> <button onclick="sharePossible(n,seed,this)">⤴ SHARE</button></div>';
   h += PCUI.aiContractHTML();
   h += '</div>';
   window._phead = PCID.downloadHeader(meta)+"\n";
