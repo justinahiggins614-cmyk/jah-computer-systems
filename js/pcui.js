@@ -165,6 +165,26 @@ window.PCUI = (function () {
       esc(meaning) + '">▣ ' + esc(label) + '</div>';
   }
 
+  /* ---------- NETWORK 10-FIX record panel (additive, 2026-10-03) ----------
+     Canonical badge + ID/VERSION/SOURCE meta + OPEN.SHARE.COPY.DOWNLOAD.READ
+     ALOUD actions + provenance line. o = {r, openUrl, ver, source, share, copy,
+     dl, prov} where share/copy/dl are JS snippets for the onclick handlers. */
+  function recordPanelHTML(o) {
+    var r = o.r;
+    var h = '<div class="jahrecord">' +
+      badgeHTML(r._system_type) +
+      '<div class="jrp-meta"><b>ID</b> ' + esc(r._system_id) + ' \u00B7 <b>VERSION</b> ' + esc(o.ver) +
+      ' \u00B7 <b>SOURCE</b> ' + esc(o.source) + '</div>' +
+      '<div class="jrp-row">' +
+      '<a class="jrp-btn" href="' + esc(o.openUrl) + '">OPEN</a>' +
+      '<button type="button" class="jrp-btn" onclick="' + o.share + '">SHARE</button>' +
+      '<button type="button" class="jrp-btn" onclick="' + o.copy + '">COPY</button>' +
+      '<button type="button" class="jrp-btn" onclick="' + o.dl + '">DOWNLOAD</button>' +
+      '<button type="button" class="jrp-btn" onclick="rdToggle()">READ ALOUD</button></div>';
+    if (o.prov) h += '<div class="jahprov">PROVENANCE \u00B7 ' + esc(o.prov) + '</div>';
+    return h + '</div>';
+  }
+
   function kvTable(rows) {
     return '<table style="width:100%;border-collapse:collapse;font-size:13px">' +
       rows.map(function (r) {
@@ -433,7 +453,7 @@ window.PCUI = (function () {
     FILTERS: FILTERS, tagsFor: tagsFor, matchesFilter: matchesFilter,
     enrichSeed: enrichSeed, enrichDrip: enrichDrip, provenanceFor: provenanceFor,
     secHTML: secHTML, statusPillsHTML: statusPillsHTML, glanceHTML: glanceHTML,
-    badgeHTML: badgeHTML, governanceHTML: governanceHTML, provenanceHTML: provenanceHTML,
+    badgeHTML: badgeHTML, recordPanelHTML: recordPanelHTML, governanceHTML: governanceHTML, provenanceHTML: provenanceHTML,
     contractHTML: contractHTML, techSpecsHTML: techSpecsHTML, archVocabHTML: archVocabHTML,
     validityHTML: validityHTML, assumptionsHTML: assumptionsHTML, buildabilityHTML: buildabilityHTML,
     sigRelHTML: sigRelHTML, xrefsHTML: xrefsHTML, aiContractHTML: aiContractHTML,

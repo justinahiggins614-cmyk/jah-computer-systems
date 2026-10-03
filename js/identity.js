@@ -105,11 +105,15 @@ window.PCIDENT = (function () {
 
   var SYSTEM_TYPES = ['HISTORICAL', 'SIGNATURE_ORIGINAL', 'PREDICTED', 'GENERATED', 'HYBRID'];
   var TYPE_LABEL = {
-    HISTORICAL: 'HISTORICAL RECORD',
+    /* NETWORK 10-FIX (2026-10-03): canonical network record-status badge --
+       exactly one of SIGNATURE ORIGINAL / GENERATED / PUBLIC RECORD /
+       SIMULATION / DRAFT SPECIFICATION / USER CREATED. The finer type meaning
+       stays in TYPE_MEANING (badge tooltip + RECORD CLASS line). */
+    HISTORICAL: 'PUBLIC RECORD',
     SIGNATURE_ORIGINAL: 'SIGNATURE ORIGINAL',
-    PREDICTED: 'PREDICTED CONCEPT',
-    GENERATED: 'GENERATED MODEL',
-    HYBRID: 'HYBRID ARCHITECTURE'
+    PREDICTED: 'SIMULATION',
+    GENERATED: 'GENERATED',
+    HYBRID: 'SIGNATURE ORIGINAL'
   };
   var TYPE_MEANING = {
     HISTORICAL: 'A record of a machine that existed, per cited historical sources. Reference only.',

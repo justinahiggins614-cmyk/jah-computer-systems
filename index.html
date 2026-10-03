@@ -17,6 +17,24 @@ a{color:var(--blue)}
 .jahnet a:hover{background:#10243d}
 .jahnet a.cur{background:#0e2c4d;color:#fff;box-shadow:0 0 8px #0af6}
 .jahnet span.youarehere{color:#8fb8d8;letter-spacing:2px;font-size:11px;margin-left:auto;border:1px solid var(--line);border-radius:4px;padding:3px 8px}
+/* NETWORK 10-FIX consistency layer (additive, 2026-10-03) */
+.sitekicker{display:inline-block;color:#ffd75e;font-weight:700;letter-spacing:.2em;font-size:.85em;
+  border:1px solid #ffd75e;border-radius:3px;padding:1px 8px;margin:0 0 10px;white-space:nowrap}
+.jahstatus{display:inline-block;font-size:.72em;letter-spacing:.18em;font-weight:700;color:#0a0f1e;
+  background:#ffd75e;border-radius:3px;padding:2px 9px;margin:6px 8px 6px 0}
+.jahstatus.gen{background:#8affc1;color:#0a1a14}
+.jahstatus.sim{background:#b48cff;color:#141021}
+.jahstatus.pub{background:#9fd8ff;color:#0a1424}
+.jahprov{font-size:.78em;color:#8fb8d8;margin:8px 0 2px;letter-spacing:.02em}
+.jahrecord{border:1px solid #16324f;border-radius:8px;padding:8px 12px;margin:10px 0;background:#071428;font-size:.8em;color:#d7e9f7}
+.jahrecord .jrp-meta{color:#8fb8d8;margin:4px 0 8px;font-size:.92em}
+.jahrecord .jrp-meta b{color:#ffd75e;font-weight:700;letter-spacing:.08em}
+.jahrecord .jrp-row{display:flex;flex-wrap:wrap;gap:6px}
+.jrp-btn{background:#0e2c4d;border:1px solid #2a6db5;color:#bfe6ff;border-radius:6px;
+  padding:7px 12px;font-size:.85em;cursor:pointer;text-decoration:none;display:inline-block}
+.jrp-btn:hover{background:#163a5e}
+.jah-aiid{border-left:3px solid #2a6db5;background:#071428;padding:8px 12px;margin:8px 0;font-size:.82em;color:#d7e9f7}
+.jah-aiid b{color:#ffd75e;letter-spacing:.06em;font-weight:700}
 .wrap{max-width:1060px;margin:0 auto;padding:18px 14px 60px}
 .hero{border:1px solid var(--line);border-radius:10px;background:linear-gradient(180deg,#0d1830,#080e1a);padding:26px 22px;margin:16px 0;position:relative;overflow:hidden}
 .hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 34px,rgba(53,208,255,.05) 34px 35px);pointer-events:none}
@@ -954,6 +972,7 @@ pre.code{font-family:Consolas,Menlo,"Courier New",monospace}
 <nav aria-label="JAH Network Global Ecosystem" role="navigation"><div class="jahnet"><span>THE JAH NETWORK</span><a href="https://justinahiggins614-cmyk.github.io/jah-ai-models/">The Signature AI Phone Book</a><a href="https://justinahiggins614-cmyk.github.io/jah-calculator/">Calculator</a><a href="https://justinahiggins614-cmyk.github.io/jah-dictionary/">Dictionary</a><a href="https://justinahiggins614-cmyk.github.io/jah-wiki/">JAH Wiki</a><a href="https://justinahiggins614-cmyk.github.io/jah-n-wiki-leaks/">JAH-N Wiki</a><a href="https://justinahiggins614-cmyk.github.io/cyber-patent-catalog/">Patent Catalog</a><a href="https://justinahiggins614-cmyk.github.io/signature-one-archive/specs.html">Spec Catalog</a><a href="https://justinahiggins614-cmyk.github.io/signature-llama/">Signature Llama</a><span class="youarehere">YOU ARE HERE: THE SIGNATURE PC SYSTEM DEPOSITORY</span><a href="https://justinahiggins614-cmyk.github.io/signature-cyber-mega-mall/">Cyber Mega-Mall</a><a href="https://justinahiggins614-cmyk.github.io/signature-university/">Signature University</a><a href="https://justinahiggins614-cmyk.github.io/signature-books/">Book Depository</a><a href="https://justinahiggins614-cmyk.github.io/signature-comics/">Comic Store</a><a href="https://justinahiggins614-cmyk.github.io/signature-newspapers/">Global Newspaper Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-3d-print/">3D Print Depository</a><a href="https://justinahiggins614-cmyk.github.io/signature-backend/">Mad Scientist Lab</a><a href="https://justinahiggins614-cmyk.github.io/signature-boundless-generators/">Boundless Generator Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-mixlab/">AI Mix Lab</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-olypics/">AI Olypics</a><a href="https://justinahiggins614-cmyk.github.io/signature-chip-maker/">Chip Maker and Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-app-archive/">App Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-robot-matcher/">AI Robot Matcher</a><a href="https://justinahiggins614-cmyk.github.io/signature-experiment-solver/">Experiment Solver</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-image-video-maker/">Signature AI Pixel</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-song-maker/">Signature Music Studio</a></div></nav>
 <div class="wrap">
 <div class="hero">
+<p class="sitekicker">SITE 9 OF 25 · THE JAH NETWORK</p>
 <h1>THE <span class="pc">SIGNATURE PC SYSTEM</span> DEPOSITORY</h1>
 <p>Every computer system, from the most original machines ever built to every recorded model — and every possible model still to come. Each file ships a working simulator you can sample right here, a Signature-made version you can copy, download, and run, and the full story behind the machine.</p>
 <details class="stattoggle" open><summary class="stattoggle-s">DEPOSITORY STATS</summary>
@@ -1487,7 +1506,16 @@ function openSystem(id){
   const s = r.sig || {name:r.name, blurb:r.desc, demo:simKey};
   let h = PCUI.jsonLDHTML(r);
   h += '<div class="hist">FILE · '+esc(r._system_id)+'</div>';
-  h += PCUI.badgeHTML(r._system_type);
+  h += PCUI.recordPanelHTML({ r: r, openUrl: '?system=' + r._system_id,
+    ver: r._generator_version || PCID.RECORD_SCHEMA,
+    source: (r._provenance && r._provenance.SOURCE_TYPE) || r._system_type,
+    share: 'shareSystem(this)',
+    copy: 'copyTxt(JSON.stringify(sysJsonFor(window._rec),null,2),this)',
+    dl: 'dl(window._rec._system_id+' + String.fromCharCode(39) + '.system.json' + String.fromCharCode(39) + ',JSON.stringify(sysJsonFor(window._rec),null,2))',
+    prov: r._system_type === 'GENERATED'
+      ? ('Generated by ' + (r._generator_version || 'the Depository generator') + ' · seed ' + r._generation_seed + ' · reproducible')
+      : ((r._provenance && r._provenance.SOURCE_TITLE ? r._provenance.SOURCE_TITLE + ' · ' : '') + (r._provenance ? r._provenance.VERIFICATION_STATE : ''))
+  });
   h += '<div class="kv" style="margin:6px 0"><b>RECORD CLASS:</b> '+esc(r._type_label||r._system_type)+' <span class="hist">— '+esc(PCID.TYPE_MEANING[r._system_type]||'')+'</span></div>';
   h += PCUI.statusPillsHTML(r);
   // Signature version (prominent, as before)
@@ -1507,7 +1535,7 @@ function openSystem(id){
       '<p class="kv">Exactly these inputs generated this machine — the same seed always produces the same machine. Share it with <span class="hist">?system='+esc(r._system_id)+'</span> and it re-opens exactly.</p>', true);
   }
   h += '<div style="margin:8px 0"><button id="rdbtn" onclick="rdToggle()">🔊 Read entry</button> <button onclick="rdStop()">⏹ Stop</button> <select onchange="RD.speed=parseFloat(this.value)" title="Reading speed" aria-label="Reading speed"><option value="0.8">0.8×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></div>';
-  h += '<div class="sec"><h3>WORKING MODEL — SAMPLE IT HERE</h3><p class="kv"><b>This is a model/simulation.</b> It demonstrates the concept in your browser — it is not an accurate emulation of the historical machine.</p><div id="simbox"></div></div>';
+  h += '<div class="sec"><h3>WORKING MODEL — SAMPLE IT HERE <span class="jahstatus sim">SIMULATION</span></h3><p class="kv"><b>This is a model/simulation.</b> It demonstrates the concept in your browser — it is not an accurate emulation of the historical machine.</p><div id="simbox"></div></div>';
   h += PCUI.contractHTML(simKey);
   const meta = simMetaFor(r, simKey);
   const jsHead = PCID.jsHeader(meta), pyHead = PCID.pyHeader(meta);
@@ -1564,7 +1592,15 @@ function openPossible(n, seed){
     dependencies: "none — standalone", source: "The Signature PC System Depository", created: "2026-09-30" };
   let h = '<div class="card" style="cursor:default;max-width:760px">';
   h += '<div class="hist">POSSIBLE MODEL #'+n.toLocaleString()+' / 1,000,000 · '+esc(m.system_id)+'</div>';
-  h += PCUI.badgeHTML("GENERATED");
+  h += PCUI.recordPanelHTML({ r: { _system_id: m.system_id, _system_type: 'GENERATED' },
+    openUrl: '?model=' + n + (seed != null ? '&seed=' + seed : ''),
+    ver: m.generator_version || 'GEN/2.0',
+    source: 'Depository generator — deterministic derivation',
+    share: 'sharePossible(' + n + ',' + (seed == null ? 'null' : seed) + ',this)',
+    copy: 'copyTxt(JSON.stringify(window._rec,null,2),this)',
+    dl: 'dl(window._rec.system_id+' + String.fromCharCode(39) + '.system.json' + String.fromCharCode(39) + ',JSON.stringify(window._rec,null,2))',
+    prov: 'Generated on this device by ' + (m.generator_version || 'GEN/2.0') + ' · model #' + n.toLocaleString() + ' of 1,000,000' + (seed != null ? ' · seed ' + seed : '') + ' · ' + new Date().toISOString().slice(0, 10)
+  });
   h += '<div class="kv" style="margin:6px 0"><b>RECORD CLASS:</b> GENERATED MODEL <span class="hist">— '+esc(PCID.TYPE_MEANING.GENERATED)+'</span></div>';
   h += '<h3 style="margin-top:6px">'+esc(m.name)+'</h3><div class="tag">'+esc(m.blurb)+'</div>';
   h += '<div class="kv">Legacy ID '+esc(m.legacy_id)+' · generator '+esc(m.generator_version)+' · spec hash <span class="hist">sha256:'+esc(m.spec_hash.slice(0,16))+'…</span></div>';
@@ -1579,7 +1615,7 @@ function openPossible(n, seed){
   h += PCUI.validityHTML(m.validity);
   h += PCUI.assumptionsHTML(m.assumptions);
   h += PCUI.buildabilityHTML(m.buildability);
-  h += '<div class="sec"><h3>WORKING MODEL — SAMPLE IT HERE</h3><div class="kv hist">'+esc(m.simulator_note)+'</div><p class="kv"><b>This is a model/simulation</b> of a possible model — not physical hardware.</p><div id="psim"></div></div>';
+  h += '<div class="sec"><h3>WORKING MODEL — SAMPLE IT HERE <span class="jahstatus sim">SIMULATION</span></h3><div class="kv hist">'+esc(m.simulator_note)+'</div><p class="kv"><b>This is a model/simulation</b> of a possible model — not physical hardware.</p><div id="psim"></div></div>';
   h += PCUI.contractHTML(simKey);
   h += PCUI.governanceHTML(m.governance);
   h += PCUI.xrefsHTML(m.xrefs);
