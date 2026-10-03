@@ -24,6 +24,10 @@ a{color:var(--blue)}
 .hero h1 .pc{color:var(--blue)}
 .hero p{margin:6px 0;color:var(--dim);max-width:70ch}
 .counter{display:inline-block;margin-top:10px;border:1px solid var(--blue);border-radius:8px;padding:8px 16px;font-size:20px;color:var(--blue);background:rgba(53,208,255,.06);box-shadow:0 0 14px rgba(53,208,255,.25) inset}
+/* FIX-03 (2026-10-02): stat tickers collapse on small screens; desktop renders open, identical to before */
+details.stattoggle{border:0;padding:0;margin:0}
+details.stattoggle>.stattoggle-s{display:none}
+@media(max-width:767px){details.stattoggle>.stattoggle-s{display:block;cursor:pointer;font-size:11px;letter-spacing:2px;color:var(--blue);padding:8px 4px;text-align:center;border:1px dashed var(--line);border-radius:6px;margin:8px 0}}
 .counter small{display:block;font-size:11px;color:var(--dim);letter-spacing:2px}
 .hud{border:1px solid var(--line);border-radius:8px;background:var(--panel);padding:14px;margin:14px 0;position:relative}
 .hud h2{margin:0 0 10px;font-size:15px;letter-spacing:3px;color:var(--blue)}
@@ -36,7 +40,7 @@ button:hover,.btn:hover{box-shadow:0 0 10px rgba(53,208,255,.5)}
 .pill{border:1px solid var(--line);border-radius:20px;padding:6px 12px;font-size:13px;cursor:pointer;color:var(--dim);background:#0a1220;text-decoration:none;display:inline-block}
 .pill.on{border-color:var(--blue);color:#fff;background:#0e2c4d;box-shadow:0 0 8px rgba(53,208,255,.4)}
 .pill b{color:var(--blue)}
-.az{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0}
+.az{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0;position:sticky;top:34px;z-index:40;background:var(--bg);padding:6px 0}
 .az span{border:1px solid var(--line);border-radius:4px;padding:4px 8px;font-size:12px;cursor:pointer;color:var(--dim)}
 .az span.on{background:#0e2c4d;color:#fff;border-color:var(--blue)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-top:12px}
@@ -60,7 +64,8 @@ footer{margin-top:30px;border-top:1px solid var(--line);padding:16px 4px;color:v
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
- "@type": "WebSite",
+ "@graph": [
+ {"@type": "WebSite",
  "name": "The Signature PC System Depository",
  "url": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/",
  "description": "Every computer system from the most original machines to every possible model - simulators, Signature-made versions, and code for every file.",
@@ -918,22 +923,28 @@ footer{margin-top:30px;border-top:1px solid var(--line);padding:16px 4px;color:v
    }
   ]
  }
+ },
+ {"@type":"Dataset","name":"The Signature PC System Depository","url":"https://justinahiggins614-cmyk.github.io/jah-computer-systems/","creator":{"@type":"Person","name":"Justin Addam Higgins"}}
+ ]
 }
 </script>
 </head>
 <body>
-<div class="jahnet"><span>THE JAH NETWORK</span><a href="https://justinahiggins614-cmyk.github.io/jah-ai-models/">The Signature AI Phone Book</a><a href="https://justinahiggins614-cmyk.github.io/jah-calculator/">Calculator</a><a href="https://justinahiggins614-cmyk.github.io/jah-dictionary/">Dictionary</a><a href="https://justinahiggins614-cmyk.github.io/jah-wiki/">JAH Wiki</a><a href="https://justinahiggins614-cmyk.github.io/jah-n-wiki-leaks/">JAH-N Wiki</a><a href="https://justinahiggins614-cmyk.github.io/cyber-patent-catalog/">Patent Catalog</a><a href="https://justinahiggins614-cmyk.github.io/signature-one-archive/specs.html">Spec Catalog</a><a href="https://justinahiggins614-cmyk.github.io/signature-llama/">Signature Llama</a><span class="youarehere">YOU ARE HERE: THE SIGNATURE PC SYSTEM DEPOSITORY</span><a href="https://justinahiggins614-cmyk.github.io/signature-cyber-mega-mall/">Cyber Mega-Mall</a><a href="https://justinahiggins614-cmyk.github.io/signature-university/">Signature University</a><a href="https://justinahiggins614-cmyk.github.io/signature-books/">Book Depository</a><a href="https://justinahiggins614-cmyk.github.io/signature-comics/">Comic Store</a><a href="https://justinahiggins614-cmyk.github.io/signature-newspapers/">Global Newspaper Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-3d-print/">3D Print Depository</a><a href="https://justinahiggins614-cmyk.github.io/signature-backend/">Mad Scientist Lab</a><a href="https://justinahiggins614-cmyk.github.io/signature-boundless-generators/">Boundless Generator Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-mixlab/">AI Mix Lab</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-olypics/">AI Olypics</a><a href="https://justinahiggins614-cmyk.github.io/signature-chip-maker/">Chip Maker and Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-app-archive/">App Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-robot-matcher/">AI Robot Matcher</a><a href="https://justinahiggins614-cmyk.github.io/signature-experiment-solver/">Experiment Solver</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-image-video-maker/">Signature AI Pixel</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-song-maker/">Signature Music Studio</a></div>
+<nav aria-label="JAH Network Global Ecosystem" role="navigation"><div class="jahnet"><span>THE JAH NETWORK</span><a href="https://justinahiggins614-cmyk.github.io/jah-ai-models/">The Signature AI Phone Book</a><a href="https://justinahiggins614-cmyk.github.io/jah-calculator/">Calculator</a><a href="https://justinahiggins614-cmyk.github.io/jah-dictionary/">Dictionary</a><a href="https://justinahiggins614-cmyk.github.io/jah-wiki/">JAH Wiki</a><a href="https://justinahiggins614-cmyk.github.io/jah-n-wiki-leaks/">JAH-N Wiki</a><a href="https://justinahiggins614-cmyk.github.io/cyber-patent-catalog/">Patent Catalog</a><a href="https://justinahiggins614-cmyk.github.io/signature-one-archive/specs.html">Spec Catalog</a><a href="https://justinahiggins614-cmyk.github.io/signature-llama/">Signature Llama</a><span class="youarehere">YOU ARE HERE: THE SIGNATURE PC SYSTEM DEPOSITORY</span><a href="https://justinahiggins614-cmyk.github.io/signature-cyber-mega-mall/">Cyber Mega-Mall</a><a href="https://justinahiggins614-cmyk.github.io/signature-university/">Signature University</a><a href="https://justinahiggins614-cmyk.github.io/signature-books/">Book Depository</a><a href="https://justinahiggins614-cmyk.github.io/signature-comics/">Comic Store</a><a href="https://justinahiggins614-cmyk.github.io/signature-newspapers/">Global Newspaper Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-3d-print/">3D Print Depository</a><a href="https://justinahiggins614-cmyk.github.io/signature-backend/">Mad Scientist Lab</a><a href="https://justinahiggins614-cmyk.github.io/signature-boundless-generators/">Boundless Generator Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-mixlab/">AI Mix Lab</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-olypics/">AI Olypics</a><a href="https://justinahiggins614-cmyk.github.io/signature-chip-maker/">Chip Maker and Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-app-archive/">App Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-robot-matcher/">AI Robot Matcher</a><a href="https://justinahiggins614-cmyk.github.io/signature-experiment-solver/">Experiment Solver</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-image-video-maker/">Signature AI Pixel</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-song-maker/">Signature Music Studio</a></div></nav>
 <div class="wrap">
 <div class="hero">
 <h1>THE <span class="pc">SIGNATURE PC SYSTEM</span> DEPOSITORY</h1>
 <p>Every computer system, from the most original machines ever built to every recorded model — and every possible model still to come. Each file ships a working simulator you can sample right here, a Signature-made version you can copy, download, and run, and the full story behind the machine.</p>
+<details class="stattoggle" open><summary class="stattoggle-s">DEPOSITORY STATS</summary>
 <div class="counter"><small>RECORDED SYSTEMS ON FILE</small><span id="count_rec">…</span></div>
 <div class="counter"><small>SIGNATURE SYSTEMS</small><span id="count_sig">…</span></div>
 <div class="counter"><small>GENERATABLE SPACE</small><span id="count_gen">1,000,000</span></div>
 <div class="kv hist" id="lastupd" style="margin-top:8px;max-width:70ch">LAST UPDATED · loading…</div>
+</details>
 <p class="kv" style="margin-top:10px;max-width:70ch">The 1,000,000 figure is the <b>generatable model space</b> — computed on demand from components × architectures × materials × scales. Nothing stored, nothing slow. It is not a count of completed historical records. Recorded systems and Signature systems are counted separately above.</p>
 </div>
 <!-- STATIC-COUNTS-START -->
+<details class="stattoggle" open><summary class="stattoggle-s">THE COUNT — ON FILE VS. GENERATABLE</summary>
 <div class="hud" id="crawl-counts">
 <h2>THE COUNT — ON FILE VS. GENERATABLE</h2>
 <p class="kv">Completed systems on file: <b>10,121</b> <span class="hist">(as of 2026-10-02)</span></p>
@@ -946,6 +957,7 @@ footer{margin-top:30px;border-top:1px solid var(--line);padding:16px 4px;color:v
 <p class="kv">Generatable model space: <b>1,000,000</b> possible models (<span class="hist">JAH-PC-00000001</span> through <span class="hist">JAH-PC-01000000</span>) — computed on demand from components × architectures × materials × scales. Nothing stored, nothing slow.</p>
 <p class="kv hist">Static snapshot for crawlers; live counters above update in your browser. Refreshed by the depository drip every 2 hours.</p>
 </div>
+</details>
 <!-- STATIC-COUNTS-END -->
 <div class="hud" id="scopebox"></div>
 <div class="hud" id="grandlist">
@@ -1445,6 +1457,8 @@ function boot(){
 }
 boot();
 
+/* FIX-03 (2026-10-02): collapse stat tickers on small screens so titles and search stay instantly reachable */
+(function(){try{if(window.matchMedia&&window.matchMedia("(max-width:767px)").matches){var els=document.querySelectorAll("details.stattoggle");for(var k=0;k<els.length;k++)els[k].removeAttribute("open");}}catch(e){}})();
 </script>
 </body>
 </html>
