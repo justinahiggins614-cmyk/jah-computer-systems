@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>try{if(localStorage.getItem("jah-theme")==="dark")document.documentElement.dataset.theme="dark";}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Signature PC System Depository</title>
 <meta name="description" content="Every computer system from the most original machines to every possible model — simulators, Signature-made versions, and code for every file.">
 <link rel="canonical" href="https://justinahiggins614-cmyk.github.io/jah-computer-systems/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Signature PC System Depository">
+<meta property="og:title" content="The Signature PC System Depository">
+<meta property="og:description" content="Every computer system from the most original machines to every possible model — simulators, Signature-made versions, and code for every file.">
+<meta property="og:url" content="https://justinahiggins614-cmyk.github.io/jah-computer-systems/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The Signature PC System Depository">
+<meta name="twitter:description" content="Every computer system from the most original machines to every possible model — simulators, Signature-made versions, and code for every file.">
 <style>
 :root{--bg:#060a11;--panel:#0b1220;--panel2:#0e1626;--line:#1d3a5f;--blue:#35d0ff;--blue2:#0af;--dim:#8fb8d8;--txt:#d7e9f7;--gold:#ffd75e}
 *{box-sizing:border-box}
@@ -99,6 +108,11 @@ details.sec .secbody{padding-top:4px}
 .rescount{font-size:12px;color:var(--dim);letter-spacing:1px;margin-top:5px}
 pre.code{font-family:Consolas,Menlo,"Courier New",monospace}
 #detail p{line-height:1.6}
+/* UX-2026-10-03: opt-in dark mode via data-theme; default look unchanged */
+html[data-theme="dark"]{filter:invert(1) hue-rotate(180deg)}
+html[data-theme="dark"] img,html[data-theme="dark"] video,html[data-theme="dark"] canvas,html[data-theme="dark"] svg{filter:invert(1) hue-rotate(180deg)}
+#jah-theme-toggle{position:fixed;right:14px;bottom:14px;z-index:99999;width:40px;height:40px;border-radius:50%;border:1px solid var(--blue);background:#04070d;color:var(--blue);font-size:20px;line-height:1;cursor:pointer;opacity:.7;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+#jah-theme-toggle:hover{opacity:1}
 </style>
 <script type="application/ld+json">
 {
@@ -969,6 +983,14 @@ pre.code{font-family:Consolas,Menlo,"Courier New",monospace}
 </script>
 </head>
 <body>
+<button id="jah-theme-toggle" type="button" title="Toggle dark mode" aria-label="Toggle dark mode">&#9681;</button>
+<script>
+/* UX-2026-10-03: dark-mode toggle wiring (opt-in; default look unchanged) */
+(function(){var b=document.getElementById("jah-theme-toggle");
+function paint(){try{b.innerHTML=(document.documentElement.dataset.theme==="dark")?"&#9728;":"&#9681;";}catch(e){}}
+b.addEventListener("click",function(){try{var d=document.documentElement;var dark=d.dataset.theme!=="dark";d.dataset.theme=dark?"dark":"";localStorage.setItem("jah-theme",dark?"dark":"light");}catch(e){}paint();});
+paint();})();
+</script>
 <nav aria-label="JAH Network Global Ecosystem" role="navigation"><div class="jahnet"><span>THE JAH NETWORK</span><a href="https://justinahiggins614-cmyk.github.io/jah-ai-models/">The Signature AI Phone Book</a><a href="https://justinahiggins614-cmyk.github.io/jah-calculator/">Calculator</a><a href="https://justinahiggins614-cmyk.github.io/jah-dictionary/">Dictionary</a><a href="https://justinahiggins614-cmyk.github.io/jah-wiki/">JAH Wiki</a><a href="https://justinahiggins614-cmyk.github.io/jah-n-wiki-leaks/">JAH-N Wiki</a><a href="https://justinahiggins614-cmyk.github.io/cyber-patent-catalog/">Patent Catalog</a><a href="https://justinahiggins614-cmyk.github.io/signature-one-archive/specs.html">Spec Catalog</a><a href="https://justinahiggins614-cmyk.github.io/signature-llama/">Signature Llama</a><span class="youarehere">YOU ARE HERE: THE SIGNATURE PC SYSTEM DEPOSITORY</span><a href="https://justinahiggins614-cmyk.github.io/signature-cyber-mega-mall/">Cyber Mega-Mall</a><a href="https://justinahiggins614-cmyk.github.io/signature-university/">Signature University</a><a href="https://justinahiggins614-cmyk.github.io/signature-books/">Book Depository</a><a href="https://justinahiggins614-cmyk.github.io/signature-comics/">Comic Store</a><a href="https://justinahiggins614-cmyk.github.io/signature-newspapers/">Global Newspaper Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-3d-print/">3D Print Depository</a><a href="https://justinahiggins614-cmyk.github.io/signature-backend/">Mad Scientist Lab</a><a href="https://justinahiggins614-cmyk.github.io/signature-boundless-generators/">Boundless Generator Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-mixlab/">AI Mix Lab</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-olypics/">AI Olypics</a><a href="https://justinahiggins614-cmyk.github.io/signature-chip-maker/">Chip Maker and Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-app-archive/">App Archive</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-robot-matcher/">AI Robot Matcher</a><a href="https://justinahiggins614-cmyk.github.io/signature-experiment-solver/">Experiment Solver</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-image-video-maker/">Signature AI Pixel</a><a href="https://justinahiggins614-cmyk.github.io/signature-ai-song-maker/">Signature Music Studio</a></div></nav>
 <div class="wrap">
 <div class="hero">
@@ -1721,6 +1743,67 @@ boot();
 
 /* FIX-03 (2026-10-02): collapse stat tickers on small screens so titles and search stay instantly reachable */
 (function(){try{if(window.matchMedia&&window.matchMedia("(max-width:767px)").matches){var els=document.querySelectorAll("details.stattoggle");for(var k=0;k<els.length;k++)els[k].removeAttribute("open");}}catch(e){}})();
+</script>
+<script>
+/* UX-2026-10-03 session restore — localStorage only; nothing leaves this device */
+(function(){
+try{
+var P=location.pathname;
+function sk(n){return "jah-sx:"+P+":"+n;}
+var recScrolled=false;
+function hasDeepLink(){return /[?&](system|seed|model)=/.test(location.search);}
+/* (a) scroll position: throttled save, restore after content settles */
+var st=null;
+window.addEventListener("scroll",function(){if(st)return;st=setTimeout(function(){st=null;try{localStorage.setItem(sk("y"),String(window.scrollY||window.pageYOffset||0));}catch(e){}},300);},{passive:true});
+function doScroll(){if(recScrolled||hasDeepLink())return;try{var y=parseInt(localStorage.getItem(sk("y"))||"0",10);if(y>0)window.scrollTo(0,y);}catch(e){}}
+/* (b) category pill tabs: save on click, restore once the grid boots */
+document.addEventListener("click",function(e){
+  var p=e.target&&e.target.closest?e.target.closest("#pills .pill"):null;
+  if(!p)return;
+  try{localStorage.setItem(sk("cat"),p.getAttribute("data-c")||"ALL");}catch(x){}
+},true);
+function restoreTabs(){
+  try{
+    var c=localStorage.getItem(sk("cat"));
+    if(!c)return;
+    var p=document.querySelector('#pills .pill[data-c="'+c+'"]');
+    if(p&&!p.classList.contains("on"))p.click();
+  }catch(e){}
+}
+/* (c) last-opened system: ?system=/?seed=/?model= at load + on openSystem; scroll into view on a bare listing */
+try{
+  var m=/[?&]system=([^&]+)/.exec(location.search);
+  if(m)localStorage.setItem(sk("rec"),"system:"+decodeURIComponent(m[1]));
+  else{m=/[?&]model=(\d+)/.exec(location.search);if(m)localStorage.setItem(sk("rec"),"model:"+m[1]);}
+  if(typeof openSystem==="function"){
+    var _os=openSystem;
+    openSystem=function(id){try{localStorage.setItem(sk("rec"),"system:"+id);}catch(e){}return _os(id);};
+  }
+}catch(e){}
+function restoreRec(){
+  try{
+    if(hasDeepLink())return;
+    var rec=localStorage.getItem(sk("rec"));
+    if(!rec||rec.indexOf("system:")!==0)return;
+    var id=rec.slice(7),cards=document.querySelectorAll("#grid .card");
+    for(var k=0;k<cards.length;k++){
+      var oc=cards[k].getAttribute("onclick")||"";
+      if(oc.indexOf("'"+id+"'")>=0){cards[k].scrollIntoView();recScrolled=true;break;}
+    }
+  }catch(e){}
+}
+var tries=0;
+var iv=setInterval(function(){
+  tries++;
+  if(document.querySelector("#pills .pill")||tries>40){
+    clearInterval(iv);
+    restoreTabs();
+    setTimeout(function(){restoreRec();doScroll();},400);
+  }
+},250);
+window.addEventListener("load",function(){setTimeout(doScroll,900);});
+}catch(e){}
+})();
 </script>
 </body>
 </html>
