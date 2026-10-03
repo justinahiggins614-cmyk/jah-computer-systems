@@ -1,0 +1,60 @@
+{
+ "feed": "api",
+ "generated_at": "2026-10-03T13:48:20Z",
+ "name": "THE SIGNATURE PC SYSTEM DEPOSITORY \u2014 machine entry points",
+ "routes": [
+  {
+   "path": "/",
+   "method": "GET",
+   "desc": "Human home page; every record opens via ?system=JAH-PC-########"
+  },
+  {
+   "path": "/?system={id}",
+   "method": "GET",
+   "desc": "Record page. id = JAH-PC-######## (canonical), legacy sys-* / pcm-gen-NNNNNN also resolve."
+  },
+  {
+   "path": "/?seed={n}",
+   "method": "GET",
+   "desc": "Shareable random-model link; seed n re-opens the same model."
+  },
+  {
+   "path": "/?model={n}",
+   "method": "GET",
+   "desc": "On-demand possible model #n (1..1000000)."
+  },
+  {
+   "path": "/?cat={FILTER}",
+   "method": "GET",
+   "desc": "Category browse (see data/categories.json)."
+  },
+  {
+   "path": "/?q={query}",
+   "method": "GET",
+   "desc": "Search (names, tags, descriptions, IDs)."
+  },
+  {
+   "path": "/data/counts.json",
+   "method": "GET",
+   "desc": "Authoritative counts (single source of truth)."
+  },
+  {
+   "path": "/data/schema.json",
+   "method": "GET",
+   "desc": "JAH-PC-RECORD/1.0 JSON Schema."
+  },
+  {
+   "path": "/data/manifest.json",
+   "method": "GET",
+   "desc": "Dataset manifest."
+  },
+  {
+   "path": "/data/api.json",
+   "method": "GET",
+   "desc": "This file."
+  }
+ ],
+ "record_contract": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/data/schema.json",
+ "counts": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/data/counts.json",
+ "note": "No API keys. No write endpoints. Records are immutable; corrections arrive as new versions."
+}

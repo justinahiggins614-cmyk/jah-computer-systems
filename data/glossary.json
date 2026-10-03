@@ -1,0 +1,20 @@
+{
+ "feed": "glossary",
+ "generated_at": "2026-10-03T13:48:20Z",
+ "terms": {
+  "SYSTEM": "A complete computer system (machine), as defined by the depository scope.",
+  "SYSTEM RECORD": "The canonical JAH-PC-RECORD/1.0 entry for one system: exactly one canonical JAH-PC-######## ID, one system_type, one spec_hash.",
+  "SEED RECORD": "One of the 121 curated base records in data/systems.json \u2014 the depository's recorded file for a system.",
+  "SIGNATURE VERSION": "The Signature-made version of a record (.sig block): an original Signature System design inspired by (never claiming to be) the base system. Every record on file carries one.",
+  "GENERATED MODEL": "A deterministically generated possible model from the combinatorial space (DRIP/1.0 records or GEN/2.0 on-demand). Not evidence the machine exists or was built.",
+  "PREDICTED CONCEPT": "A forward-looking concept record. Speculation, not history, not evidence of existence.",
+  "HISTORICAL RECORD": "A record of a machine that existed, per cited curatorial summaries. Reference only; primary-source attachment pending.",
+  "SIMULATION": "The working in-browser model attached to a record (SIM/1.0, SIMULATION ONLY). Sampling it never claims the hardware exists.",
+  "POSSIBLE MODEL": "One of the 1,000,000 models addressable in the on-demand lattice (JAH-PC-00000001 .. JAH-PC-01000000).",
+  "MODEL SPACE": "The full 1,000,000-model generatable space: components x architectures x materials x scales, computed on demand, never stored.",
+  "CANONICAL MODEL": "The one deterministic record that an ID always resolves to \u2014 opening the same ID yields the identical record, forever.",
+  "RECORDED": "Systems on file: 12,521 records (121 seed + 12,400 generated).",
+  "ORIGINAL_NAME": "A historical system's own name (e.g. Apple I) \u2014 kept separate from the Signature version's name on every historical record.",
+  "SIGNATURE_NAME": "The Signature-made version's name (e.g. Signature Garage Board)."
+ }
+}

@@ -1,0 +1,52 @@
+{
+ "feed": "versions",
+ "generated_at": "2026-10-03T13:48:20Z",
+ "note": "Records are immutable: corrections arrive as NEW versions, never edits. No record has needed a corrected version yet; the ledger stands ready.",
+ "record_schema": [
+  {
+   "version": "JAH-PC-RECORD/1.0",
+   "since": "2026-09-30",
+   "status": "current"
+  }
+ ],
+ "id_scheme": [
+  {
+   "version": "JAH-PC-ID/1.0",
+   "since": "2026-09-30",
+   "status": "current"
+  }
+ ],
+ "generators": [
+  {
+   "version": "SEED/1.0",
+   "since": "2026-09-30",
+   "status": "current"
+  },
+  {
+   "version": "DRIP/1.0",
+   "since": "2026-09-30",
+   "status": "current"
+  },
+  {
+   "version": "GEN/2.0",
+   "since": "2026-09-30",
+   "status": "current",
+   "note": "lattice unchanged since GEN/1.0; version bumped for the governance wrapper"
+  }
+ ],
+ "simulators": [
+  {
+   "version": "SIM/1.0",
+   "since": "2026-09-30",
+   "status": "current"
+  }
+ ],
+ "validity_rules": [
+  {
+   "version": "PC-VALIDITY/1.0",
+   "since": "2026-09-30",
+   "status": "current",
+   "note": "first-pass manufacturability heuristics, not fabrication guarantees"
+  }
+ ]
+}

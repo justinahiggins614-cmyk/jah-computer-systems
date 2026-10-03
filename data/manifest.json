@@ -1,0 +1,70 @@
+{
+ "feed": "manifest",
+ "generated_at": "2026-10-03T13:48:20Z",
+ "dataset": "THE SIGNATURE PC SYSTEM DEPOSITORY",
+ "base": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/",
+ "id_scheme": "JAH-PC-ID/1.0",
+ "record_schema": "JAH-PC-RECORD/1.0",
+ "governance": "JAH-SIGNATURE (own authority \u2014 not government, not USPTO, never a granted patent)",
+ "entry_points": {
+  "human": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/",
+  "counts": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/data/counts.json",
+  "manifest": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/data/manifest.json",
+  "schema": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/data/schema.json",
+  "api": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/data/api.json",
+  "llms": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/llms.txt",
+  "sitemap": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/sitemap.xml"
+ },
+ "data_files": [
+  {
+   "path": "data/systems.json",
+   "sha256": "1db05653623bbf64321520a8435248c26a214615a4d903da67dffc98d91b3485",
+   "bytes": 99691
+  },
+  {
+   "path": "data/count.json",
+   "sha256": "bc3323af92274e746cfbdaa5b35ef71ea9c9a0d304227279b4e21996c1da5ba7",
+   "bytes": 33
+  },
+  {
+   "path": "data/counts.json",
+   "sha256": "246f6ac670ffe1a4804b95cb23313db8e2afe7446f0461a29be84092e9aaa2c7",
+   "bytes": 1012
+  },
+  {
+   "path": "data/last-updated.json",
+   "sha256": "2675c42d9dcc82988637e6bb67b87ca8dce01d80ae6ecb89ce41b3f34bbaca90",
+   "bytes": 145
+  },
+  {
+   "path": "data/systems-index.json",
+   "sha256": "82e2563d949281865dbc29f311f0dd314757dcf4db6b1394f343c860fc558d2b",
+   "bytes": 5198735
+  },
+  {
+   "path": "data/wiki-index.json",
+   "sha256": "3482c49d5ad3fceb65c5e69dab34a22fe3386571dafb9a6c6d908ebb174859de",
+   "bytes": 55907
+  },
+  {
+   "path": "data/drip/chunk-*.jsonl",
+   "chunks": 31,
+   "records": 12400,
+   "sha256_first_chunk": "e68b3da86f42f3a7756f075ddb68a21ba88e183577365d109c5d1f6d3dc80c4f"
+  }
+ ],
+ "machine_readable": [
+  "counts.json",
+  "schema.json",
+  "categories.json",
+  "generators.json",
+  "simulators.json",
+  "sources.json",
+  "versions.json",
+  "hashes.json",
+  "changelog.json",
+  "api.json",
+  "glossary.json",
+  "test-vectors.json"
+ ]
+}

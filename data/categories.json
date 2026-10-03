@@ -1,0 +1,40 @@
+{
+ "feed": "categories",
+ "generated_at": "2026-10-03T13:48:20Z",
+ "note": "Category labels are derived from each record's own name/tag/description text \u2014 never assigned by hand, never invented specs. Counts cover seed records; generated records carry scale-derived form tags (Rack->MAINFRAME, Cluster/Wafer-Scale->SUPERCOMPUTER, else PC).",
+ "categories": [
+  {
+   "name": "HISTORIC",
+   "seed_records": 36
+  },
+  {
+   "name": "MATERIALS",
+   "seed_records": 18
+  },
+  {
+   "name": "MIXES",
+   "seed_records": 10
+  },
+  {
+   "name": "MODERN",
+   "seed_records": 20
+  },
+  {
+   "name": "PREDICTED",
+   "seed_records": 12
+  },
+  {
+   "name": "QUANTUM",
+   "seed_records": 12
+  },
+  {
+   "name": "SIGNATURE",
+   "seed_records": 13
+  }
+ ],
+ "generated_record_tags": {
+  "MAINFRAME": "Rack scale",
+  "SUPERCOMPUTER": "Cluster / Wafer-Scale",
+  "PC": "Board / Chiplet"
+ }
+}

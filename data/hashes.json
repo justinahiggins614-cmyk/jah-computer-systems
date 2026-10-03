@@ -1,0 +1,22 @@
+{
+ "feed": "hashes",
+ "generated_at": "2026-10-03T13:48:20Z",
+ "algorithm": "sha256",
+ "canonicalization": "files are hashed as stored bytes; record spec_hash uses canonical JSON (sorted keys, no whitespace, UTF-8) per js/identity.js canonJSON. Verify a record's hash in the browser with VERIFY HASH on its file page.",
+ "files": {
+  "data/systems.json": "sha256:1db05653623bbf64321520a8435248c26a214615a4d903da67dffc98d91b3485",
+  "data/count.json": "sha256:bc3323af92274e746cfbdaa5b35ef71ea9c9a0d304227279b4e21996c1da5ba7",
+  "data/counts.json": "sha256:246f6ac670ffe1a4804b95cb23313db8e2afe7446f0461a29be84092e9aaa2c7",
+  "data/last-updated.json": "sha256:2675c42d9dcc82988637e6bb67b87ca8dce01d80ae6ecb89ce41b3f34bbaca90",
+  "data/systems-index.json": "sha256:82e2563d949281865dbc29f311f0dd314757dcf4db6b1394f343c860fc558d2b",
+  "data/wiki-index.json": "sha256:3482c49d5ad3fceb65c5e69dab34a22fe3386571dafb9a6c6d908ebb174859de",
+  "data/schema.json": "sha256:cdeac17cdb23f39ac6f8ab1cfd08b27ee753f3733b6ac5c7c25afeca18a01e08",
+  "data/categories.json": "sha256:efa5386bf2d8d60676d3971933bc394e28319a65794338b32a3ab94b6246d7cd",
+  "data/generators.json": "sha256:b90caa3fb2e5a91a65d42f79dc3674274cdb5171a7a5d1e6ad1e98adab9b896b",
+  "data/simulators.json": "sha256:1ef480a322befd6a55f9de348523c174709ab2782ef0f803a0901eb8cc4286e4",
+  "data/sources.json": "sha256:cd28150c5a22fa6ccde62787eba8843e6fd364d42df7d9bbff980c5aac390032",
+  "data/versions.json": "sha256:b37949392c1069fb403d2118d1a8a0986e1d9e439533e619a63c5dec2f891a0f",
+  "data/drip/chunk-0000.jsonl (first)": "sha256:e68b3da86f42f3a7756f075ddb68a21ba88e183577365d109c5d1f6d3dc80c4f",
+  "data/drip/chunk-0030.jsonl (last)": "sha256:19b55e8281e6f1bb44fd69babd1de2cb1e808e7777172481f6ec2f2681bbc9ad"
+ }
+}

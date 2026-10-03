@@ -1,0 +1,34 @@
+{
+ "feed": "simulators",
+ "generated_at": "2026-10-03T13:48:20Z",
+ "version": "SIM/1.0",
+ "safety": "SIMULATION ONLY \u2014 every simulator is a representative model illustrating an architecture class, never a claim the hardware exists or an accurate emulation of a historical machine.",
+ "simulators": [
+  {
+   "key": "abacus",
+   "contract": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/data/simulators.json#abacus"
+  },
+  {
+   "key": "cpu4",
+   "contract": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/data/simulators.json#cpu4"
+  },
+  {
+   "key": "gates",
+   "contract": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/data/simulators.json#gates"
+  },
+  {
+   "key": "material",
+   "contract": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/data/simulators.json#material"
+  },
+  {
+   "key": "quantum",
+   "contract": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/data/simulators.json#quantum"
+  },
+  {
+   "key": "stored",
+   "contract": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/data/simulators.json#stored"
+  }
+ ],
+ "impl": "js/sims.js",
+ "coverage": "every system on file ships a working in-browser simulator"
+}

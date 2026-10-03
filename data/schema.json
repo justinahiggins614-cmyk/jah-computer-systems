@@ -1,0 +1,124 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/data/schema.json",
+ "title": "JAH-PC-RECORD/1.0",
+ "description": "Canonical record contract for The Signature PC System Depository. Every system record carries exactly one canonical JAH-PC-######## ID. Records are immutable: corrections arrive as new versions, never edits.",
+ "type": "object",
+ "required": [
+  "system_id",
+  "id_scheme",
+  "system_type",
+  "name",
+  "record_schema"
+ ],
+ "properties": {
+  "system_id": {
+   "type": "string",
+   "pattern": "^JAH-PC-\\d{8}$",
+   "description": "Canonical permanent ID. Ranges: 00000001-01000000 on-demand possible models; 80000001+ drip-generated; 90000001+ seed base records; 91000001+ Signature versions of seeds. Never reassigned."
+  },
+  "id_scheme": {
+   "type": "string",
+   "const": "JAH-PC-ID/1.0"
+  },
+  "record_schema": {
+   "type": "string",
+   "const": "JAH-PC-RECORD/1.0"
+  },
+  "system_type": {
+   "type": "string",
+   "enum": [
+    "HISTORICAL",
+    "SIGNATURE_ORIGINAL",
+    "PREDICTED",
+    "GENERATED",
+    "HYBRID"
+   ],
+   "description": "HISTORICAL = record of a machine that existed (reference only). SIGNATURE_ORIGINAL = original Signature System design. PREDICTED = forward-looking concept (speculation). GENERATED = deterministically generated possible model. HYBRID = hybrid-architecture system."
+  },
+  "name": {
+   "type": "string",
+   "description": "Display name (Signature name where a Signature version exists)."
+  },
+  "original_name": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Historical system's own name (historical records only); null where there is no historical original."
+  },
+  "signature_name": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "The Signature-made version's name; null where no Signature version exists."
+  },
+  "era": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "tag": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "desc": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "history": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Curatorial summary. Never a reworded copy of another's patent text."
+  },
+  "generator_version": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "SEED/1.0 (curated seeds), DRIP/1.0 (drip-generated), GEN/2.0 (on-demand lattice). Versioned algorithm: a rule change ships a new version, never a silent edit."
+  },
+  "generation_seed": {
+   "type": [
+    "integer",
+    "null"
+   ],
+   "description": "Deterministic seed; same seed + generator version = same record."
+  },
+  "spec_hash": {
+   "type": "string",
+   "pattern": "^sha256:[0-9a-f]{64}$",
+   "description": "SHA-256 over canonical JSON (sorted keys, no whitespace, UTF-8). Verify with js/identity.js PCIDENT.specHash."
+  },
+  "provenance": {
+   "type": "object",
+   "description": "SOURCE_TYPE / SOURCE_TITLE / CLAIM_SCOPE / VERIFICATION_STATE. Historical records: UNVERIFIED until primary sources attach; no source is ever invented."
+  },
+  "buildability": {
+   "type": "object"
+  },
+  "governance": {
+   "type": "object",
+   "description": "JAH-SIGNATURE identity chain. Never government, never USPTO."
+  },
+  "simulator": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Simulator key rendering this record. Every simulator is SIMULATION ONLY (SIM/1.0) \u2014 a representative model, never a claim the hardware exists."
+  },
+  "xrefs": {
+   "type": "object",
+   "description": "Cross-site ID slots. Reserved slots stay null until a sibling catalog indexes the ID; sibling IDs are never invented."
+  }
+ }
+}

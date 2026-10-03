@@ -1,0 +1,20 @@
+{
+ "feed": "counts",
+ "generated_at": "2026-10-03T13:48:20Z",
+ "snapshot_id": "JAH-PC-COUNT-20261003-00012521",
+ "dataset_version": "2026-10-03",
+ "schema_version": "JAH-PC-RECORD/1.0",
+ "id_scheme": "JAH-PC-ID/1.0",
+ "last_drip_id": "PC depository drip (code/drip/append_models.py)",
+ "records_added_last_drip": null,
+ "recorded_count": 12521,
+ "seed_count": 121,
+ "generated_count": 12400,
+ "signature_versions_count": 12521,
+ "historical_count": 96,
+ "signature_original_count": 13,
+ "predicted_count": 12412,
+ "possible_model_count": 1000000,
+ "simulator_count": 6,
+ "note": "recorded_count counts RECORDS on file (seed records + generated records). signature_versions_count counts the Signature-made VERSION of each record (121 seed Signature versions + 12,400 generated Signature versions). possible_model_count is the generatable model space, computed on demand, never stored. historical/signature_original/predicted split applies to the seed records only; all generated records are predicted concepts."
+}

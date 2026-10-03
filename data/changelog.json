@@ -1,0 +1,14 @@
+{
+ "feed": "changelog",
+ "entries": [
+  {
+   "date": "2026-09-30",
+   "event": "Depository opened: 121 curated seed records, JAH-PC-RECORD/1.0, JAH-PC-ID/1.0, DRIP/1.0, GEN/2.0, SIM/1.0"
+  },
+  {
+   "date": "2026-10-03",
+   "event": "Authoritative counts.json + full machine-readable suite (manifest/schema/api/llms.txt) published; count snapshot, data version, and last/next drip shown on page"
+  }
+ ],
+ "generated_at": "2026-10-03T13:48:20Z"
+}
