@@ -1,22 +1,26 @@
 {
  "feed": "hashes",
- "generated_at": "2026-10-03T13:48:20Z",
+ "generated_at": "2026-10-03T13:59:05Z",
  "algorithm": "sha256",
  "canonicalization": "files are hashed as stored bytes; record spec_hash uses canonical JSON (sorted keys, no whitespace, UTF-8) per js/identity.js canonJSON. Verify a record's hash in the browser with VERIFY HASH on its file page.",
  "files": {
   "data/systems.json": "sha256:1db05653623bbf64321520a8435248c26a214615a4d903da67dffc98d91b3485",
-  "data/count.json": "sha256:bc3323af92274e746cfbdaa5b35ef71ea9c9a0d304227279b4e21996c1da5ba7",
-  "data/counts.json": "sha256:246f6ac670ffe1a4804b95cb23313db8e2afe7446f0461a29be84092e9aaa2c7",
-  "data/last-updated.json": "sha256:2675c42d9dcc82988637e6bb67b87ca8dce01d80ae6ecb89ce41b3f34bbaca90",
+  "data/count.json": "sha256:452a27a06984d59e8da680dec436442c7ab38dc0a1c4fa82f62f433ee6951dc6",
+  "data/counts.json": "sha256:f2931a5ea07547dfe90ab893fe7a9b2b92ccb9de65645898e98bce79844806e1",
+  "data/last-updated.json": "sha256:3c7c93a72d135d8fef4be5d2ecbd4c1f4032afc8e4fa2551fad87096f21c4c56",
   "data/systems-index.json": "sha256:82e2563d949281865dbc29f311f0dd314757dcf4db6b1394f343c860fc558d2b",
   "data/wiki-index.json": "sha256:3482c49d5ad3fceb65c5e69dab34a22fe3386571dafb9a6c6d908ebb174859de",
   "data/schema.json": "sha256:cdeac17cdb23f39ac6f8ab1cfd08b27ee753f3733b6ac5c7c25afeca18a01e08",
-  "data/categories.json": "sha256:efa5386bf2d8d60676d3971933bc394e28319a65794338b32a3ab94b6246d7cd",
-  "data/generators.json": "sha256:b90caa3fb2e5a91a65d42f79dc3674274cdb5171a7a5d1e6ad1e98adab9b896b",
-  "data/simulators.json": "sha256:1ef480a322befd6a55f9de348523c174709ab2782ef0f803a0901eb8cc4286e4",
-  "data/sources.json": "sha256:cd28150c5a22fa6ccde62787eba8843e6fd364d42df7d9bbff980c5aac390032",
-  "data/versions.json": "sha256:b37949392c1069fb403d2118d1a8a0986e1d9e439533e619a63c5dec2f891a0f",
+  "data/categories.json": "sha256:b08c8e65a679a09bed5621dbc19393a36e26260d5871ba84dea8c475a896456c",
+  "data/generators.json": "sha256:80784d0f8b58085ba808f69aadc8bcb1e35dad7466cc45edc485196fd585dbc7",
+  "data/simulators.json": "sha256:0a7cbcd4dbcef866aa329ee15173097b8fcee68a8c0fe06d633ba5dc1f38d642",
+  "data/sources.json": "sha256:197650befb413c9942f574655c02fe729ed00a8960e31fee0ac7ec2eb233d8ce",
+  "data/versions.json": "sha256:0c720cd1012b8d7adf7b9082a5359c656bea3844fd03b1fa8468ac4ada0e848c",
+  "data/changelog.json": "sha256:cc33a9b350d17f52fed72f8d038961c8a231343f9b8b5ab90f9230b5ae9b764a",
+  "data/api.json": "sha256:d5655f82d0b6a671a338f017a53ac3a4a7a447f35d63750ac2e125e7005ef69c",
+  "data/glossary.json": "sha256:ba9c4c22dd8ded265099b52a2f45029016026ca61482414d12441dc46c12eaef",
+  "data/test-vectors.json": "sha256:9cb27a674c8957b2203f80575a7d66440dd26fee4865669d1ea1ddd7658768f6",
   "data/drip/chunk-0000.jsonl (first)": "sha256:e68b3da86f42f3a7756f075ddb68a21ba88e183577365d109c5d1f6d3dc80c4f",
-  "data/drip/chunk-0030.jsonl (last)": "sha256:19b55e8281e6f1bb44fd69babd1de2cb1e808e7777172481f6ec2f2681bbc9ad"
+  "data/drip/chunk-0031.jsonl (last)": "sha256:7d4ecd639df42d9f88da450e8741f2964670e1e7afda822443fe14c67346bd44"
  }
 }
