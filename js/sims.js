@@ -22,8 +22,9 @@ window.SIMS = (function () {
     var b = document.createElement('button');
     b.textContent = label;
     b.style.cssText = 'background:linear-gradient(180deg,#1a2333,#0e1522);color:#7dd3fc;border:1px solid #38bdf8;' +
-      'border-radius:6px;padding:6px 12px;margin:3px;cursor:pointer;font-family:inherit;font-size:12px;' +
-      'letter-spacing:1px;';
+      'border-radius:6px;padding:10px 16px;margin:3px;cursor:pointer;font-family:inherit;font-size:13px;' +
+      'letter-spacing:1px;min-height:44px;min-width:44px;' +
+      'touch-action:manipulation;-webkit-tap-highlight-color:transparent;';
     b.onmouseover = function () { b.style.boxShadow = '0 0 10px #38bdf8'; };
     b.onmouseout = function () { b.style.boxShadow = 'none'; };
     return b;
@@ -221,15 +222,22 @@ window.SIMS = (function () {
       disp.style.cssText = 'margin:10px 0;font-size:13px;line-height:1.8;';
       function assemble(src) {
         var out = new Array(16).fill(0);
+        var OPC = { LDA: 1, ADD: 2, STA: 3, OUT: 4, HLT: 5 };
+        var errs = [];
         src.toUpperCase().split('\n').forEach(function (ln, i) {
           if (i >= 16) return;
           var p = ln.trim().split(/\s+/);
           var op = p[0], arg = parseInt(p[1] || '0', 10) & 15;
-          var code = { LDA: 1, ADD: 2, STA: 3, OUT: 4, HLT: 5 }[op] || 0;
+          var code = OPC[op] || 0;
+          // FIX-2026-10-03: unknown opcodes surface a human-readable warning instead
+          // of silently becoming NOPs.
+          if (op && !OPC[op]) errs.push('line ' + (i + 1) + ': unknown instruction "' + ln.trim().split(/\s+/)[0] + '" — use LDA, ADD, STA, OUT, or HLT');
           out[i] = (code << 4) | arg;
         });
+        asmErrs = errs;
         return out;
       }
+      var asmErrs = [];
       function draw(extra) {
         var s = 'ACC=' + acc + ' (0x' + hex(acc, 1) + ') &nbsp; PC=' + pc + '<br>RAM: ';
         for (var i = 0; i < 16; i++) s += '[' + i + ']=' + hex(ram[i], 2) + ' ';
@@ -248,7 +256,7 @@ window.SIMS = (function () {
         if (op !== 4) draw();
       }
       function stop() { running = false; if (timer) clearInterval(timer); timer = null; runB.textContent = '▶ RUN'; }
-      function load() { ram = assemble(prog.value); ram[14] = 7; ram[15] = 5; acc = 0; pc = 0; stop(); draw('program loaded — RAM[14]=7, RAM[15]=5 preset'); }
+      function load() { ram = assemble(prog.value); ram[14] = 7; ram[15] = 5; acc = 0; pc = 0; stop(); var msg = 'program loaded — RAM[14]=7, RAM[15]=5 preset'; if (asmErrs.length) msg += '<br><span style="color:#ffb27d">⚠ ' + asmErrs.join('<br>⚠ ') + '</span>'; draw(msg); }
       var loadB = btn('⤓ LOAD PROGRAM'), stepB = btn('⏭ STEP'), runB = btn('▶ RUN'), rstB = btn('⟲ RESET');
       loadB.onclick = load;
       stepB.onclick = function () { stop(); step(); };
@@ -569,7 +577,7 @@ window.SIMS = (function () {
       var sel = document.createElement('select');
       sel.setAttribute('aria-label', 'Substrate material');
       sel.style.cssText = 'background:#0e1522;color:#7dd3fc;border:1px solid #38bdf8;border-radius:6px;' +
-        'padding:6px;font-family:inherit;font-size:13px;margin:6px 0;';
+        'padding:10px;font-family:inherit;font-size:14px;margin:6px 0;min-height:44px;';
       MATS.forEach(function (m, i) { var o = document.createElement('option'); o.value = i; o.textContent = m.name; sel.appendChild(o); });
       var info = document.createElement('div');
       info.style.cssText = 'font-size:13px;line-height:1.9;margin:8px 0;';

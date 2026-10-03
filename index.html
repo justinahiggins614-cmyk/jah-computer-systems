@@ -1228,7 +1228,7 @@ paint();})();
 </div>
 <div class="pills" id="pills"></div>
 <div class="az" id="az"></div>
-<div class="grid" id="grid"></div>
+<div class="grid" id="grid"><div class="kv" id="bootmsg" style="grid-column:1/-1">LOADING THE DEPOSITORY — fetching the system files…</div></div>
 </div>
 <div class="hud" id="detail"></div>
 <div class="hud">
@@ -1899,6 +1899,126 @@ var iv=setInterval(function(){
 },250);
 window.addEventListener("load",function(){setTimeout(doScroll,900);});
 }catch(e){}
+})();
+</script>
+<!-- FIRST-TIME USER GUIDE + SPOTLIGHT TOUR (additive, 2026-10-03; theme untouched) -->
+<style>
+.jah-guide-btn{position:fixed;right:14px;bottom:14px;z-index:9000;background:#0a1c30;color:#ffd75e;
+border:1px solid #ffd75e;border-radius:24px;min-height:48px;min-width:48px;padding:12px 18px;font-size:15px;
+font-weight:700;cursor:pointer;box-shadow:0 0 12px rgba(255,215,94,.25);touch-action:manipulation}
+.jah-guide-panel{position:fixed;right:14px;bottom:74px;z-index:9001;max-width:min(420px,92vw);max-height:70vh;
+overflow:auto;background:#071428;color:#d7e9f7;border:1px solid #38bdf8;border-radius:12px;padding:16px 18px;
+box-shadow:0 8px 32px rgba(0,0,0,.6);display:none;font-size:14px;line-height:1.6}
+.jah-guide-panel h3{color:#ffd75e;margin:0 0 8px;font-size:16px;letter-spacing:1px}
+.jah-guide-panel h4{color:#38bdf8;margin:12px 0 4px;font-size:14px}
+.jah-guide-panel p{margin:4px 0 8px}
+.jah-guide-panel .gclose{float:right;background:none;border:1px solid #38bdf8;color:#7dd3fc;border-radius:6px;
+min-height:44px;min-width:44px;font-size:16px;cursor:pointer}
+.jah-tour-nudge{position:fixed;right:14px;bottom:74px;z-index:9002;max-width:min(360px,92vw);background:#071428;
+color:#d7e9f7;border:1px solid #ffd75e;border-radius:12px;padding:14px 16px;display:none;
+box-shadow:0 8px 32px rgba(0,0,0,.6);font-size:14px}
+.jah-tour-veil{position:fixed;inset:0;z-index:9003;background:rgba(2,6,12,.72);display:none}
+.jah-tour-card{position:fixed;z-index:9004;max-width:min(380px,92vw);background:#071428;color:#d7e9f7;
+border:1px solid #ffd75e;border-radius:12px;padding:16px 18px;box-shadow:0 8px 32px rgba(0,0,0,.7);
+font-size:14px;line-height:1.55;display:none}
+.jah-tour-card h3{color:#ffd75e;margin:0 0 6px;font-size:16px}
+.jah-tour-card .trow{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.jah-tour-card button{background:#0e1522;color:#7dd3fc;border:1px solid #38bdf8;border-radius:8px;
+min-height:44px;padding:10px 16px;font-size:14px;cursor:pointer;touch-action:manipulation}
+.jah-tour-card button.primary{background:#1a2333;color:#ffd75e;border-color:#ffd75e;font-weight:700}
+.jah-tour-step{font-size:12px;color:#8fb8d8;letter-spacing:1px;margin-bottom:4px}
+.jah-tour-hl{outline:3px solid #ffd75e !important;outline-offset:3px;border-radius:8px}
+</style>
+<button class="jah-guide-btn" id="jahGuideBtn" aria-label="Open the first-time user guide">❓ Guide</button>
+<div class="jah-guide-panel" id="jahGuidePanel" role="dialog" aria-label="How to use this site">
+<button class="gclose" id="jahGuideClose" aria-label="Close guide">✕</button>
+<h3>HOW TO USE THIS SITE</h3>
+<p>The Signature PC System Depository keeps the file on every computer system — real historical machines, Signature-original designs, predicted concepts, and a million possible models you can dial up.</p>
+<h4>🔍 Search the Grand List</h4>
+<p>Type in the search box — it filters every system by name, tag, description, or JAH-PC ID as you type. Try "quantum", "ENIAC", or a full ID like JAH-PC-90000001.</p>
+<h4>🧭 System Finder</h4>
+<p>Describe the machine in plain words ("a portable computer made of wood") and the Finder matches the depository's own records.</p>
+<h4>🏷 Categories &amp; A–Z</h4>
+<p>The pills narrow the list to Historical, Signature, Predicted, Generated, Quantum, Mainframe, Supercomputer, and more. The A–Z row filters by first letter. Every pill is also a real link (?cat=…), so it works without JavaScript too.</p>
+<h4>📄 Open a system file</h4>
+<p>Tap any card to open its full file. The badge at the top tells you what it is: <b>PUBLIC RECORD</b> (a real machine that existed), <b>SIGNATURE ORIGINAL</b> (a design made by the Signature System), <b>SIMULATION</b> (a predicted concept), or <b>GENERATED</b> (a possible model). Historical records keep the ORIGINAL_NAME and the Signature version's SIGNATURE_NAME separate.</p>
+<h4>⚙ The working model (simulator)</h4>
+<p>Every file ships a working in-browser simulator — vault ledger, logic gates, 4-bit CPU, stored-program interpreter, quantum state-vector, or material explorer. Press LOAD, then RUN or STEP; RESET clears it. Every simulator carries a SIMULATOR CONTRACT stating its simulation class and SAFETY: SIMULATION_ONLY — it is a browser model, never physical hardware and never an accurate emulation of a historical machine.</p>
+<h4>⧉ Copy &amp; ⤓ Download</h4>
+<p>On any file: COPY / DOWNLOAD the Signature version as .js, .py, or the full system.json record. OPEN gets the shareable ?system= link; SHARE sends it; COPY LINK copies the URL.</p>
+<h4>🔊 Read entry</h4>
+<p>"Read entry" reads the open file aloud in tiers (device voice, then two web voices), with a speed selector and a Stop button.</p>
+<h4>🎲 Every Possible Model</h4>
+<p>The depository charts 1,000,000 possible models. Dial any number 1–1,000,000 to open it — the same number always yields the identical record. RANDOM MODEL picks one and records its seed, so it can be shared and re-opened exactly (?seed=…).</p>
+<h4>🤖 Ask about this file</h4>
+<p>The helper under each file answers only from that file's own record — and says plainly when the record doesn't cover something.</p>
+<h4>🧾 Counts, hashes &amp; errors</h4>
+<p>The top counters and the "THE COUNT" section explain what each number means; the authoritative count lives in data/counts.json. Every record carries a SHA-256 spec hash — recompute it with VERIFY HASH on its file page. Found a mistake? Use REPORT AN ERROR.</p>
+</div>
+<div class="jah-tour-nudge" id="jahTourNudge" role="dialog" aria-label="Take the tour">
+<b>New to the Depository?</b><p>Take the 1-minute tour — it walks you through search, categories, system files, and simulators.</p>
+<div class="trow" style="display:flex;gap:8px"><button class="primary" id="jahTourStart" style="min-height:44px;padding:10px 16px;border-radius:8px">▶ START TOUR</button><button id="jahTourSkip" style="min-height:44px;padding:10px 16px;border-radius:8px">SKIP</button></div>
+</div>
+<div class="jah-tour-veil" id="jahTourVeil"></div>
+<div class="jah-tour-card" id="jahTourCard" role="dialog" aria-live="polite" aria-label="Site tour"></div>
+<script>
+(function(){
+"use strict";
+var LS='jah-tour-seen-pc';
+var panel=document.getElementById('jahGuidePanel'),btn=document.getElementById('jahGuideBtn'),x=document.getElementById('jahGuideClose');
+function openGuide(){panel.style.display='block';}function closeGuide(){panel.style.display='none';}
+btn.onclick=function(){panel.style.display==='block'?closeGuide():openGuide();};
+x.onclick=closeGuide;
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeGuide();tourEnd();}});
+/* ---------- spotlight tour ---------- */
+var STEPS=[
+ {sel:'#q',t:'1 · SEARCH',w:'WHAT: the search box.',d:'WHAT IT DOES: filters every system by machine name, tag, description, or JAH-PC ID — as you type.',h:'HOW: click the box and type "quantum", "ENIAC", or a full ID like JAH-PC-90000001. Watch the grid below narrow.'},
+ {sel:'#pills',t:'2 · CATEGORIES',w:'WHAT: the category pills.',d:'WHAT IT DOES: narrows the list to Historical, Signature, Predicted, Generated, Quantum, Mainframe, Supercomputer, and more.',h:'HOW: tap a pill (or use the A–Z row under it). Every pill is also a real ?cat= link.'},
+ {sel:'#finder',t:'3 · SYSTEM FINDER',w:'WHAT: the plain-words finder.',d:'WHAT IT DOES: matches your description against the depository\'s own records — no special syntax needed.',h:'HOW: type what you want ("a portable computer made of wood") and press FIND.'},
+ {sel:'#grid',t:'4 · OPEN A SYSTEM FILE',w:'WHAT: a system card.',d:'WHAT IT DOES: opens the full file — record class badge, story, specs, simulator, and downloads.',h:'HOW: tap any card (or focus it and press Enter). The badge at the top tells you what the file is: PUBLIC RECORD, SIGNATURE ORIGINAL, SIMULATION, or GENERATED.'},
+ {sel:'#detail',t:'5 · THE WORKING MODEL',w:'WHAT: the simulator inside every file.',d:'WHAT IT DOES: runs a browser model of the machine — LOAD a program, RUN or STEP it, RESET to clear. The SIMULATOR CONTRACT states its class and SAFETY: SIMULATION_ONLY — a browser model, never hardware.',h:'HOW: open any system file, scroll to WORKING MODEL, press LOAD then RUN. Try typing a bad instruction in the 4-bit CPU — it tells you plainly what\'s wrong.'},
+ {sel:'#detail',t:'6 · COPY, DOWNLOAD, READ ALOUD',w:'WHAT: the file\'s action buttons.',d:'WHAT IT DOES: COPY / DOWNLOAD the Signature version as .js, .py, or system.json; OPEN/SHARE/COPY LINK for the shareable URL; "Read entry" reads the file aloud.',h:'HOW: on any open file, use ⧉ COPY or ⤓ DOWNLOAD under CODE & DOWNLOADS, and 🔊 Read entry at the top of the file.'},
+ {sel:'#pnum',t:'7 · EVERY POSSIBLE MODEL',w:'WHAT: the 1,000,000-model lattice.',d:'WHAT IT DOES: dial any number 1–1,000,000 and the same number always yields the identical record. RANDOM MODEL records its seed so it can be shared and re-opened exactly.',h:'HOW: type a number and press OPEN MODEL, or press RANDOM MODEL.'}
+];
+var idx=-1,hl=null;
+var card=document.getElementById('jahTourCard'),veil=document.getElementById('jahTourVeil'),nudge=document.getElementById('jahTourNudge');
+function clearHl(){if(hl){try{hl.classList.remove('jah-tour-hl');hl.style.position='';hl.style.zIndex='';}catch(e){}hl=null;}}
+function place(el){
+ clearHl();
+ var r=null;try{r=el.getBoundingClientRect();}catch(e){}
+ card.style.left='';card.style.right='';card.style.top='';card.style.bottom='';card.style.transform='';
+ if(r&&r.width&&r.height){try{el.classList.add('jah-tour-hl');el.style.position='relative';el.style.zIndex='9004';hl=el;}catch(e){}
+  var cw=Math.min(380,window.innerWidth*0.92),top=r.bottom+window.scrollY+10;
+  var left=Math.max(10,Math.min(window.innerWidth-cw-10,r.left+window.scrollX));
+  if(top+card.offsetHeight>window.scrollY+window.innerHeight-10)top=Math.max(10,r.top+window.scrollY-card.offsetHeight-10);
+  card.style.left=left+'px';card.style.top=top+'px';
+ }else{card.style.left='50%';card.style.top='50%';card.style.transform='translate(-50%,-50%)';}
+ try{el.scrollIntoView&&el.scrollIntoView({behavior:'smooth',block:'nearest'});}catch(e){}
+}
+function show(i){
+ idx=i;var s=STEPS[i];
+ card.innerHTML='<div class="jah-tour-step">'+s.t+' · '+(i+1)+' OF '+STEPS.length+'</div><h3>'+s.t.split('·')[1].trim()+'</h3>'+
+ '<p><b>WHAT:</b> '+s.w.replace(/^WHAT:\s*/,'')+'</p><p><b>WHAT IT DOES:</b> '+s.d.replace(/^WHAT IT DOES:\s*/,'')+'</p>'+
+ '<p><b>HOW:</b> '+s.h.replace(/^HOW:\s*/,'')+'</p>'+
+ '<div class="trow"><button id="jtBack" '+(i===0?'disabled style="opacity:.4"':'')+'>← BACK</button>'+
+ '<button class="primary" id="jtNext">'+(i===STEPS.length-1?'✔ FINISH':'NEXT →')+'</button>'+
+ '<button id="jtEnd">SKIP</button></div>';
+ card.style.display='block';veil.style.display='block';
+ document.getElementById('jtBack').onclick=function(){if(idx>0)show(idx-1);};
+ document.getElementById('jtNext').onclick=function(){if(idx<STEPS.length-1)show(idx+1);else tourEnd();};
+ document.getElementById('jtEnd').onclick=tourEnd;
+ var el=null;try{el=document.querySelector(s.sel);}catch(e){}
+ place(el||document.body);
+ try{document.getElementById('jtNext').focus();}catch(e){}
+}
+function tourEnd(){clearHl();card.style.display='none';veil.style.display='none';idx=-1;try{localStorage.setItem(LS,'1');}catch(e){}}
+veil.onclick=tourEnd;
+document.addEventListener('keydown',function(e){if(idx<0)return;if(e.key==='ArrowRight'){if(idx<STEPS.length-1)show(idx+1);else tourEnd();}if(e.key==='ArrowLeft'&&idx>0)show(idx-1);});
+document.getElementById('jahTourStart').onclick=function(){nudge.style.display='none';show(0);};
+document.getElementById('jahTourSkip').onclick=function(){nudge.style.display='none';try{localStorage.setItem(LS,'1');}catch(e){}};
+var seen=false;try{seen=!!localStorage.getItem(LS);}catch(e){seen=true;}
+if(!seen){setTimeout(function(){try{if(!localStorage.getItem(LS))nudge.style.display='block';}catch(e){}},1200);}
+window.JAHTour={start:function(){show(0);},end:tourEnd};
 })();
 </script>
 </body>
