@@ -1,6 +1,6 @@
 {
  "feed": "generators",
- "generated_at": "2026-10-03T13:59:05Z",
+ "generated_at": "2026-10-03T15:59:00Z",
  "note": "Deterministic reproduction package: generator version + seed are stored per record. A rule change ships a new version (DRIP/2.0 on change), never a silent edit.",
  "generators": [
   {
@@ -16,7 +16,7 @@
    "impl": "code/drip/append_models.py",
    "seed_scheme": "random.Random(10_000_000 + i) for model i (0-based); ARCH/MATS/WIDTHS/SCALES choice order fixed",
    "deterministic": true,
-   "records": 12800,
+   "records": 13200,
    "id_range": "JAH-PC-80000001 and up (pcm-gen-NNNNNN -> 80000000+N)"
   },
   {
