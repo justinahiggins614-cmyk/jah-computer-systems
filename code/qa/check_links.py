@@ -28,7 +28,7 @@ NAV = [
     ("16 Signature Backend", "https://justinahiggins614-cmyk.github.io/signature-backend/"),
     ("17 Boundless Generator Archive", "https://justinahiggins614-cmyk.github.io/signature-boundless-generators/"),
     ("18 AI Mix Lab", "https://justinahiggins614-cmyk.github.io/signature-ai-mixlab/"),
-    ("19 AI Olypics", "https://justinahiggins614-cmyk.github.io/signature-ai-olypics/"),
+    ("19 AI Olympics", "https://justinahiggins614-cmyk.github.io/signature-ai-olypics/"),
     ("20 Chip Maker and Archive", "https://justinahiggins614-cmyk.github.io/signature-chip-maker/"),
     ("21 App Archive", "https://justinahiggins614-cmyk.github.io/signature-app-archive/"),
     ("22 AI Robot Matcher", "https://justinahiggins614-cmyk.github.io/signature-ai-robot-matcher/"),
