@@ -58,6 +58,22 @@ details.stattoggle>.stattoggle-s{display:none}
 .counter small{display:block;font-size:11px;color:var(--dim);letter-spacing:2px}
 .hud{border:1px solid var(--line);border-radius:8px;background:var(--panel);padding:14px;margin:14px 0;position:relative}
 .hud h2{margin:0 0 10px;font-size:15px;letter-spacing:3px;color:var(--blue)}
+/* BEST OF THE BEST — Manon's 2026-10-04 archive pattern: the AI's top pick pinned above the A–Z list */
+.bestofbest{border:2px solid var(--gold);border-radius:10px;background:linear-gradient(180deg,#101c33,#080e1a);padding:20px;margin:14px 0}
+.bestofbest h2{margin:0 0 4px;color:var(--gold);letter-spacing:2px}
+.bestofbest .whybest{background:rgba(255,215,94,.08);border-left:3px solid var(--gold);padding:10px 14px;border-radius:0 8px 8px 0;margin:10px 0;font-size:.92em}
+.bestofbest .beststats{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.bestofbest .beststat{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:.85em}
+.bestofbest .beststat b{color:var(--gold)}
+.bestofbest .toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.bestofbest .btn{background:#0e2c4d;border:1px solid #2a6db5;color:#bfe6ff;border-radius:6px;padding:9px 14px;font-size:.9em;cursor:pointer;text-decoration:none;display:inline-block}
+.bestofbest .btn:hover{background:#163a5e}
+.bestofbest .btn.go{background:var(--gold);border-color:var(--gold);color:#0a0f1e;font-weight:700}
+.bestofbest .btn.go:hover{background:#ffe89a}
+.bestflow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:12px 0;justify-content:center;font-size:.82em}
+.bestflow .bnode{background:var(--panel2);border:1px solid var(--blue);border-radius:8px;padding:8px 12px;text-align:center;max-width:160px}
+.bestflow .bnode b{display:block;color:var(--blue);margin-bottom:2px}
+.bestflow .barrow{color:var(--gold);font-size:18px;font-weight:700}
 .hud h2:before{content:"▚ ";color:var(--blue2)}
 .hud h3{color:var(--blue);letter-spacing:2px;font-size:13px;margin:14px 0 4px}
 input[type=text],input[type=number]{background:#060b14;border:1px solid var(--line);color:var(--txt);border-radius:6px;padding:10px 12px;font-size:15px;width:100%}
@@ -279,6 +295,53 @@ document.getElementById("jah-askai-q").addEventListener("keydown",function(e){if
 </script>
 </div>
 
+<section class="bestofbest" aria-labelledby="besth">
+<h2 id="besth">★ BEST OF THE BEST</h2>
+<p class="kv" style="margin:4px 0">The AI's top pick from this depository — the single file that best shows what this site does. Popped open for you.</p>
+<details open>
+<summary style="cursor:pointer;font-size:1.05em"><b>Abacus</b> <span class="kv">· JAH-PC-90000001 · file #1</span></summary>
+<div style="padding-top:8px">
+<p class="whybest"><b>Why this is the best:</b> record #1 — the oldest computer system in human history — shown together with its Signature-made version, the <b>Signature Bead Engine</b> (JAH-PC-91000001). The depository's whole mission in one entry: every system ever, each with its Signature version.</p>
+<div class="bestflow" aria-hidden="true"><div class="bnode"><b>~2700 BC</b>the Abacus — beads on rods</div><div class="barrow">→</div><div class="bnode"><b>Full record</b>description · history · demo</div><div class="barrow">→</div><div class="bnode"><b>★ Signature version</b>Signature Bead Engine</div><div class="barrow">→</div><div class="bnode"><b>Your copy</b>download · simulate</div></div>
+<p><b>What it does:</b> the Abacus — a manual bead reckoner, the first computer. Its file carries the full record (description, history), a working in-browser simulator, and its Signature-made version.</p>
+<p><b>Implications:</b> if the oldest computer in history gets the full treatment — record, simulator, Signature version — then all <b>18,921</b> systems on file do too. That is the depository marching to 1,000,000.</p>
+<div class="beststats"><span class="beststat"><b>18,921</b> systems on file</span><span class="beststat">File <b>#1</b> — oldest computer</span><span class="beststat">Signature version: <b>★ included</b></span><span class="beststat">Simulator: <b>yes</b></span></div>
+<div class="toolbar">
+<button class="btn" id="best-speak" type="button">🔊 Read aloud</button>
+<button class="btn" id="best-copy" type="button">⧉ Copy</button>
+<button class="btn" id="best-dl" type="button">⤓ Download</button>
+<a class="btn go" href="index.html?system=JAH-PC-90000001">Open the full file →</a>
+</div>
+</div>
+</details>
+</section>
+<script>
+(function(){
+"use strict";
+var plain="Best of the Best — Abacus, JAH-PC-90000001. Record number 1: the oldest computer system in human history, a manual bead reckoner. Shown with its Signature-made version, the Signature Bead Engine, JAH-PC-91000001. The depository's whole mission in one entry: every system ever, each with its Signature version. 18,921 systems on file, marching to 1,000,000.";
+var dl="THE SIGNATURE PC SYSTEM DEPOSITORY — BEST OF THE BEST\nAbacus — JAH-PC-90000001 (file 1 of 18,921)\nManual bead reckoner — the oldest computer system in human history.\nSignature-made version: Signature Bead Engine — JAH-PC-91000001\n\nWHAT IT DOES\nThe Abacus file carries the full record (description, history), a working in-browser simulator, and its Signature-made version.\n\nIMPLICATIONS\nEvery one of the 18,921 systems on file gets the full treatment: record, simulator, Signature version. Marching to 1,000,000.\n\nFull file: https://justinahiggins614-cmyk.github.io/jah-computer-systems/?system=JAH-PC-90000001";
+function copyText(t,btn){function done(ok){var o=btn.textContent;btn.textContent=ok?"Copied ✓":"Copy failed";setTimeout(function(){btn.textContent=o;},1500);}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true);},function(){done(false);});}else{var ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");done(true);}catch(e){done(false);}document.body.removeChild(ta);}}
+function download(name,text){try{var url=URL.createObjectURL(new Blob([text],{type:"text/plain"}));var a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){document.body.removeChild(a);try{URL.revokeObjectURL(url);}catch(e){}},800);}catch(e){}}
+var speakTimer=null;
+function speakStop(){try{if(window.speechSynthesis)window.speechSynthesis.cancel();}catch(e){}if(speakTimer){clearTimeout(speakTimer);speakTimer=null;}}
+var speakBtn=document.getElementById("best-speak");
+speakBtn.onclick=function(){
+  speakStop();
+  try{
+    if(!("speechSynthesis" in window)){speakBtn.textContent="No voice on this device";setTimeout(function(){speakBtn.textContent="🔊 Read aloud";},1800);return;}
+    if(window.speechSynthesis.speaking){speakBtn.textContent="🔊 Read aloud";return;}
+    var u=new SpeechSynthesisUtterance(plain);
+    speakBtn.textContent="⏹ Stop";
+    u.onend=function(){speakBtn.textContent="🔊 Read aloud";};
+    u.onerror=function(){speakBtn.textContent="🔊 Read aloud";};
+    window.speechSynthesis.speak(u);
+    speakTimer=setTimeout(function(){speakBtn.textContent="🔊 Read aloud";},30000);
+  }catch(e){speakBtn.textContent="🔊 Read aloud";}
+};
+document.getElementById("best-copy").onclick=function(){copyText(dl,this);};
+document.getElementById("best-dl").onclick=function(){download("JAH-PC-90000001-best.txt",dl);};
+})();
+</script>
 <div id="cats"><p class="kv">Loading the catalog index&hellip;</p></div>
 <noscript><div class="notice">This browse page needs JavaScript for its A&ndash;Z lists. The full static record tables live on <a href="index.html">the depository home page</a>.</div></noscript>
 <footer>
