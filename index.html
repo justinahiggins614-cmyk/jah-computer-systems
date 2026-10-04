@@ -2041,7 +2041,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeGuide(
 /* ---------- first-visit welcome overlay (2026-10-04 standard): centered modal, page stays put,
    no auto-scroll, no spotlight jumps, no scrollIntoView. One OK button ends it. ---------- */
 var veil=document.getElementById('jahWelcomeVeil');
-function openWelcome(){veil.style.display='flex';try{document.getElementById('jahWelcomeOk').focus();}catch(e){}}
+function openWelcome(){veil.style.display='flex';try{document.getElementById('jahWelcomeOk').focus({preventScroll:true});}catch(e){}}
 function closeWelcome(){veil.style.display='none';try{localStorage.setItem(LS,'1');}catch(e){}}
 document.getElementById('jahWelcomeOk').onclick=closeWelcome;
 veil.onclick=function(e){if(e.target===veil)closeWelcome();};
