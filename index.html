@@ -998,7 +998,7 @@ paint();})();
 <p class="sitekicker">SITE 10 OF 27 · THE JAH NETWORK</p>
 <h1>THE <span class="pc">SIGNATURE PC SYSTEM</span> DEPOSITORY</h1>
 <p>Every computer system, from the most original machines ever built to every recorded model — and every possible model still to come. Each file ships a working simulator you can sample right here, a Signature-made version you can copy, download, and run, and the full story behind the machine.</p>
-<p class="kv" style="margin:12px 0"><a class="btn" href="browse.html" style="text-decoration:none">&#x1F4DA; BROWSE THE FULL CATALOG &mdash; A&ndash;Z &rarr;</a></p>
+<p class="kv" style="margin:12px 0"><a class="btn" href="browse.html" style="text-decoration:none">&#x1F4DA; BROWSE THE FULL CATALOG &mdash; A&ndash;Z &rarr;</a> <a class="btn" href="#azarchive" style="text-decoration:none">&#x1F4D1; BROWSE ALL SYSTEMS A&ndash;Z &darr;</a></p>
 <details class="stattoggle" open><summary class="stattoggle-s">DEPOSITORY STATS</summary>
 <div class="counter"><small>RECORDED SYSTEMS ON FILE</small><span id="count_rec">18,521</span></div>
 <div class="counter"><small>SIGNATURE VERSIONS</small><span id="count_sig">18,521</span></div>
@@ -1233,6 +1233,33 @@ paint();})();
 <div class="grid" id="grid"><div class="kv" id="bootmsg" style="grid-column:1/-1">LOADING THE DEPOSITORY — fetching the system files…</div></div>
 </div>
 <div class="hud" id="detail"></div>
+<style>
+/* FULL SYSTEMS ARCHIVE A-Z — additive, does not restyle existing components */
+.azsec{background:var(--panel);border:1px solid var(--line);border-radius:6px;margin:8px 0}
+.azsec>summary{cursor:pointer;padding:12px 16px;list-style:none;display:flex;align-items:baseline;gap:14px}
+.azsec>summary::-webkit-details-marker{display:none}
+.azsec>summary::marker{content:""}
+.azsec>summary::before{content:"\25B8";color:var(--dim);font-size:.9em}
+.azsec[open]>summary::before{content:"\25BE";color:var(--blue)}
+.azletter{font-size:1.25em;color:var(--blue);min-width:34px;font-weight:700}
+.azcount{color:var(--dim);font-size:.78em;letter-spacing:.08em;margin-left:auto;text-align:right}
+.azbody{border-top:1px solid var(--line);padding:10px 12px 14px}
+.azitem{display:flex;align-items:baseline;gap:10px;padding:8px 10px;border-bottom:1px solid #10243d;color:inherit;text-decoration:none;font-size:.85em}
+.azitem:hover{background:#0e2038}
+.azitem:hover .aztitle{color:#fff}
+.azid{color:var(--gold);white-space:nowrap;font-size:.92em}
+.aztitle{color:var(--txt);flex:1;min-width:0}
+.azcat{color:var(--dim);font-size:.85em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:30%}
+.azmore{display:block;margin:12px auto 4px;background:#0a1c30;color:var(--gold);border:1px solid var(--line);border-radius:4px;padding:9px 26px;cursor:pointer;font-size:.82em;letter-spacing:.08em}
+.azmore:hover{border-color:var(--blue);color:#fff}
+.azload{color:var(--dim);font-size:.85em;text-align:center;padding:14px}
+@media(max-width:560px){.azitem{flex-wrap:wrap;row-gap:2px}.azcat{max-width:100%}.azletter{font-size:1.05em}}
+</style>
+<div class="hud" id="azarchive">
+<h2>THE FULL SYSTEMS ARCHIVE — A–Z</h2>
+<p class="kv">Every system on file, browsable A–Z by name — <b id="azCount">&hellip;</b> file records, each opening its own file page with a working simulator and Signature-made version. Open a letter — its list loads on demand, so the page stays fast on phones. Every entry opens through the depository's own <span class="hist">?system=JAH-PC-########</span> deep link.</p>
+<div id="azletters"><p class="kv">Loading archive index&hellip;</p></div>
+</div>
 <div class="hud">
 <h2>EVERY POSSIBLE MODEL</h2>
 <p class="kv">The depository charts <b>1,000,000 possible models</b> — computed on demand from components × architectures × materials × scales. Nothing stored, nothing slow. Every model carries a permanent canonical ID (<b>JAH-PC-########</b>): opening the same number always yields the identical record. Dial any number:</p>
@@ -1304,6 +1331,35 @@ paint();})();
 <script src="js/sims.js"></script>
 <script src="js/pcui.js"></script>
 <script src="js/jah-talk-fallback.js"></script>
+<script>
+/* ==== JAH global read-aloud controller (one per page): no stacked voices, no orphan audio ==== */
+(function(){
+if(window.__JAHREAD)return;
+var R={audios:[],lastTap:0,lastLabel:""};
+R.stopAll=function(){
+ try{if(window.speechSynthesis)window.speechSynthesis.cancel();}catch(e){}
+ try{if(window.responsiveVoice&&window.responsiveVoice.cancel)window.responsiveVoice.cancel();}catch(e){}
+ var i,a;
+ for(i=0;i<R.audios.length;i++){a=R.audios[i];try{a.pause();}catch(e){}try{a.removeAttribute("src");}catch(e){}try{a.load();}catch(e){}}
+ R.audios.length=0;
+ var els=document.querySelectorAll("audio");
+ for(i=0;i<els.length;i++){try{els[i].pause();}catch(e){}}
+};
+R.reg=function(a){if(a&&R.audios.indexOf(a)<0)R.audios.push(a);return a;};
+R.playGuard=function(label){
+ var now=Date.now();
+ if(now-R.lastTap<450&&label===R.lastLabel){R.lastTap=0;R.lastLabel="";R.stopAll();return false;}
+ R.lastTap=now;R.lastLabel=String(label||"");
+ R.stopAll();return true;
+};
+try{
+ var NativeAudio=window.Audio;
+ window.Audio=function(src){var a=src===undefined?new NativeAudio():new NativeAudio(src);R.reg(a);return a;};
+ window.Audio.prototype=NativeAudio.prototype;
+}catch(e){}
+window.__JAHREAD=R;
+})();
+</script>
 <script>
 /* ================= SYSTEM FINDER (additive): deterministic keyword finder over the depository's own search index ================= */
 var Finder={};
@@ -1414,7 +1470,9 @@ var RD_TIERS=[
  function(t){return "https://translate.google.com/translate_tts?ie=UTF-8&q="+encodeURIComponent(t)+"&tl=en&client=tw-ob"},
  function(t){return "https://translate.googleapis.com/translate_tts?ie=UTF-8&q="+encodeURIComponent(t)+"&tl=en&client=tw-ob"}];
 function rdChunks(t){t=String(t).replace(/\s+/g," ").trim();var out=[],cur="";t.split(/(?<=[.!?])\s+/).forEach(function(s){if((cur+" "+s).length>170){if(cur)out.push(cur);cur=s}else cur=(cur?cur+" ":"")+s});if(cur)out.push(cur);return out.slice(0,80)}
-function rdStop(){RD.stopped=true;RD.playing=false;RD.queue=[];if(RD.timer){clearTimeout(RD.timer);RD.timer=null}if(RD.audio){try{RD.audio.pause()}catch(e){}RD.audio=null}var b=document.getElementById("rdbtn");if(b)b.textContent="🔊 Read entry"}
+function rdStop(){
+ try{if(window.__JAHREAD)window.__JAHREAD.stopAll();}catch(e){}
+ RD.stopped=true;RD.playing=false;RD.queue=[];if(RD.timer){clearTimeout(RD.timer);RD.timer=null}if(RD.audio){try{RD.audio.pause()}catch(e){}RD.audio=null}var b=document.getElementById("rdbtn");if(b)b.textContent="🔊 Read entry"}
 function rdPlayTier(chunk,tier,done){
  if(tier>=RD_TIERS.length){done(false);return}
  var url=RD_TIERS[tier](chunk),a=new Audio();RD.audio=a;a.playbackRate=RD.speed;
@@ -1437,7 +1495,9 @@ function rdNext(){
   });
  })();
 }
-function rdSpeak(text){rdStop();RD.queue=rdChunks(text);if(!RD.queue.length)return;RD.stopped=false;
+function rdSpeak(text){
+ if(window.__JAHREAD&&!window.__JAHREAD.playGuard("rdSpeak"))return;
+ rdStop();RD.queue=rdChunks(text);if(!RD.queue.length)return;RD.stopped=false;
  var b=document.getElementById("rdbtn");if(b)b.textContent="⏹ Stop";
  rdNext()}
 function rdToggle(){if(!RD.stopped){rdStop()}else{var r=window._rec;if(r){var nm=r.sig?r.sig.name:r.name;var bl=r.sig?r.sig.blurb:(r.blurb||r.desc||"");rdSpeak(nm+". "+bl+" "+(r.desc||"")+". "+(r.history||""))}}}
@@ -1998,6 +2058,109 @@ document.getElementById('jahWelcomeFull').onclick=function(){closeWelcome();open
 var seen=false;try{seen=!!localStorage.getItem(LS);}catch(e){seen=true;}
 if(!seen){setTimeout(function(){try{if(!localStorage.getItem(LS))openWelcome();}catch(e){}},1200);}
 window.JAHTour={start:openWelcome,end:closeWelcome};
+})();
+</script>
+<script>
+/* ---- FULL SYSTEMS ARCHIVE: A-Z collapsible browse ----
+   Per-letter index files at data/index/az/<LETTER>.json (+ manifest.json)
+   are built by code/build_az_index.py after every drip. A letter's file
+   loads only when its <details> opens, so phones never pull the whole
+   catalog at once. Every entry deep-links to ?system=<JAH-PC-id>. */
+(function () {
+  "use strict";
+  var AZLETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split("");
+  var AZ = { counts: null, rows: {}, shown: {}, loading: {} };
+  var AZ_PAGE = 250;
+  function azItemHtml(r) {
+    return '<a class="azitem" href="?system=' + esc(r[0]) + '">' +
+      '<span class="azid">' + esc(r[0]) + '</span>' +
+      '<span class="aztitle">' + esc(r[1]) + '</span>' +
+      '<span class="azcat">' + esc(r[2] || "") + '</span></a>';
+  }
+  function azRenderPage(L) {
+    var rows = AZ.rows[L] || [], shown = AZ.shown[L] || 0;
+    var body = document.querySelector('[data-azbody="' + L + '"]');
+    if (!body) return;
+    var h = "", i;
+    for (i = 0; i < shown && i < rows.length; i++) h += azItemHtml(rows[i]);
+    if (shown < rows.length) {
+      h += '<button type="button" class="azmore" data-azmore="' + L + '">SHOW MORE (' +
+        (rows.length - shown).toLocaleString() + ' REMAINING)</button>';
+    } else {
+      h += '<p class="azload">End of letter ' + esc(L) + ' \u2014 ' +
+        rows.length.toLocaleString() + ' systems shown.</p>';
+    }
+    body.innerHTML = h;
+  }
+  function azLoadLetter(L) {
+    if (AZ.rows[L] || AZ.loading[L]) return;
+    AZ.loading[L] = true;
+    var body = document.querySelector('[data-azbody="' + L + '"]');
+    fetch("data/index/az/" + L + ".json").then(function (resp) {
+      if (!resp.ok) throw new Error("HTTP " + resp.status);
+      return resp.json();
+    }).then(function (rows) {
+      AZ.rows[L] = rows;
+      AZ.shown[L] = Math.min(AZ_PAGE, rows.length);
+      delete AZ.loading[L];
+      azRenderPage(L);
+    }).catch(function () {
+      delete AZ.loading[L];
+      if (body) body.innerHTML = '<p class="azload">Could not load letter ' + esc(L) +
+        ' \u2014 check your connection and try again.</p>';
+    });
+  }
+  function renderAzLetters() {
+    var box = document.getElementById("azletters");
+    if (!box || !AZ.counts) return;
+    var h = "";
+    AZLETTERS.forEach(function (L) {
+      var n = AZ.counts[L] || 0;
+      h += '<details class="azsec" data-letter="' + L + '">' +
+        '<summary><span class="azletter">' + L + '</span>' +
+        '<span class="azcount">' + n.toLocaleString() + ' SYSTEMS</span></summary>' +
+        '<div class="azbody" data-azbody="' + L + '">' +
+        '<p class="azload">Open to load this letter&hellip;</p></div></details>';
+    });
+    box.innerHTML = h;
+    var q = null;
+    try { q = new URLSearchParams(window.location.search).get("letter"); } catch (e) {}
+    if (q) {
+      q = String(q).trim().toUpperCase();
+      if (AZLETTERS.indexOf(q) >= 0) {
+        var d = document.querySelector('#azletters details[data-letter="' + q + '"]');
+        if (d) { d.open = true; azLoadLetter(q);
+          var ar = document.getElementById("azarchive");
+          if (ar && ar.scrollIntoView) ar.scrollIntoView(true); }
+      }
+    }
+  }
+  (function buildArchive() {
+    var box = document.getElementById("azletters");
+    if (!box) return;
+    fetch("data/index/az/manifest.json").then(function (resp) {
+      if (!resp.ok) throw new Error("HTTP " + resp.status);
+      return resp.json();
+    }).then(function (m) {
+      AZ.counts = m.counts || {};
+      var el = document.getElementById("azCount");
+      if (el && m.total) el.textContent = Number(m.total).toLocaleString();
+      renderAzLetters();
+    }).catch(function () {
+      box.innerHTML = '<p class="kv">The archive index could not be loaded \u2014 check your connection and reload.</p>';
+    });
+    box.addEventListener("toggle", function (e) {
+      var d = e.target;
+      if (d && d.tagName === "DETAILS" && d.open) azLoadLetter(d.getAttribute("data-letter"));
+    }, true);
+    box.addEventListener("click", function (e) {
+      var b = e.target && e.target.closest ? e.target.closest("[data-azmore]") : null;
+      if (!b) return;
+      var L = b.getAttribute("data-azmore");
+      AZ.shown[L] = Math.min((AZ.shown[L] || 0) + AZ_PAGE, (AZ.rows[L] || []).length);
+      azRenderPage(L);
+    });
+  })();
 })();
 </script>
 </body>
