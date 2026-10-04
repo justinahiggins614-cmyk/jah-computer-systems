@@ -1435,7 +1435,7 @@ function rdSpeak(text){rdStop();RD.queue=rdChunks(text);if(!RD.queue.length)retu
  var b=document.getElementById("rdbtn");if(b)b.textContent="⏹ Stop";
  rdNext()}
 function rdToggle(){if(!RD.stopped){rdStop()}else{var r=window._rec;if(r){var nm=r.sig?r.sig.name:r.name;var bl=r.sig?r.sig.blurb:(r.blurb||r.desc||"");rdSpeak(nm+". "+bl+" "+(r.desc||"")+". "+(r.history||""))}}}
-/* ===== dictionary term links (IWB Dictionary ?w= deep links) ===== */
+/* ===== dictionary term links (The Signature Dictionary ?w= deep links) ===== */
 var DICT_BASE="https://justinahiggins614-cmyk.github.io/jah-dictionary/?w=";
 var STOPW={the:1,a:1,an:1,of:1,and:1,for:1,in:1,on:1,to:1,with:1,by:1,from:1,at:1,or:1,as:1,is:1,it:1,its:1};
 function dictTerms(r){var words=((r.name||"")+" "+(r.tag||"")).toLowerCase().replace(/[^a-z0-9\- ]/g," ").split(/\s+/).filter(function(w){return w.length>2&&!STOPW[w]});var out=[];words.forEach(function(w){if(out.length<6&&out.indexOf(w)<0)out.push(w)});return out}
