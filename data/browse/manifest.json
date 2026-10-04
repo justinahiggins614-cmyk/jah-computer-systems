@@ -1,0 +1,135 @@
+{
+ "asof": "2026-10-04",
+ "seed": 121,
+ "generated": 16000,
+ "total": 16121,
+ "cats": {
+  "historic": {
+   "label": "Historic",
+   "letters": {
+    "A": 8,
+    "B": 1,
+    "C": 2,
+    "D": 1,
+    "E": 2,
+    "H": 2,
+    "I": 6,
+    "J": 1,
+    "L": 1,
+    "M": 3,
+    "O": 1,
+    "P": 3,
+    "T": 2,
+    "U": 1,
+    "Z": 2
+   },
+   "total": 36
+  },
+  "modern": {
+   "label": "Modern",
+   "letters": {
+    "A": 4,
+    "D": 1,
+    "E": 2,
+    "F": 1,
+    "G": 2,
+    "H": 1,
+    "L": 1,
+    "M": 1,
+    "N": 1,
+    "R": 1,
+    "S": 4,
+    "X": 1
+   },
+   "total": 20
+  },
+  "quantum": {
+   "label": "Quantum",
+   "letters": {
+    "C": 1,
+    "D": 1,
+    "H": 1,
+    "N": 2,
+    "P": 1,
+    "Q": 1,
+    "R": 1,
+    "S": 2,
+    "T": 2
+   },
+   "total": 12
+  },
+  "materials": {
+   "label": "Materials & Substrates",
+   "letters": {
+    "2": 1,
+    "C": 1,
+    "D": 2,
+    "F": 1,
+    "G": 4,
+    "M": 1,
+    "P": 2,
+    "S": 6
+   },
+   "total": 18
+  },
+  "mixes": {
+   "label": "Mixes",
+   "letters": {
+    "A": 1,
+    "C": 3,
+    "F": 1,
+    "H": 1,
+    "N": 1,
+    "O": 1,
+    "R": 1,
+    "W": 1
+   },
+   "total": 10
+  },
+  "predicted": {
+   "label": "Predicted",
+   "letters": {
+    "A": 1,
+    "B": 1,
+    "C": 1,
+    "L": 1,
+    "M": 1,
+    "P": 1,
+    "Q": 1,
+    "R": 2,
+    "S": 2,
+    "T": 1
+   },
+   "total": 12
+  },
+  "signature": {
+   "label": "Signature-Developed",
+   "letters": {
+    "S": 13
+   },
+   "total": 13
+  }
+ },
+ "gen_letters": {
+  "D": {
+   "pages": 3,
+   "total": 2041
+  },
+  "G": {
+   "pages": 7,
+   "total": 6021
+  },
+  "M": {
+   "pages": 2,
+   "total": 1914
+  },
+  "P": {
+   "pages": 2,
+   "total": 1976
+  },
+  "S": {
+   "pages": 5,
+   "total": 4048
+  }
+ }
+}

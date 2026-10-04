@@ -48,7 +48,7 @@ def category_urls():
 
 
 def main():
-    urls = [BASE] + category_urls() + seed_ids() + drip_ids()
+    urls = [BASE, BASE + "browse.html"] + category_urls() + seed_ids() + drip_ids()
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u in urls:
@@ -58,7 +58,7 @@ def main():
     with open(out, "w") as f:
         f.write("\n".join(lines) + "\n")
     print(f"sitemap: {len(urls)} URLs "
-          f"(1 root + {len(category_urls())} categories + {len(seed_ids())} seed + {len(drip_ids())} drip)")
+          f"(1 root + 1 browse page + {len(category_urls())} categories + {len(seed_ids())} seed + {len(drip_ids())} drip)")
 
 
 if __name__ == "__main__":

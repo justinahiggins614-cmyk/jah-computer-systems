@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("jah-theme")==="dark")document.documentElement.dataset.theme="dark";}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Browse the Catalog A&ndash;Z &middot; The Signature PC System Depository</title>
+<meta name="description" content="Browse every system on file in The Signature PC System Depository, A to Z — historic machines, modern PCs, quantum systems, materials and substrates, mixes, predicted concepts, Signature originals, and generated models marching to 1,000,000.">
+<link rel="canonical" href="https://justinahiggins614-cmyk.github.io/jah-computer-systems/browse.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Signature PC System Depository">
+<meta property="og:title" content="Browse the Catalog A&ndash;Z &middot; The Signature PC System Depository">
+<meta property="og:description" content="Every system on file, A to Z — open any file for its full record, working simulator, and Signature-made version.">
+<meta property="og:url" content="https://justinahiggins614-cmyk.github.io/jah-computer-systems/browse.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Browse the Catalog A&ndash;Z &middot; The Signature PC System Depository">
+<meta name="twitter:description" content="Every system on file, A to Z — open any file for its full record, working simulator, and Signature-made version.">
+%%STYLE%%
+<style>
+/* browse-only additions — the theme above is index.html's own, unchanged */
+.brow{border-bottom:1px solid #16324f;padding:7px 4px}
+.brow .bname{font-size:15px}
+.brow .bid{font-size:11px;color:var(--dim);letter-spacing:1px;margin-left:8px;white-space:nowrap}
+.brow .btag{font-size:12px;color:var(--dim);margin-top:2px}
+.brow .bsig{font-size:12px;margin-top:3px;color:#ffe9a8}
+details.letter{margin:6px 0 6px 6px;border-left:2px solid var(--line);padding-left:10px}
+details.letter>summary{cursor:pointer;color:var(--txt);font-weight:700;letter-spacing:1px;padding:7px 2px;font-size:14px;list-style:none}
+details.letter>summary::-webkit-details-marker{display:none}
+details.letter>summary:before{content:"\25B8  ";color:var(--blue)}
+details.letter[open]>summary:before{content:"\25BE  "}
+details.letter>summary .n{color:var(--dim);font-weight:400;font-size:12px;margin-left:6px}
+.morebtn{margin:10px 0}
+#sresults .brow{border:1px solid var(--line);border-radius:6px;margin:6px 0;padding:8px 10px;background:var(--panel2)}
+#sresults .bcat{font-size:11px;letter-spacing:2px;color:var(--blue);margin-left:8px}
+</style>
+</head>
+<body>
+%%NAV%%
+<div class="wrap">
+<div class="hero">
+<p class="sitekicker">SITE 10 OF 27 &middot; THE JAH NETWORK</p>
+<h1>BROWSE THE <span class="pc">CATALOG</span> A&ndash;Z</h1>
+<p>The records are the product. Every system on file in the depository, browsable by category and letter &mdash; open any file for its full record, its working in-browser simulator, and its Signature-made version.</p>
+<!-- BROWSE-COUNT-START -->
+<p class="kv" id="browsecount">The catalog below carries <b id="bc_total">&hellip;</b> systems on file.</p>
+<!-- BROWSE-COUNT-END -->
+<p class="kv" style="margin-top:10px"><a class="btn" href="index.html" style="text-decoration:none">&larr; BACK TO THE DEPOSITORY</a></p>
+</div>
+<div class="hud">
+<h2>SEARCH ALL SYSTEMS</h2>
+<input type="text" id="bq" maxlength="120" placeholder="Type a name or a JAH-PC-######## ID&hellip;" aria-label="Search all systems" autocomplete="off">
+<div class="rescount" id="bqcount"></div>
+<div id="sresults"></div>
+</div>
+<div id="cats"><p class="kv">Loading the catalog index&hellip;</p></div>
+<noscript><div class="notice">This browse page needs JavaScript for its A&ndash;Z lists. The full static record tables live on <a href="index.html">the depository home page</a>.</div></noscript>
+<footer>
+<p class="kv">THE SIGNATURE PC SYSTEM DEPOSITORY &middot; SITE 10 OF 27 &middot; THE JAH NETWORK &middot; <a href="index.html">Depository home</a> &middot; <a href="data/counts.json">counts.json</a> &middot; <a href="data/api.json">api.json</a></p>
+<p class="hist">A&ndash;Z browse page. Record counts are stamped by the depository drip every 2 hours and refreshed live from data/counts.json in your browser.</p>
+</footer>
+</div>
+<script>
+(function(){
+var MAN=null, cache={}, searchIdx=null, searchLoading=false, searchFailed=false;
+var CAT_ORDER=["historic","modern","quantum","materials","mixes","predicted","signature"];
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function deep(sid){return "index.html?system="+encodeURIComponent(sid);}
+function seedRow(r){
+  var h='<div class="brow"><a class="bname" href="'+deep(r[0])+'">'+esc(r[1])+'</a><span class="bid">'+esc(r[0])+'</span>';
+  if(r[2])h+='<div class="btag">'+esc(r[2])+'</div>';
+  if(r[3])h+='<div class="bsig">\u2605 Signature version: <a href="'+deep(r[3])+'">'+esc(r[4])+'</a> <span class="bid">'+esc(r[3])+'</span></div>';
+  return h+'</div>';
+}
+function genRow(r){
+  var h='<div class="brow"><a class="bname" href="'+deep(r[0])+'">'+esc(r[1])+'</a><span class="bid">'+esc(r[0])+'</span>';
+  if(r[2])h+='<div class="btag">'+esc(r[2])+'</div>';
+  return h+'</div>';
+}
+function loadJSON(url,cb){
+  if(cache[url]){cb(cache[url]);return;}
+  var x=new XMLHttpRequest();x.open("GET",url,true);
+  x.onreadystatechange=function(){if(x.readyState===4){if(x.status===200||x.status===0){try{var j=JSON.parse(x.responseText);cache[url]=j;cb(j);}catch(e){cb(null);}}else{cb(null);}}};
+  x.send();
+}
+function renderRows(el,rows,isSeed){
+  var h="";
+  for(var i=0;i<rows.length;i++)h+=isSeed?seedRow(rows[i]):genRow(rows[i]);
+  el.innerHTML=h;
+}
+function letterDetails(kind,cat,label,letter,count,isSeed){
+  var d=document.createElement("details");d.className="letter";
+  var s=document.createElement("summary");
+  s.innerHTML=esc(letter)+'<span class="n">'+count+' record'+(count===1?"":"s")+'</span>';
+  var body=document.createElement("div");body.className="lbody";
+  d.appendChild(s);d.appendChild(body);
+  var loaded=false,page=1,pages=1;
+  function loadPage(p){
+    var url=kind==="seed"?("data/browse/seeds_"+cat+"_"+letter+".json"):("data/browse/gen_"+letter+"_p"+p+".json");
+    body.innerHTML='<p class="kv">Loading&hellip;</p>';
+    loadJSON(url,function(rows){
+      if(!rows){body.innerHTML='<p class="kv">Could not load this letter. <a href="index.html">Open the depository home page</a> instead.</p>';return;}
+      var h="";
+      for(var i=0;i<rows.length;i++)h+=isSeed?seedRow(rows[i]):genRow(rows[i]);
+      if(p===1)body.innerHTML=h;else{var mb=body.querySelector(".morebtn");if(mb)mb.parentNode.removeChild(mb);body.innerHTML+=h;}
+      if(p<pages){
+        var b=document.createElement("button");b.className="morebtn";b.textContent="SHOW MORE ("+(p*1000)+" of "+(pages*1000>count?count:pages*1000)+" shown)";
+        b.onclick=function(){loadPage(p+1);};
+        body.appendChild(b);
+      }
+      loaded=true;
+    });
+  }
+  if(kind==="gen"){var gl=MAN.gen_letters[letter];pages=gl.pages;}
+  d.addEventListener("toggle",function(){if(d.open&&!loaded)loadPage(1);});
+  return d;
+}
+function build(){
+  var host=document.getElementById("cats");host.innerHTML="";
+  CAT_ORDER.forEach(function(cat){
+    var c=MAN.cats[cat];if(!c)return;
+    var d=document.createElement("details");d.className="sec";
+    var s=document.createElement("summary");s.className="sechd";
+    s.textContent=c.label.toUpperCase()+" \u2014 "+c.total+" RECORDS";
+    var body=document.createElement("div");body.className="secbody";
+    Object.keys(c.letters).forEach(function(L){
+      body.appendChild(letterDetails("seed",cat,c.label,L,c.letters[L],true));
+    });
+    d.appendChild(s);d.appendChild(body);host.appendChild(d);
+  });
+  var g=MAN.gen_letters,gtot=0;
+  Object.keys(g).forEach(function(L){gtot+=g[L].total;});
+  var gd=document.createElement("details");gd.className="sec";
+  var gs=document.createElement("summary");gs.className="sechd";
+  gs.textContent="GENERATED MODELS \u2014 MARCHING TO 1,000,000 ("+gtot.toLocaleString("en-US")+" ON FILE)";
+  var gbody=document.createElement("div");gbody.className="secbody";
+  var gnote=document.createElement("p");gnote.className="kv";
+  gnote.textContent="Deterministically generated possible models from the depository\u2019s combinatorial engine \u2014 every one reproducible from its seed, every one carrying its own Signature-made version and simulator. Letters follow the model name (the shared \u201CSignature\u201D prefix is skipped).";
+  gbody.appendChild(gnote);
+  Object.keys(g).forEach(function(L){
+    gbody.appendChild(letterDetails("gen",null,"Generated",L,g[L].total,false));
+  });
+  gd.appendChild(gs);gd.appendChild(gbody);host.appendChild(gd);
+}
+/* search: index fetched only on first use */
+var CATLBL={historic:"HISTORIC",modern:"MODERN",quantum:"QUANTUM",materials:"MATERIALS",mixes:"MIXES",predicted:"PREDICTED",signature:"SIGNATURE",generated:"GENERATED"};
+function doSearch(q){
+  var box=document.getElementById("bqcount"),out=document.getElementById("sresults");
+  q=(q||"").trim().toLowerCase();
+  if(q.length<2){box.textContent="";out.innerHTML="";return;}
+  if(searchFailed){box.textContent="Search index unavailable.";return;}
+  if(!searchIdx&&!searchLoading){
+    searchLoading=true;box.textContent="Loading search index\u2026";
+    loadJSON("data/browse/search.json",function(rows){
+      searchLoading=false;
+      if(!rows){searchFailed=true;box.textContent="Search index unavailable.";return;}
+      searchIdx=rows;doSearch(document.getElementById("bq").value);
+    });
+    return;
+  }
+  if(!searchIdx)return;
+  var hits=[],i,r;
+  for(i=0;i<searchIdx.length&&hits.length<200;i++){
+    r=searchIdx[i];
+    if(r[1].toLowerCase().indexOf(q)>=0||r[0].toLowerCase().indexOf(q)>=0)hits.push(r);
+  }
+  box.textContent=hits.length+(hits.length>=200?"+":"")+" match"+(hits.length===1?"":"es");
+  var h="";
+  for(i=0;i<Math.min(hits.length,40);i++){
+    r=hits[i];
+    h+='<div class="brow"><a class="bname" href="'+deep(r[0])+'">'+esc(r[1])+'</a><span class="bid">'+esc(r[0])+'</span><span class="bcat">'+esc(CATLBL[r[2]]||r[2])+'</span></div>';
+  }
+  out.innerHTML=h;
+}
+var deb=null;
+document.getElementById("bq").addEventListener("input",function(e){
+  if(deb)clearTimeout(deb);deb=setTimeout(function(){doSearch(e.target.value);},200);
+});
+/* live count refresh from the authoritative count file */
+function liveCount(){
+  loadJSON("data/count.json",function(c){
+    if(!c)return;
+    var s=+c.seed||0,g=+c.generated||0,t=s+g;
+    var e1=document.getElementById("bc_total"),e2=document.getElementById("bc_seed"),e3=document.getElementById("bc_gen");
+    if(e1)e1.textContent=t.toLocaleString("en-US");
+    if(e2)e2.textContent=s.toLocaleString("en-US");
+    if(e3)e3.textContent=g.toLocaleString("en-US");
+  });
+}
+loadJSON("data/browse/manifest.json",function(m){
+  if(!m){document.getElementById("cats").innerHTML='<div class="notice">The catalog index could not be loaded. <a href="index.html">Open the depository home page</a> instead.</div>';return;}
+  MAN=m;build();liveCount();
+});
+})();
+</script>
+</body>
+</html>
