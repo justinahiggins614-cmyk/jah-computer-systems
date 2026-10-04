@@ -2116,11 +2116,14 @@ window.JAHTour={start:openWelcome,end:closeWelcome};
     var h = "";
     AZLETTERS.forEach(function (L) {
       var n = AZ.counts[L] || 0;
+      var bodyHtml = n
+        ? '<p class="azload">Open to load this letter&hellip;</p>'
+        : '<p class="azload">No systems in this letter.</p>';
       h += '<details class="azsec" data-letter="' + L + '">' +
         '<summary><span class="azletter">' + L + '</span>' +
         '<span class="azcount">' + n.toLocaleString() + ' SYSTEMS</span></summary>' +
         '<div class="azbody" data-azbody="' + L + '">' +
-        '<p class="azload">Open to load this letter&hellip;</p></div></details>';
+        bodyHtml + '</div></details>';
     });
     box.innerHTML = h;
     var q = null;

@@ -159,10 +159,10 @@ except Exception as e:  # noqa: BLE001
 # --- inventory feed + static category tables for crawlers (Site-9 FIX-2 / FIX-3)
 for _label, _script in (("INDEX-FEED", "gen_index_feed.py"),
                         ("STATIC-CATS", "gen_static_cats.py"),
-                        # BROWSE-INDEX runs LAST: it rebuilds data/browse/* from the
-                        # just-flushed chunks and re-stamps browse.html's count block
-                        # with the real new totals — never one run behind.
-                        ("BROWSE-INDEX", "gen_browse_index.py")):
+                        # BROWSE-INDEX runs before A-Z-ARCHIVE: the A-Z letters
+                        # read data/systems-index.json, rebuilt by INDEX-FEED.
+                        ("BROWSE-INDEX", "gen_browse_index.py"),
+                        ("A-Z-ARCHIVE", "build_az_index.py")):
     try:
         subprocess.run([sys.executable, os.path.join(ROOT, "code", _script)],
                        check=True, capture_output=True, text=True)
