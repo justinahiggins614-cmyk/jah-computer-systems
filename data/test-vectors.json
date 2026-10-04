@@ -1,6 +1,6 @@
 {
  "feed": "test-vectors",
- "generated_at": "2026-10-04T01:59:03Z",
+ "generated_at": "2026-10-04T03:59:01Z",
  "generator_version": "DRIP/1.0",
  "rule": "model i uses random.Random(10_000_000 + i); choices drawn in order ARCH, MATS, WIDTHS, SCALES",
  "vectors": [
