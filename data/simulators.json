@@ -1,6 +1,6 @@
 {
  "feed": "simulators",
- "generated_at": "2026-10-04T11:58:58Z",
+ "generated_at": "2026-10-04T13:59:10Z",
  "version": "SIM/1.0",
  "safety": "SIMULATION ONLY \u2014 every simulator is a representative model illustrating an architecture class, never a claim the hardware exists or an accurate emulation of a historical machine.",
  "simulators": [
