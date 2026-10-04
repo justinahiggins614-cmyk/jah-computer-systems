@@ -24,7 +24,7 @@ NAV = [
     ("12 Book Depository", "https://justinahiggins614-cmyk.github.io/signature-books/"),
     ("13 Comic Store", "https://justinahiggins614-cmyk.github.io/signature-comics/"),
     ("14 Global Newspaper Archive", "https://justinahiggins614-cmyk.github.io/signature-newspapers/"),
-    ("15 3D Print Depository", "https://justinahiggins614-cmyk.github.io/signature-3d-print/"),
+    ("15 3D Print Mega Mall", "https://justinahiggins614-cmyk.github.io/signature-3d-print/"),
     ("16 Signature Backend", "https://justinahiggins614-cmyk.github.io/signature-backend/"),
     ("17 Boundless Generator Archive", "https://justinahiggins614-cmyk.github.io/signature-boundless-generators/"),
     ("18 AI Mix Lab", "https://justinahiggins614-cmyk.github.io/signature-ai-mixlab/"),
