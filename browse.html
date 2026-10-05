@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("jah-theme")==="dark")document.documentElement.dataset.theme="dark";}catch(e){}</script>
+<script src="js/signin.js"></script>
+<script>try{var _ps=(typeof JAHProfile!=='undefined')?JAHProfile.store:localStorage;if(_ps.get("jah-theme")==="dark")document.documentElement.dataset.theme="dark";}catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Browse the Catalog A&ndash;Z &middot; The Signature PC System Depository</title>
@@ -418,6 +419,17 @@ loadJSON("data/browse/manifest.json",function(m){
   if(!m){document.getElementById("cats").innerHTML='<div class="notice">The catalog index could not be loaded. <a href="index.html">Open the depository home page</a> instead.</div>';return;}
   MAN=m;build();liveCount();
 });
+})();
+</script>
+<script>
+(function () {
+  /* JAHProfile sign-in / profiles button (device-local profiles; Google-ready) */
+  var mount = document.querySelector('header .booksearch') ||
+              document.querySelector('nav.jtabbar') ||
+              document.querySelector('header nav') ||
+              document.querySelector('header') ||
+              document.body;
+  if (window.JAHProfile && JAHProfile.ui) JAHProfile.ui.renderButton(mount);
 })();
 </script>
 </body>
