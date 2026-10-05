@@ -1423,8 +1423,8 @@ function askAbout(){
   if(!q){box.textContent=askGreet(window._rec);return}
   var r=window._rec,ql=q.toLowerCase();
   var JT=askTalk(),prof=askProfile(r);
-  if(JT&&askIsSmallTalk(q)){box.innerHTML="<b>Helper:</b> "+esc(JT.guard(JT.reply(prof,q),prof));return}
-  if(!r){box.innerHTML="<b>Helper:</b> "+esc(JT?JT.guard(JT.reply(prof,"hello"),prof):"No system file is open — open one from the Grand List, then ask away.");return}
+  if(JT&&askIsSmallTalk(q)){box.innerHTML="<b>Helper:</b> "+esc(JT.guard(JT.chatFor(prof,'sys:'+((r&&r._system_id)||'none')).reply(q),prof));return}
+  if(!r){box.innerHTML="<b>Helper:</b> "+esc(JT?JT.guard(JT.chatFor(prof,'sys:none').reply("hello"),prof):"No system file is open — open one from the Grand List, then ask away.");return}
   var s=r.sig||{name:r.name,blurb:r.desc||r.blurb||""};
   function flat(o){return JSON.stringify(o||{}).toLowerCase()}
   var A="";
