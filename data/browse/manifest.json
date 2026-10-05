@@ -1,8 +1,8 @@
 {
  "asof": "2026-10-05",
  "seed": 121,
- "generated": 20800,
- "total": 20921,
+ "generated": 21200,
+ "total": 21321,
  "cats": {
   "historic": {
    "label": "Historic",
@@ -113,23 +113,23 @@
  "gen_letters": {
   "D": {
    "pages": 3,
-   "total": 2651
+   "total": 2701
   },
   "G": {
    "pages": 8,
-   "total": 7827
+   "total": 7955
   },
   "M": {
    "pages": 3,
-   "total": 2500
+   "total": 2551
   },
   "P": {
    "pages": 3,
-   "total": 2562
+   "total": 2621
   },
   "S": {
    "pages": 6,
-   "total": 5260
+   "total": 5372
   }
  }
 }
