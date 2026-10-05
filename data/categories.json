@@ -1,6 +1,6 @@
 {
  "feed": "categories",
- "generated_at": "2026-10-04T23:59:00Z",
+ "generated_at": "2026-10-05T01:59:02Z",
  "note": "Category labels are derived from each record's own name/tag/description text \u2014 never assigned by hand, never invented specs. Counts cover seed records; generated records carry scale-derived form tags (Rack->MAINFRAME, Cluster/Wafer-Scale->SUPERCOMPUTER, else PC).",
  "categories": [
   {
