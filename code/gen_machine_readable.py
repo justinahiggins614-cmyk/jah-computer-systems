@@ -43,6 +43,11 @@ import json
 import os
 import re
 import sys
+import zoneinfo
+
+# Display-facing dates use Manon's timezone (America/New_York); the VM runs
+# on UTC, which reads as tomorrow's date to him in the evening.
+EDT = zoneinfo.ZoneInfo("America/New_York")
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
@@ -76,7 +81,7 @@ def drip_records():
 
 
 def main():
-    today = datetime.date.today().isoformat()
+    today = datetime.datetime.now(EDT).date().isoformat()
     now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     seeds = load_json(os.path.join(DATA, "systems.json"))
     count = load_json(os.path.join(DATA, "count.json"))

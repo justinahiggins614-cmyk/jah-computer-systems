@@ -1,6 +1,6 @@
 {
  "feed": "sources",
- "generated_at": "2026-10-05T01:59:02Z",
+ "generated_at": "2026-10-05T02:45:54Z",
  "note": "Honest source ledger. No source is ever invented: primary sources not yet attached are marked UNVERIFIED with PRIMARY_SOURCE_AVAILABLE=false. Historical records remain reference-only curatorial summaries until then.",
  "sources": [
   {

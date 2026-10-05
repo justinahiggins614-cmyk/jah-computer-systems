@@ -3,6 +3,12 @@
 Mirrors the combinatorial space in js/gen.js (same seed scheme) so the march to
 1,000,000 stays contiguous. Silent except milestones; never invents history."""
 import json, os, random, sys
+import datetime, zoneinfo
+
+# Manon's timezone: the VM runs on UTC, which reads as tomorrow's date to
+# him in the evening. Display-facing dates use America/New_York.
+def edt_today():
+    return datetime.datetime.now(zoneinfo.ZoneInfo("America/New_York")).date().isoformat()
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DATA = os.path.join(ROOT, "data")
@@ -60,8 +66,9 @@ count["generated"] = start + BATCH
 json.dump(count, open(count_path, "w"))
 
 # last-updated stamp (read by the page header, visually separate from the counters)
+# "updated" is Manon's date (America/New_York), not the VM's UTC date.
 stamp = {
-    "updated": __import__("datetime").date.today().isoformat(),
+    "updated": edt_today(),
     "recorded": count["seed"] + count["generated"],
     "seed": count["seed"],
     "generated": count["generated"],

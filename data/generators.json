@@ -1,6 +1,6 @@
 {
  "feed": "generators",
- "generated_at": "2026-10-05T01:59:02Z",
+ "generated_at": "2026-10-05T02:45:54Z",
  "note": "Deterministic reproduction package: generator version + seed are stored per record. A rule change ships a new version (DRIP/2.0 on change), never a silent edit.",
  "generators": [
   {
