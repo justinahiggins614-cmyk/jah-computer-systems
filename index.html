@@ -1220,37 +1220,10 @@ paint();})();
 </noscript>
 <!-- STATIC-CATS-END -->
 <div class="hud" id="scopebox"></div>
-<div class="hud" id="grandlist">
-<h2>GRAND LIST</h2>
-<div class="searchbar">
-<input type="text" id="q" aria-label="Search every system by name, tag, description, or ID" placeholder="Search every system… (try &quot;quantum&quot;, &quot;ENIAC&quot;, &quot;graphene&quot;)">
-<div class="kv hist" style="margin-top:6px">Popular: <a href="?q=quantum">quantum</a> · <a href="?q=ENIAC">ENIAC</a> · <a href="?q=graphene">graphene</a> · <a href="?q=mainframe">mainframe</a> · <a href="?q=abacus">abacus</a></div>
-<div class="rescount" id="rescount" aria-live="polite"></div>
-</div>
-<style>
-/* SYSTEM FINDER — additive, does not restyle existing components */
-.finder{margin:10px 0;border:1px solid #16324f;border-radius:12px;padding:12px 14px;background:#071428}
-.finder .fhead{display:flex;gap:10px;align-items:center;margin-bottom:8px}
-.finder .fhost{font-size:22px}
-.finder .fhead b{color:#ffd75e;letter-spacing:.06em}
-.finder .fhead span{display:block;font-size:12px;color:#8fb8d8}
-.finder .frow{display:flex;gap:8px;flex-wrap:wrap}
-.finder .frow input{flex:1;min-width:200px}
-.finder .fres{margin-top:10px}
-.finder .fcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:8px}
-.finder .fcard{border:1px solid #16324f;border-radius:8px;padding:10px;background:#0a1c30}
-.finder .fcard h4{margin:2px 0 4px;color:#fff;font-size:14px}
-.finder .fcard .go{color:#ffd75e;font-weight:700;text-decoration:none}
-.askbox input{width:100%;max-width:420px;margin-right:8px}
-</style>
-<div class="finder" id="finder">
-<div class="fhead"><span class="fhost" aria-hidden="true">🔎</span><div><b>SYSTEM FINDER</b><span>describe the machine you want in plain words — it checks the depository's own search</span></div></div>
-<div class="frow"><input id="fq" maxlength="160" placeholder="Describe what you&apos;re looking for&hellip;" aria-label="Describe the system you want to find"><button onclick="Finder.ask()">FIND</button></div>
-<div class="fres" id="fresults"></div>
-</div>
-<div class="pills" id="pills"></div>
-<div class="az" id="az"></div>
-<div class="grid" id="grid"><div class="kv" id="bootmsg" style="grid-column:1/-1">LOADING THE DEPOSITORY — fetching the system files…</div></div>
+<div class="hud" id="archive-entry">
+<h2>BROWSE THE FULL ARCHIVE A&ndash;Z</h2>
+<p class="kv">Every system on file &mdash; search, category pills, the A&ndash;Z letter row, and the full record grid &mdash; lives on the <b>1 Million Archive</b> tab so this front page stays fast on your phone.</p>
+<p style="margin-top:10px"><a class="btn" href="browse.html" style="text-decoration:none">&#128218; Open the 1 Million Archive &rarr;</a></p>
 </div>
 <div class="hud" id="detail"></div>
 <div class="hud">
@@ -1306,7 +1279,7 @@ paint();})();
 <p class="kv"><b>OFFLINE VERIFIED: PARTIAL</b> (static code audit, 2026-10-03 — no network calls exist in the on-demand generator, identity module, simulators, or UI logic; full offline browser test pending). What works with the network cut <em>after the first load</em>: the on-demand generator (all 1,000,000 possible models), every simulator, search, and filters. What needs the network: the recorded-system data files (<span class="hist">data/*.json</span>, drip chunks) are fetched once at load and cached by the browser thereafter. No record is ever silently degraded: if data fails to load, the page says so and offers RETRY.</p>
 <h3>VERSIONING</h3>
 <p class="kv">Record schema <span class="hist">JAH-PC-RECORD/1.0</span> · seed generator <span class="hist">SEED/1.0</span> · drip generator <span class="hist">DRIP/1.0</span> · on-demand lattice <span class="hist">GEN/2.0</span>. Every record carries a <span class="hist">spec_hash (sha256:…)</span> over its canonical fields plus a Signature governance chain — the deterministic ID coding is the record's identity and protection.</p>
-<p class="kv">Browse by category: <a href="?cat=HISTORICAL">Historical</a> · <a href="?cat=SIGNATURE">Signature</a> · <a href="?cat=PREDICTED">Predicted</a> · <a href="?cat=GENERATED">Generated</a> · <a href="?cat=QUANTUM">Quantum</a> · <a href="?cat=MAINFRAME">Mainframe</a> · <a href="?cat=SUPERCOMPUTER">Supercomputer</a> · <a href="?cat=">All systems</a></p>
+<p class="kv">Browse by category: <a href="browse.html?cat=HISTORICAL">Historical</a> · <a href="browse.html?cat=SIGNATURE">Signature</a> · <a href="browse.html?cat=PREDICTED">Predicted</a> · <a href="browse.html?cat=GENERATED">Generated</a> · <a href="browse.html?cat=QUANTUM">Quantum</a> · <a href="browse.html?cat=MAINFRAME">Mainframe</a> · <a href="browse.html?cat=SUPERCOMPUTER">Supercomputer</a> · <a href="browse.html?cat=">All systems</a></p>
 </div>
 
 <!-- JAH NETWORK: site list moved to page bottom, above footer -->
@@ -1354,42 +1327,6 @@ window.__JAHREAD=R;
 })();
 </script>
 <script>
-/* ================= SYSTEM FINDER (additive): deterministic keyword finder over the depository's own search index ================= */
-var Finder={};
-Finder.STOP={a:1,an:1,the:1,and:1,or:1,but:1,if:1,then:1,of:1,to:1,in:1,on:1,for:1,with:1,by:1,from:1,at:1,as:1,is:1,are:1,was:1,were:1,be:1,been:1,it:1,its:1,this:1,that:1,these:1,those:1,what:1,when:1,where:1,which:1,who:1,whom:1,how:1,why:1,does:1,do:1,did:1,can:1,could:1,would:1,should:1,will:1,about:1,into:1,over:1,under:1,again:1,there:1,their:1,them:1,they:1,you:1,your:1,tell:1,me:1,please:1,find:1,looking:1,look:1,show:1,want:1,need:1,get:1,some:1,any:1,all:1,both:1,more:1,most:1,very:1,just:1,like:1,such:1,than:1,kind:1,type:1,thing:1,model:1,machine:1,system:1,systems:1,computer:1,computers:1,pc:1,one:1,that:1};
-Finder.keywords=function(q){
-  return String(q||"").toLowerCase().replace(/[^a-z0-9]+/g," ").split(" ")
-    .filter(function(w){return w.length>=3&&!Finder.STOP[w]});
-};
-/* same haystack rule as PCUI.searchList — reuses the site's own search, no second index */
-Finder.hay=function(r){
-  return (((r.sig&&r.sig.name)||r.name||"")+" "+(r.tag||"")+" "+(r.desc||"")+" "+(r._system_id||"")+" "+(r.id||"")).toLowerCase();
-};
-Finder.card=function(r,nm,sid,deep){
-  return '<div class="fcard"><div class="kv hist">'+esc(sid)+'</div><h4>'+esc(nm)+'</h4>'+
-    '<div class="tag">'+esc(r.tag||"")+'</div>'+
-    '<p class="kv"><a class="go" href="'+deep+'">Take me there &rarr;</a></p></div>';
-};
-Finder.ask=function(){
-  var box=document.getElementById("fresults");
-  var kws=Finder.keywords(document.getElementById("fq").value);
-  if(!kws.length){box.innerHTML='<p class="kv">Describe what you want — a use, an era, a material, a name — and I will match the depository&apos;s own records.</p>';return}
-  var scored=allRecords().map(function(r){
-    var hay=Finder.hay(r),sc=0,hit=[];
-    kws.forEach(function(k){if(hay.indexOf(k)>=0){sc++;hit.push(k)}});
-    return {r:r,sc:sc,hit:hit};
-  }).filter(function(x){return x.sc>0});
-  scored.sort(function(a,b){return b.sc-a.sc});
-  var top=scored.slice(0,5);
-  if(!top.length){box.innerHTML='<p class="kv"><b>Nothing matched.</b> Try fewer, simpler words — e.g. &ldquo;quantum&rdquo;, &ldquo;portable&rdquo;, &ldquo;wood&rdquo;.</p>';return}
-  box.innerHTML='<p class="kv">'+top.length+' of '+scored.length+' matches for &ldquo;'+esc(kws.join(" "))+'&rdquo;:</p>'+
-    '<div class="fcards">'+top.map(function(x){
-      var r=x.r,nm=(r.sig&&r.sig.name)||r.name;
-      var deep=location.pathname+"?system="+r._system_id;
-      return '<div class="fcard" role="button" tabindex="0" aria-label="Open '+esc(nm)+'" onclick="openSystem(\''+esc(r._system_id)+'\')" onkeydown="if(event.key===\'Enter\'){openSystem(\''+esc(r._system_id)+'\')}"><div class="kv hist">'+esc(r._system_id)+'</div><h4>'+esc(nm)+'</h4><div class="tag">'+esc(r.tag||"")+'</div><div class="hist" style="margin-top:4px">matched: '+esc(x.hit.join(", "))+'</div><p class="kv"><a class="go" href="'+deep+'" onclick="event.stopPropagation()">Take me there &rarr;</a></p></div>';
-    }).join("")+'</div>';
-};
-document.addEventListener("DOMContentLoaded",function(){var fq=document.getElementById("fq");if(fq)fq.addEventListener("keydown",function(e){if(e.key==="Enter")Finder.ask()})});
 /* ================= record-view helper: answers only from the open file's record ================= */
 /* JAHtalk conversational wiring (shared module: js/jah-talk-fallback.js).
    The PC Helper is a generic site helper — it claims NO canon JAH-AI ID.
@@ -1515,58 +1452,14 @@ function findRecord(id){
 function systemNotFound(id){
   const d = document.getElementById("detail");
   d.innerHTML = '<div class="kv" style="padding:18px 6px"><b>SYSTEM NOT FOUND</b> — no file carries the ID &ldquo;'+esc(String(id||""))+'&rdquo;.<br><br>' +
-    'Check the ID or use the GRAND LIST search. Deep-link formats:<br>' +
+    'Check the ID or use the <a href="browse.html">1 Million Archive</a> search. Deep-link formats:<br>' +
     '· recorded/Signature file: <span class="hist">?system=JAH-PC-90000001</span><br>' +
     '· possible model number: <span class="hist">?model=728194</span><br>' +
     '· shareable random seed: <span class="hist">?seed=728194</span><br><br>' +
-    '<div class="sec"><h3>ASK ABOUT THIS FILE</h3><p class="kv">A helper that answers only from this file&apos;s own record — it says plainly when the record doesn&apos;t cover something.</p><p class="kv askbox"><input id="askq" placeholder="Ask about this system&hellip;" aria-label="Ask about this system"><button onclick="askAbout()">ASK</button></p><div class="kv" id="askans">'+esc(askGreet(null))+'</div></div><button onclick="closeDetail()">← BACK TO GRAND LIST</button></div>';
+    '<div class="sec"><h3>ASK ABOUT THIS FILE</h3><p class="kv">A helper that answers only from this file&apos;s own record — it says plainly when the record doesn&apos;t cover something.</p><p class="kv askbox"><input id="askq" placeholder="Ask about this system&hellip;" aria-label="Ask about this system"><button onclick="askAbout()">ASK</button></p><div class="kv" id="askans">'+esc(askGreet(null))+'</div></div><button onclick="location.href=\'browse.html\'">← BACK TO THE ARCHIVE</button></div>';
   d.style.display = "block"; d.scrollIntoView({behavior:"smooth"});
 }
-function filteredList(){
-  let list = allRecords().filter(r => PCUI.matchesFilter(r, fCat));
-  if (fAz) list = list.filter(r => ((r.sig&&r.sig.name)||r.name||"").toUpperCase().startsWith(fAz));
-  list = PCUI.searchList(list, fQ);
-  return list;
-}
-function renderPills(){
-  const list = allRecords();
-  // Category pills are real <a> links (?cat=) so categories are crawlable and
-  // reachable without the search box; the click handler keeps in-page behavior.
-  let h = PCUI.FILTERS.map(f => {
-    const n = f==="ALL" ? list.length : list.filter(r => PCUI.matchesFilter(r, f)).length;
-    return '<a class="pill'+(fCat===f?" on":"")+'" data-c="'+f+'" href="?cat='+f+'">'+f+' <b>'+n+'</b></a>';
-  }).join("");
-  document.getElementById("pills").innerHTML = h;
-  document.querySelectorAll("#pills .pill").forEach(p => p.onclick = (e) => { e.preventDefault(); fCat = p.dataset.c; fPage = 1; renderPills(); renderGrid(); });
-}
-function renderAZ(){
-  let h = '<span class="'+(fAz===""?"on":"")+'" data-a="">•</span>';
-  for (let i=65;i<=90;i++){const a=String.fromCharCode(i);h+='<span class="'+(fAz==a?"on":"")+'" data-a="'+a+'">'+a+'</span>'}
-  document.getElementById("az").innerHTML = h;
-  document.querySelectorAll("#az span").forEach(s => s.onclick = () => { fAz = s.dataset.a; fPage = 1; renderAZ(); renderGrid(); });
-}
-function typeDot(st){
-  const c = st==="HISTORICAL"?"#9fd8ff":st==="SIGNATURE_ORIGINAL"?"#ffd75e":st==="PREDICTED"?"#d0a6ff":st==="GENERATED"?"#8affc1":"#ffb27d";
-  return '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:'+c+';margin-right:6px" title="'+esc(PCID.TYPE_LABEL[st]||st)+'"></span>';
-}
-function renderGrid(){
-  const g = document.getElementById("grid");
-  const list = filteredList();
-  const pg = PCUI.paginate(list, fPage, PER_PAGE);
-  fPage = pg.page;
-  const rc = document.getElementById("rescount");
-  function setCount(){ if(rc) rc.textContent = pg.total.toLocaleString()+" SYSTEMS"+(fQ?' MATCH "'+fQ+'"':"")+(fCat&&fCat!=="ALL"?" · "+fCat:""); }
-  if (!pg.total){ g.innerHTML = PCUI.zeroResultHTML(fQ || fCat); setCount(); return; }
-  setCount();
-  g.innerHTML = pg.items.map(r => {
-    const nm = (r.sig && r.sig.name) || r.name;
-    const sid = esc(r._system_id);
-    return '<div class="card" role="button" tabindex="0" aria-label="Open ' + esc(nm) + '" onclick="openSystem(\''+sid+'\')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();openSystem(\''+sid+'\')}"><div class="cat">'+typeDot(r._system_type)+esc(r._type_label)+'</div><h3>'+esc(nm)+'</h3><div class="tag">'+esc(r.tag||"")+'</div><div class="kv hist">'+sid+'</div></div>';
-  }).join("") + '<div style="grid-column:1/-1;display:flex;gap:8px;align-items:center;justify-content:center;margin-top:6px;flex-wrap:wrap">' +
-    (pg.page>1?'<button onclick="fPage--;renderGrid()">← PREV</button>':"") +
-    '<span class="kv">PAGE '+pg.page+' / '+pg.pages+' · '+pg.total.toLocaleString()+' SYSTEMS</span>' +
-    (pg.page<pg.pages?'<button onclick="fPage++;renderGrid()">NEXT →</button>':"") + '</div>';
-}
+function filteredList(){return allRecords()} // grand list moved to browse.html; prev/next walks every record
 function dl(name, text){const b=new Blob([text],{type:"text/plain"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
 function copyTxt(t,btn){navigator.clipboard.writeText(t).then(()=>{const o=btn.textContent;btn.textContent="COPIED ✓";setTimeout(()=>btn.textContent=o,1200)})}
 function shareSystem(btn){var r=window._rec;if(!r)return;var url=location.origin+location.pathname+'?system='+r._system_id;var nm=((r.sig&&r.sig.name)||r.name||'A system file');if(navigator.share){try{navigator.share({title:nm+' · The Signature PC System Depository',url:url}).catch(function(){})}catch(e){copyTxt(url,btn)}}else{copyTxt(url,btn)}}
@@ -1680,13 +1573,13 @@ function openSystem(id){
   h += '<div class="sec"><h3>IN THE SIGNATURE DICTIONARY</h3><p class="kv">'+dictTerms(r).map(function(t){return '<a href="'+DICT_BASE+encodeURIComponent(t)+'" target="_blank" rel="noopener">📖 '+esc(t)+'</a>'}).join(" · ")+'</p></div>';
   h += PCUI.aiContractHTML();
   h += rawRecordHTML(r);
-  h += '<button onclick="stepRecord(-1)">← PREV</button> <button onclick="stepRecord(1)">NEXT →</button> <button onclick="closeDetail()">← BACK TO GRAND LIST</button> <button onclick="copyTxt(location.origin+location.pathname+\'?system='+r._system_id+'\',this)">⧉ COPY LINK</button> <button onclick="shareSystem(this)">⤴ SHARE</button> <button onclick="reportError(this)">⚠ REPORT AN ERROR</button>';
+  h += '<button onclick="stepRecord(-1)">← PREV</button> <button onclick="stepRecord(1)">NEXT →</button> <button onclick="closeDetail()">← BACK</button> <button onclick="copyTxt(location.origin+location.pathname+\'?system='+r._system_id+'\',this)">⧉ COPY LINK</button> <button onclick="shareSystem(this)">⤴ SHARE</button> <button onclick="reportError(this)">⚠ REPORT AN ERROR</button>';
   d.innerHTML = h; d.style.display = "block"; d.scrollIntoView({behavior:"smooth"});
   sim.render(document.getElementById("simbox"), r);
   try{history.replaceState(null,"","?system="+r._system_id)}catch(e){}
   try{document.title = (s.name||"System")+" · "+r._system_id+" · The Signature PC System Depository"}catch(e){}
 }
-function closeDetail(){document.getElementById("detail").style.display="none";try{history.replaceState(null,"","./")}catch(e){}document.getElementById("grandlist").scrollIntoView({behavior:"smooth"})}
+function closeDetail(){document.getElementById("detail").style.display="none";try{history.replaceState(null,"","./")}catch(e){}var ae=document.getElementById("archive-entry");if(ae)ae.scrollIntoView({behavior:"smooth"})}
 /* ---------- Site-9 fix wave: raw record view + VERIFY HASH + prev/next + error reports ---------- */
 function rawRecordHTML(r){
   var j = PCUI.recordJSON(r);
@@ -1857,15 +1750,13 @@ function loadDripChunks(){
     }).catch(done);
   }
   function done(){
-    DRIP_N = DRIP.length; renderCounters(); renderPills(); renderGrid();
+    DRIP_N = DRIP.length; renderCounters();
     // resolve a ?system= deep link only now that every file is on file
     if (pendingSystem){ const id = pendingSystem; pendingSystem = null; openSystem(id); }
   }
   next();
 }
 function boot(){
-  const q = document.getElementById("q");
-  q.addEventListener("input", () => { fQ = q.value.trim(); fPage = 1; renderGrid(); });
   renderScope();
   Promise.all([
     fetch("data/systems.json").then(r=>r.json()),
@@ -1874,13 +1765,7 @@ function boot(){
   ]).then(([s,c,c2]) => {
     SYSTEMS = s.map((r,i) => PCUI.enrichSeed(r,i));
     COUNT = c; COUNT2 = c2; DRIP_N = c.generated||0;
-    // category (?cat=) and search (?q=) deep links — categories and search as real links
-    const qs0 = location.search;
-    let cm = /[?&]cat=([A-Z_]*)/.exec(qs0);
-    if (cm && PCUI.FILTERS.indexOf(cm[1]) >= 0) fCat = cm[1];
-    let qm = /[?&]q=([^&]+)/.exec(qs0);
-    if (qm){ fQ = decodeURIComponent(qm[1]); document.getElementById("q").value = fQ; }
-    renderCounters(); renderLastUpdated(); renderPills(); renderAZ(); renderGrid();
+    renderCounters(); renderLastUpdated();
     loadDripChunks();
     const qs = location.search;
     let m = /[?&]system=([^&]+)/.exec(qs);
@@ -1892,7 +1777,7 @@ function boot(){
     m = /[?&]model=(\d+)/.exec(qs);
     if (m){ const n = Math.min(1000000, Math.max(1, parseInt(m[1],10)));
       document.getElementById("pnum").value = n; openPossible(n); }
-  }).catch(e => { document.getElementById("grid").innerHTML = '<div class="kv">Unable to load the archive. <button onclick="location.reload()">RETRY</button></div>'; });
+  }).catch(e => { var ae=document.getElementById("archive-entry"); if(ae){ var n=document.createElement("p"); n.className="kv"; n.innerHTML='The system files could not load. <button onclick="location.reload()">RETRY</button>'; ae.appendChild(n); } });
 }
 boot();
 

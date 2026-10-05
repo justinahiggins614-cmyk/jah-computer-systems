@@ -183,8 +183,44 @@ document.getElementById("jah-askai-q").addEventListener("keydown",function(e){if
 </script>
 </div>
 
+<!-- GRAND LIST — moved off the front door (index.html) 2026-10-05 per the
+     standing architecture rule: the million-file A-Z list lives ONLY on the
+     archive tab. Same components, no redesign. -->
+<div class="hud" id="grandlist">
+<h2>GRAND LIST</h2>
+<div class="searchbar">
+<input type="text" id="q" aria-label="Search every system by name, tag, description, or ID" placeholder="Search every system… (try &quot;quantum&quot;, &quot;ENIAC&quot;, &quot;graphene&quot;)">
+<div class="kv hist" style="margin-top:6px">Popular: <a href="?q=quantum">quantum</a> · <a href="?q=ENIAC">ENIAC</a> · <a href="?q=graphene">graphene</a> · <a href="?q=mainframe">mainframe</a> · <a href="?q=abacus">abacus</a></div>
+<div class="rescount" id="rescount" aria-live="polite"></div>
+</div>
+<style>
+/* SYSTEM FINDER — additive, does not restyle existing components */
+.finder{margin:10px 0;border:1px solid #16324f;border-radius:12px;padding:12px 14px;background:#071428}
+.finder .fhead{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.finder .fhost{font-size:22px}
+.finder .fhead b{color:#ffd75e;letter-spacing:.06em}
+.finder .fhead span{display:block;font-size:12px;color:#8fb8d8}
+.finder .frow{display:flex;gap:8px;flex-wrap:wrap}
+.finder .frow input{flex:1;min-width:200px}
+.finder .fres{margin-top:10px}
+.finder .fcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:8px}
+.finder .fcard{border:1px solid #16324f;border-radius:8px;padding:10px;background:#0a1c30}
+.finder .fcard h4{margin:2px 0 4px;color:#fff;font-size:14px}
+.finder .fcard .go{color:#ffd75e;font-weight:700;text-decoration:none}
+.askbox input{width:100%;max-width:420px;margin-right:8px}
+</style>
+<div class="finder" id="finder">
+<div class="fhead"><span class="fhost" aria-hidden="true">🔎</span><div><b>SYSTEM FINDER</b><span>describe the machine you want in plain words — it checks the depository's own search</span></div></div>
+<div class="frow"><input id="fq" maxlength="160" placeholder="Describe what you&apos;re looking for&hellip;" aria-label="Describe the system you want to find"><button onclick="Finder.ask()">FIND</button></div>
+<div class="fres" id="fresults"></div>
+</div>
+<div class="pills" id="pills"></div>
+<div class="az" id="az"></div>
+<div class="grid" id="grid"><div class="kv" id="bootmsg" style="grid-column:1/-1">LOADING THE DEPOSITORY — fetching the system files…</div></div>
+</div>
+
 <div id="cats"><p class="kv">Loading the catalog index&hellip;</p></div>
-<noscript><div class="notice">This browse page needs JavaScript for its A&ndash;Z lists. The full static record tables live on <a href="index.html">the depository home page</a>.</div></noscript>
+<noscript><div class="notice">This archive page needs JavaScript for its search and A&ndash;Z lists. Record files open on <a href="index.html">the depository home page</a>.</div></noscript>
 %%NAV%%
 <footer>
 <p class="kv">THE SIGNATURE PC SYSTEM DEPOSITORY &middot; SITE 10 OF 35 &middot; THE JAH NETWORK &middot; <a href="index.html">Depository home</a> &middot; <a href="data/counts.json">counts.json</a> &middot; <a href="data/api.json">api.json</a></p>
@@ -335,5 +371,8 @@ loadJSON("data/browse/manifest.json",function(m){
   if (window.JAHProfile && JAHProfile.ui) JAHProfile.ui.renderButton(mount);
 })();
 </script>
+<script src="js/identity.js"></script>
+<script src="js/pcui.js"></script>
+<script src="js/grandlist.js"></script>
 </body>
 </html>
