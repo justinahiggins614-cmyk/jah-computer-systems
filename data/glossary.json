@@ -1,6 +1,6 @@
 {
  "feed": "glossary",
- "generated_at": "2026-10-05T13:59:00Z",
+ "generated_at": "2026-10-05T15:57:49Z",
  "terms": {
   "SYSTEM": "A complete computer system (machine), as defined by the depository scope.",
   "SYSTEM RECORD": "The canonical JAH-PC-RECORD/1.0 entry for one system: exactly one canonical JAH-PC-######## ID, one system_type, one spec_hash.",

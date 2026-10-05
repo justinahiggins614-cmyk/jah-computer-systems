@@ -1,8 +1,8 @@
 {
  "asof": "2026-10-05",
- "seed": 121,
+ "seed": 122,
  "generated": 22800,
- "total": 22921,
+ "total": 22922,
  "cats": {
   "historic": {
    "label": "Historic",
@@ -36,12 +36,12 @@
     "H": 1,
     "L": 1,
     "M": 1,
-    "N": 1,
+    "N": 2,
     "R": 1,
     "S": 4,
     "X": 1
    },
-   "total": 20
+   "total": 21
   },
   "quantum": {
    "label": "Quantum",

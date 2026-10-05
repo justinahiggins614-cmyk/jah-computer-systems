@@ -2055,5 +2055,22 @@
    "blurb": "The Golden Ratio ALU does arithmetic in base-phi, and its display draws each calculation as a growing spiral. Its demo multiplies by the golden ratio with a single shift, shown as the spiral blooming.",
    "demo": "gates"
   }
+ },
+ {
+  "id": "sys-rtx-spark-n1x",
+  "name": "Nvidia RTX Spark N1X",
+  "cat": "modern",
+  "era": "2026",
+  "tag": "20-core Grace CPU + 6,144-core Blackwell GPU, 128GB unified memory",
+  "desc": "A compact AI supercomputer: Nvidia's 20-core Grace CPU paired with a 6,144-core Blackwell GPU and up to 128GB of unified LPDDR5X memory shared between processor and graphics. Built for running large AI models on a desk instead of in a data center.",
+  "history": "Nvidia's RTX Spark line put data-center-class AI on a mini-PC board. The N1X refresh, shipping October 2026, pairs the Grace CPU with Blackwell graphics; laptops and mini-PCs using it were announced by ASUS, Dell, HP, Lenovo, MSI and Microsoft.",
+  "kind": "historical",
+  "patent": null,
+  "demo": "cpu4",
+  "sig": {
+   "name": "Signature N1X Fusion Node",
+   "blurb": "The Signature N1X Fusion Node takes the same winning formula \u2014 a strong CPU fused with a massive parallel GPU over one pool of unified memory \u2014 and tunes it the Signature way: the memory controller predicts which model weights you will need next and pre-stages them, so large AI models answer without the usual loading pause. Its demo runs a simulated 128GB unified-memory workload and shows the pre-staging at work.",
+   "demo": "cpu4"
+  }
  }
 ]

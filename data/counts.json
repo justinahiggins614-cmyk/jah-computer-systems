@@ -1,6 +1,6 @@
 {
  "feed": "counts",
- "generated_at": "2026-10-05T13:59:00Z",
+ "generated_at": "2026-10-05T15:57:49Z",
  "snapshot_id": "JAH-PC-COUNT-20261005-00022921",
  "dataset_version": "2026-10-05",
  "schema_version": "JAH-PC-RECORD/1.0",
@@ -10,8 +10,8 @@
  "recorded_count": 22921,
  "seed_count": 121,
  "generated_count": 22800,
- "signature_versions_count": 22921,
- "historical_count": 96,
+ "signature_versions_count": 22922,
+ "historical_count": 97,
  "signature_original_count": 13,
  "predicted_count": 22812,
  "possible_model_count": 1000000,

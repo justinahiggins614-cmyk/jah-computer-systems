@@ -1,6 +1,6 @@
 {
  "feed": "sources",
- "generated_at": "2026-10-05T13:59:00Z",
+ "generated_at": "2026-10-05T15:57:49Z",
  "note": "Honest source ledger. No source is ever invented: primary sources not yet attached are marked UNVERIFIED with PRIMARY_SOURCE_AVAILABLE=false. Historical records remain reference-only curatorial summaries until then.",
  "sources": [
   {
@@ -25,7 +25,7 @@
    "source_id": "JAH-PC-SOURCE-000003",
    "source_type": "JAH original design",
    "title": "Signature System design records (.sig blocks)",
-   "covers": "22921 Signature versions",
+   "covers": "22922 Signature versions",
    "claim_scope": "Design record only \u2014 never a historical claim",
    "verification_state": "JAH-SIGNATURE-RECORDED",
    "primary_source_available": true,

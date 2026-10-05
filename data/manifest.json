@@ -1,6 +1,6 @@
 {
  "feed": "manifest",
- "generated_at": "2026-10-05T13:59:00Z",
+ "generated_at": "2026-10-05T15:57:49Z",
  "dataset": "THE SIGNATURE PC SYSTEM DEPOSITORY",
  "base": "https://justinahiggins614-cmyk.github.io/jah-computer-systems/",
  "id_scheme": "JAH-PC-ID/1.0",
@@ -18,8 +18,8 @@
  "data_files": [
   {
    "path": "data/systems.json",
-   "sha256": "1db05653623bbf64321520a8435248c26a214615a4d903da67dffc98d91b3485",
-   "bytes": 99691
+   "sha256": "dd5e30d220456e549d978721e6714915fbb5d97828df7a623639ed044c4484e3",
+   "bytes": 100973
   },
   {
    "path": "data/count.json",
@@ -28,7 +28,7 @@
   },
   {
    "path": "data/counts.json",
-   "sha256": "100d3428147ac5c5633c3acb075e11e2a47f6567f452281c16ae5dfa91109c0b",
+   "sha256": "644c1d6221ba9056f254e116ff5bff940a066b0239e95f6f23e72e26876d3d12",
    "bytes": 1012
   },
   {
@@ -38,8 +38,8 @@
   },
   {
    "path": "data/systems-index.json",
-   "sha256": "3248d9ee41c850dc091f145689e67595d0716a56f7e535a40ef8138f273d9531",
-   "bytes": 9313647
+   "sha256": "f576fa10749efd0acc452f8b61151ce790f6bdfb331a7ea913953f2caa0b1f56",
+   "bytes": 9478399
   },
   {
    "path": "data/wiki-index.json",
