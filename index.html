@@ -1461,7 +1461,9 @@ function systemNotFound(id){
 }
 function filteredList(){return allRecords()} // grand list moved to browse.html; prev/next walks every record
 function dl(name, text){const b=new Blob([text],{type:"text/plain"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
-function copyTxt(t,btn){navigator.clipboard.writeText(t).then(()=>{const o=btn.textContent;btn.textContent="COPIED ✓";setTimeout(()=>btn.textContent=o,1200)})}
+function copyTxt(t,btn){function done(ok){try{if(btn){var o=btn.getAttribute("data-cl")||btn.textContent;if(!btn.getAttribute("data-cl"))btn.setAttribute("data-cl",o);btn.textContent=ok?"COPIED ✓":"COPY FAILED";setTimeout(function(){btn.textContent=btn.getAttribute("data-cl");},1200);}}catch(e){}}
+try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(true)},function(){fb()});return;}}catch(e){}
+fb();function fb(){try{var ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();var ok=false;try{ok=document.execCommand("copy")}catch(x){}document.body.removeChild(ta);done(ok)}catch(x){done(false)}}}
 function shareSystem(btn){var r=window._rec;if(!r)return;var url=location.origin+location.pathname+'?system='+r._system_id;var nm=((r.sig&&r.sig.name)||r.name||'A system file');if(navigator.share){try{navigator.share({title:nm+' · The Signature PC System Depository',url:url}).catch(function(){})}catch(e){copyTxt(url,btn)}}else{copyTxt(url,btn)}}
 function sharePossible(n,seed,btn){var url=location.origin+location.pathname+'?model='+n+(seed!=null?'&seed='+seed:'');if(navigator.share){try{navigator.share({title:'Possible model #'+n+' · The Signature PC System Depository',url:url}).catch(function(){})}catch(e){copyTxt(url,btn)}}else{copyTxt(url,btn)}}
 function simMetaFor(rec, simKey){
